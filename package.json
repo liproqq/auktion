@@ -1,23 +1,22 @@
 {
-  "name": "auktion",
+  "name": "meanauthapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MEAN stack authentication app",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "start": "nodemon app"
   },
-  "dependencies": {
-    "bcryptjs": "*",
-    "body-parser": "*",
-    "cors": "*",
-    "express": "*",
-    "jsonwebtoken": "*",
-    "mongoose": "*",
-    "passport": "*",
-    "passport-jwt": "*"
+  "dependencies":{
+    "express":"*",
+    "mongoose":"*",
+    "bcryptjs":"*",
+    "cors":"*",
+    "jsonwebtoken":"*",
+    "body-parser":"*",
+    "passport":"*",
+    "passport-jwt":"*"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Brad Traversy",
   "license": "ISC"
 }

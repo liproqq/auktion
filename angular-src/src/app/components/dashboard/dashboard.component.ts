@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerTableComponent} from "../player-table/player-table.component";
 
 @Component({
   selector: 'app-dashboard',

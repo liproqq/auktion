@@ -1,0 +1,34 @@
+<h1>Spielerliste</h1>
+<input [(ngModel)]="query" name="query" type="text">
+<button (click)="clickForPlayerByLastName(query)">Nachname suchen</button>
+<button (click)="clickForPlayerByTeam(query)">Team suchen</button>
+<button (click)="clickForAllPlayers()">Alle Spieler suchen</button>
+<!--<select class="" id="team" required>
+    <option *ngFor="let team of teams" [value]="teams">{{team}}</option>
+  </select>-->
+<table *ngIf="show" class="table">
+  <tr>
+    <td>Name</td>
+    <td>Vorname</td>
+    <td>Overall</td>
+    <td>Position</td>
+    <td>Gehalt</td>
+    <td>Vertragslänge</td>
+    <td>Notizen</td>
+    <td>Jahre im Team</td>
+    <td>Aktuelles Team</td>
+    <td>Letztes Team</td>
+  </tr>
+  <tr *ngFor="let player of allPlayers">
+    <td>{{player.lastName}}</td>
+    <td>{{player.firstName}}</td>
+    <td>{{player.overall}}</td>
+    <td>{{player.position}}</td>
+    <td>{{player.salary}}</td>
+    <td>{{player.duration}}</td>
+    <td>{{player.notes}}</td>
+    <td>{{player.yearsInTeam}}</td>
+    <td>{{player.team}}</td>
+    <td>{{player.lastTeam}}</td>
+  </tr>
+</table>
