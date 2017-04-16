@@ -25,6 +25,8 @@ const users = require('./routes/users');
 
 const player = require('./routes/player');
 
+const bid = require('./routes/bid');
+
 // Port Number
 const port = process.env.PORT || 8080;
 
@@ -46,6 +48,8 @@ require('./config/passport')(passport);
 app.use('/users', users);
 
 app.use('/player', player);
+
+app.use('/bid', bid);
 
 // Index Route
 app.get('/', (req, res) => {

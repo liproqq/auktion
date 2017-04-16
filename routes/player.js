@@ -6,29 +6,38 @@ router.get("/all", (req, res, next) => {
   Player.find({}, (err, player) => {
     if (err) throw err;
     res.json(player);
-    console.log('retrieved list of players', player.length, player[0].firstName);
+    console.log('retrieved list of players', player.length);
   })
 });
 
-router.get("/free/:queryName", (req, res, next) => {
-  Player.find({firstName: req.params.queryName}, (err, player) => {
+router.get("/freeagents", (req, res, next) => {
+  Player.find({duration:  0}, (err, player) => {
     if (err) throw err;
     res.json(player);
-    console.log('retrieved list of players', player.length, player[0].firstName);
+    console.log('retrieved list of '+player.length+' free agents');
+  })
+});
+
+router.get("/position/:id", (req, res, next) => {
+  Player.find({position: req.params.id}, (err, player) => {
+    if (err) throw err;
+    res.json(player);
+    console.log('retrieved list of '+player.length+' '+req.params.id+"s");
   })
 });
 
 
-router.get("/lastname/:lastName", (req, res, next) => {
-  Player.find({lastName: req.params.lastName}, (err, player) => {
+router.get("/lastname/:id", (req, res, next) => {
+  console.log(req.params.id);
+  Player.find({lastName: req.params.id}, (err, player) => {
     if (err) throw err;
     res.json(player);
     console.log('retrieved ' + player);
   })
 })
 
-router.get("/team/:team", (req, res, next) => {
-  Player.find({team: req.params.team}, (err, player) => {
+router.get("/team/:id", (req, res, next) => {
+  Player.find({team: req.params.id}, (err, player) => {
     if (err) throw err;
     res.json(player);
     console.log('retrieved ' + player);

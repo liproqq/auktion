@@ -1,7 +1,33 @@
 <div *ngIf="user">
-  <h2 class="page-header">{{user.name}}</h2>
+  <h2 class="page-header">Teamübersicht</h2>
   <ul class="list-group">
     <li class="list-group-item">Username: {{user.username}}</li>
     <li class="list-group-item">Email: {{user.email}}</li>
+    <li class="list-group-item">Team: {{user.team}}</li>
   </ul>
 </div>
+<button (click)="callGetRoster()">Roster anzeigen</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Overall</th>
+        <th>Position</th>
+        <th>Gehalt</th>
+        <th>Vertrag</th>
+        <th>Notizen</th>
+        <th>Jahre im Team</th>        
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let player of roster">
+        <td>{{player.lastName}}, {{player.firstName}}</td>
+        <td>{{player.overall}}</td>
+        <td>{{player.position}}</td>
+        <td>{{player.salary}}</td>
+        <td>{{player.duration}}</td>
+        <td>{{player.notes}}</td>
+        <td>{{player.yearsInTeam}}</td>
+    </tr>
+    </tbody>
+</table>

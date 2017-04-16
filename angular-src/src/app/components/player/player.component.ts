@@ -11,7 +11,8 @@ import {Router} from '@angular/router';
 export class PlayerComponent implements OnInit {
   allPlayers: Array<Object>;
   show: boolean = false;
-
+  public filterQuery = "";
+  public searchType = "lastName";
   //teams: any = ['ATL', 'ORL', 'TOR'];
 
 
@@ -20,14 +21,26 @@ export class PlayerComponent implements OnInit {
               private playerService: PlayerService) { }
 
   ngOnInit() {
+    this.playerService.getAllPlayers().subscribe(allPlayers => {
+    this.allPlayers = allPlayers;
+    //console.log(allPlayers);
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+    this.show = true;
+  }
 
-
+  changeType(key){
+    this.searchType=key;
   }
 
   clickForAllPlayers(){
-    this.allPlayers = null;
+    this.resetQuery();
     this.playerService.getAllPlayers().subscribe(allPlayers => {
     this.allPlayers = allPlayers;
+    console.log(allPlayers);
     },
     err => {
       console.log(err);
@@ -36,7 +49,7 @@ export class PlayerComponent implements OnInit {
     this.show = true;
   }
   clickForPlayerByLastName(lastName){
-    this.allPlayers = null;
+    this.resetQuery();
     this.playerService.getPlayerByLastName(lastName).subscribe(allPlayers => {
     this.allPlayers = allPlayers;
     },
@@ -48,7 +61,7 @@ export class PlayerComponent implements OnInit {
   }
 
   clickForPlayerByTeam(team){
-    this.allPlayers = null;
+    this.resetQuery();
     this.playerService.getPlayerByTeam(team).subscribe(allPlayers => {
     this.allPlayers = allPlayers;
     },
@@ -57,5 +70,22 @@ export class PlayerComponent implements OnInit {
       return false;
     });
     this.show = true;
+  }
+
+  clickForFreeAgents(){
+    this.resetQuery();
+    this.playerService.getFreeAgents().subscribe(allPlayers => {
+    this.allPlayers = allPlayers;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+    this.show = true;
+  }
+
+  resetQuery(){
+    this.allPlayers = null;
+    this.filterQuery= "";
   }
 }

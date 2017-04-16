@@ -9,10 +9,10 @@ const User = require('../models/user');
 router.post('/register', (req, res, next) => {
   console.log("/users/register route activated")
   let newUser = new User({
-    name: req.body.name,
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    team: req.body.team
   });
 
   User.addUser(newUser, (err, user) => {
@@ -47,9 +47,8 @@ router.post('/authenticate', (req, res, next) => {
           token: 'JWT '+token,
           user: {
             id: user._id,
-            name: user.name,
-            username: user.username,
-            email: user.email
+            email: user.email,
+            team: user.team
           }
         });
       } else {

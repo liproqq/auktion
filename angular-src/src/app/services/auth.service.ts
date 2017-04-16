@@ -60,7 +60,7 @@ export class AuthService {
     this.user = null;
     localStorage.clear();
   }
-
+  
   prepEndpoint(ep){
     if(this.isDev){
       return ep;

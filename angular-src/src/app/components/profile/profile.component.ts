@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {PlayerService} from '../../services/player.service';
+
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,8 +11,11 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user:Object;
+  roster: Array<Object>;
 
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService:AuthService,
+              private router:Router,
+              private playerService: PlayerService) { }
 
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
@@ -22,4 +27,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  callGetRoster(){this.playerService.getRoster(this.user).subscribe(roster => {
+  this.roster = roster;
+  },
+  err => {
+    console.log(err);
+    return false;
+  });
+  }
 }

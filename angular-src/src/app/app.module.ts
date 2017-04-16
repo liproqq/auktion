@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
+import {DataTableModule} from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -11,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuctionComponent } from './components/auction/auction.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
@@ -18,14 +20,16 @@ import {PlayerService} from './services/player.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { PlayerComponent } from './components/player/player.component';
+import { DataFilterPipe } from './pipes/data-filter.pipe';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
-  {path:'player', component: PlayerComponent},
+  {path:'player', component: PlayerComponent, canActivate:[AuthGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'auction', component: AuctionComponent, canActivate:[AuthGuard]}
 
 ]
 
@@ -38,14 +42,17 @@ const appRoutes: Routes =  [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    PlayerComponent
+    PlayerComponent,
+    DataFilterPipe,
+    AuctionComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    DataTableModule
   ],
   providers: [ValidateService, AuthService, AuthGuard, PlayerService],
   bootstrap: [AppComponent]
