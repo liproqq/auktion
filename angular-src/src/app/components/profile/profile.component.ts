@@ -28,11 +28,20 @@ export class ProfileComponent implements OnInit {
   }
 
   callGetRoster(){this.playerService.getRoster(this.user).subscribe(roster => {
-  this.roster = roster;
-  },
-  err => {
-    console.log(err);
-    return false;
-  });
+    this.roster = roster;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+  }
+
+  callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
+    this.roster = roster;
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
   }
 }

@@ -57,6 +57,10 @@ export class PlayerService {
      });
   }
 
+  getBids(user){
+    return this.http.get("http://localhost:8080/bid/team/"+user.team).map(res => res.json());
+  }
+
   prepEndpoint(ep){
       return 'http://localhost:8080/'+ep;
   }

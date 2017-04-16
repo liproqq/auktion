@@ -14,18 +14,12 @@ router.post('/placebid', (req, res, next) => {
     team: req.body.team
   });
 
-  Bid.find({firstName: req.body.firstName,  lastName : req.body.lastName}, (err, bid) => {
-    res.send(bid);
-    /*if(bid){
-      res.send("no");
-    } else {
-      newBid.save((err) => {
-        res.json();
-        res.send(newBid);
-      });
-    }*/
-  })
 
+  newBid.save((err) => {
+    res.json();
+  });
+  let request = req;
+  res.send(newBid);
 });
 
 router.get("/all", (req, res, next) => {
@@ -33,6 +27,14 @@ router.get("/all", (req, res, next) => {
     if (err) throw err;
     res.json(player);
     console.log("All bids retrieved");
+  })
+});
+
+router.get("/team/:id", (req, res, next) => {
+  Bid.find({team: req.params.id}, (err, player) => {
+    if (err) throw err;
+    res.json(player);
+    console.log(req.params.id+ "'s bids retrieved");
   })
 });
 
