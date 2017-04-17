@@ -14,7 +14,7 @@ export class AuctionComponent implements OnInit {
   public team: String;
   public filterQuery = "";
   public searchType = "lastName";
-
+  
   constructor(private authService:AuthService,
               private router:Router,
               private playerService: PlayerService,

@@ -11,6 +11,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
   username: String;
   password: String;
+  
 
   constructor(
     private authService:AuthService,

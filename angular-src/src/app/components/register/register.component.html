@@ -11,10 +11,7 @@
   <div class="form-group">
     <label>Team</label>
     <select class="form-control" [(ngModel)]="team" name="team">
-      <option value="ATL">Atlanta Hawks</option>
-      <option value="BOS">Boston Celtics</option>
-      <option value="BKN">Brooklyn Nets</option>
-      <option value="CHA">Charlotte Hornets</option>
+      <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
     </select>
   </div>
   <div class="form-group">
