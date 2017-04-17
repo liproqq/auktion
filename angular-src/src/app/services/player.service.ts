@@ -9,31 +9,36 @@ export class PlayerService {
   result: any;
 
   constructor(private http:Http) {
-    this.isDev = false; // Change to false before deployment
+    this.isDev = true; // Change to false before deployment
  }
 
   getAllPlayers(){
-    return this.http.get("http://localhost:8080/player/all")
+    let ep = this.prepEndpoint('player/all');
+    return this.http.get(ep)
         .map(res => res.json());
   }
 
   getPlayerByLastName(lastName){
-    return this.http.get("http://localhost:8080/player/lastname/"+lastName)
+    let ep = this.prepEndpoint('player/lastname/');
+    return this.http.get(ep+lastName)
     .map(res => res.json());
   }
 
   getPlayerByTeam(team){
-    return this.http.get("http://localhost:8080/player/team/"+team)
+    let ep = this.prepEndpoint('player/team/');
+    return this.http.get(ep+team)
     .map(res => res.json());
   }
 
   getRoster(user){
-    return this.http.get("http://localhost:8080/player/team/"+user.team)
+    let ep = this.prepEndpoint('player/team/');
+    return this.http.get(ep+user.team)
     .map(res => res.json());
   }
 
   getFreeAgents(){
-    return this.http.get("http://localhost:8080/player/freeagents")
+    let ep = this.prepEndpoint('player/freeagents');
+    return this.http.get(ep)
         .map(res => res.json());
   }
 
@@ -58,10 +63,15 @@ export class PlayerService {
   }
 
   getBids(user){
-    return this.http.get("http://localhost:8080/bid/team/"+user.team).map(res => res.json());
+    let ep = this.prepEndpoint('bid/team/');
+    return this.http.get(ep+user.team).map(res => res.json());
   }
 
   prepEndpoint(ep){
+    if(this.isDev){
+      return ep;
+    } else {
       return 'http://localhost:8080/'+ep;
+    }
   }
 }

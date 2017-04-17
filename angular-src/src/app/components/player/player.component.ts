@@ -13,7 +13,7 @@ export class PlayerComponent implements OnInit {
   show: boolean = false;
   public filterQuery = "";
   public searchType = "lastName";
-  //teams: any = ['ATL', 'ORL', 'TOR'];
+  teams: Array<Object> = [{short: "ATL", long:"Atlanta Hawks"},{short: "BOS", long:"Boston Celtics"}]
 
 
   constructor(private authService:AuthService,

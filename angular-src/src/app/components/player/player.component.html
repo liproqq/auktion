@@ -8,6 +8,7 @@
 <button (click)="clickForPlayerByTeam(query)">Kader suchen</button>
 <button (click)="clickForAllPlayers()">Alle Spieler</button>
 <button (click)="clickForFreeAgents()">Free Agents</button>
+<button (click)="changeType('position')">Position</button>
 -->
 
 
@@ -16,13 +17,21 @@
 
 <input class="" placeholder="" [(ngModel)]="filterQuery"/>
 <button (click)="changeType('lastName')">Name</button>
-<button (click)="changeType('position')">Position</button>
-<select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('team')">
+
+<select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
+    <option value="">Position</option>
+    <option value="PG">Point Guard</option>
+    <option value="SG">Shooting Guard</option>
+    <option value="SF">Small Forward</option>
+    <option value="PF">Power Forward</option>
+    <option value="C">Center</option>
+</select>
+<select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('team')" >
     <option value="">Team</option>
-    <option value="ATL">Atlanta Hawks</option>
-    <option value="BOS">Boston Celtics</option>
+    <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
+    <!--<option value="BOS">Boston Celtics</option>
     <option value="BKN">Brooklyn Nets</option>
-    <option value="CHA">Charlotte Hornets</option>
+    <option value="CHA">Charlotte Hornets</option>-->
 </select>
 
 
