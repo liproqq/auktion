@@ -6,18 +6,19 @@
     <li class="list-group-item">Team: {{user.team}}</li>
   </ul>
 </div>
-<button (click)="callGetRoster()">Roster anzeigen</button>
-<button (click)="callGetBids()">Gebote anzeigen</button>
+<button (click)="callGetRoster()">Roster</button>
+<button (click)="callGetBids()">Offers</button>
 <table class="table table-striped">
   <thead>
     <tr>
         <th>Name</th>
         <th>Overall</th>
         <th>Position</th>
-        <th>Gehalt</th>
-        <th>Vertrag</th>
-        <th>Notizen</th>
-        <th>Jahre im Team</th>
+        <th>Salary</th>
+        <th>Duration</th>
+        <th>Notes</th>
+        <th *ngIf="showBids">Withdraw</th>
+        <th *ngIf="!showBids">Years in team</th>
     </tr>
   </thead>
     <tbody>
@@ -28,7 +29,8 @@
         <td>{{player.salary}}</td>
         <td>{{player.duration}}</td>
         <td>{{player.notes}}</td>
-        <td>{{player.yearsInTeam}}</td>
+        <td *ngIf="showBids"><button (click)="withdrawOffer(player._id)">Withdraw Offer</button></td>
+        <td *ngIf="!showBids">{{player.yearsInTeam}}</td>
     </tr>
     </tbody>
 </table>

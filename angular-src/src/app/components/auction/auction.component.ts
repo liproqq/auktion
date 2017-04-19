@@ -45,7 +45,6 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
-
     if(player.lastTeam != teamBid && yearsBid == 5){
       this.flashMessage.show("Invalid Offer - Only former team can offer five years", {
         cssClass: 'alert-danger',
@@ -53,6 +52,7 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    //minimum salary
     if(salaryBid < this.minSalary(player.age)){
       this.flashMessage.show("Invalid Offer - minimum bid is "+this.minSalary(player.age) , {
         cssClass: 'alert-danger',
@@ -61,11 +61,22 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    //maximum salary
+    if(salaryBid > this.maxSalary(player.age)){
+      this.flashMessage.show("Invalid Offer - maximum bid is "+this.maxSalary(player.age) , {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      player.salaryBid = this.maxSalary(player.age);
+      return false;
+    }
+
 
 
     this.playerService.makeBid(player.firstName, player.lastName, player.overall, player.position, salaryBid, yearsBid, teamBid);
     console.log("bid to service");
-    this.flashMessage.show(salaryBid +" auf "+ player.lastName +" geboten von "+teamBid, );
+    this.flashMessage.show(salaryBid +" bid for "+ player.lastName +" by "+teamBid,  {
+      cssClass: 'alert-success',
+      timeout: 5000});
   }
 
   minSalary(age){
@@ -84,5 +95,15 @@ export class AuctionComponent implements OnInit {
     }
   }
 
+  maxSalary(age){
+    const exp = age-20;
+    if(exp <7){
+      return 25000000;
+    } else if (exp <10){
+      return 30000000;
+    } else {
+      return 35000000;
+    }
+  }
 
 }

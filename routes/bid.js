@@ -18,15 +18,7 @@ router.post('/placebid', (req, res, next) => {
   Bid.findOneAndUpdate({firstName: newBid.firstName, lastName: newBid.lastName, team: newBid.team}, newBid, {upsert:true}, function(err, doc){
     if (err) return res.send(500, { error: err });
     return res.send("succesfully saved");
-});
-
-  /* Not checking for previous bid
-
-  newBid.save((err) => {
-    res.json();
   });
-  let request = req;
-  res.send(newBid);*/
 });
 
 router.get("/all", (req, res, next) => {
@@ -44,6 +36,16 @@ router.get("/team/:id", (req, res, next) => {
     console.log(req.params.id+ "'s bids retrieved");
   })
 });
+
+router.delete("/delete/:id", (req, res, next) => {
+  console.log("delete route activated"+ req.params.id);
+  Bid.findByIdAndRemove(req.params.id, (err, player, result) => {
+    if (err) throw err;
+    res.json(player);
+    console.log(player.lastName+ "'s bids withdrawn");
+  })
+}
+);
 
 
 module.exports = router;
