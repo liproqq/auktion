@@ -34,19 +34,16 @@
     <option value="CHA">Charlotte Hornets</option>-->
 </select>
 
-
-<h1 *ngIf="!show">Wonach steht dir der Sinn?</h1>
-
 <table *ngIf="show" class="table table-striped" [mfData]="allPlayers | dataFilter : filterQuery : searchType" #mf="mfDataTable" [mfRowsOnPage]="15">
     <thead>
       <tr>
           <th><mfDefaultSorter by="lastName">Name</mfDefaultSorter></th>
           <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="salary">Gehalt</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="duration">Vertrag</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="notes">Notizen</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="yearsInTeam">Zugehörigkeit</mfDefaultSorter></th>
+          <th><mfDefaultSorter by="salary">Salary</mfDefaultSorter></th>
+          <th><mfDefaultSorter by="duration">Duration</mfDefaultSorter></th>
+          <th><mfDefaultSorter by="notes">Notes</mfDefaultSorter></th>
+          <th><mfDefaultSorter by="yearsInTeam">Years in team</mfDefaultSorter></th>
           <th><mfDefaultSorter by="team">Team</mfDefaultSorter></th>
       </tr>
     </thead>

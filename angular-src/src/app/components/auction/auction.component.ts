@@ -14,7 +14,7 @@ export class AuctionComponent implements OnInit {
   public team: String;
   public filterQuery = "";
   public searchType = "lastName";
-  
+
   constructor(private authService:AuthService,
               private router:Router,
               private playerService: PlayerService,
@@ -36,12 +36,52 @@ export class AuctionComponent implements OnInit {
 
   bid(player, salaryBid, yearsBid){
     let teamBid = JSON.parse(localStorage.getItem("user")).team;
-    console.log("bid to service");
-    this.playerService.makeBid(player.firstName, player.lastName, player.overall, player.position, salaryBid, yearsBid, teamBid)
 
-    this.flashMessage.show(salaryBid +" auf "+ player.lastName +" geboten von "+teamBid, {
-      cssClass: 'alert-success',
-      timeout: 10000});
+    //Validate offer
+    if(salaryBid == undefined || yearsBid == undefined){
+      this.flashMessage.show("Invalid Offer - No bid or contract length", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+
+    if(player.lastTeam != teamBid && yearsBid == 5){
+      this.flashMessage.show("Invalid Offer - Only former team can offer five years", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+    if(salaryBid < this.minSalary(player.age)){
+      this.flashMessage.show("Invalid Offer - minimum bid is "+this.minSalary(player.age) , {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      player.salaryBid = this.minSalary(player.age);
+      return false;
+    }
+
+
+
+    this.playerService.makeBid(player.firstName, player.lastName, player.overall, player.position, salaryBid, yearsBid, teamBid);
+    console.log("bid to service");
+    this.flashMessage.show(salaryBid +" auf "+ player.lastName +" geboten von "+teamBid, );
+  }
+
+  minSalary(age){
+    switch(age-20){
+      case 0: return 815615;
+      case 1: return 1345427;
+      case 2: return 1544951;
+      case 3: return 1638627;
+      case 4: return 1734954;
+      case 5: return 1880492;
+      case 6: return 2026033;
+      case 7: return 2171575;
+      case 8: return 2317118;
+      case 9: return 2328651;
+      default: return 2561518;
+    }
   }
 
 

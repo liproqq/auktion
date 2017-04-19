@@ -1,11 +1,11 @@
 {
   "name": "Auktion",
   "version": "1.0.0",
-  "description": "MEAN stack authentication app",
+  "description": "Elite League App",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "start": "nodemon app"
   },
   "dependencies":{
     "express":"*",

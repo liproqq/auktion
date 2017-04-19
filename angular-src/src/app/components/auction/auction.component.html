@@ -15,9 +15,9 @@
           <th><mfDefaultSorter by="lastName">Name</mfDefaultSorter></th>
           <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
-          <th>Gebot</th>
-          <th>Jahre</th>
-          <th>Bestätigen</th>
+          <th>Bid</th>
+          <th>Years</th>
+          <th>Confirm</th>
       </tr>
     </thead>
     <tbody>
@@ -27,14 +27,14 @@
         <td>{{player.position}}</td>
         <td><input type="text" [(ngModel)]="player.salaryBid" name="" value=""></td>
         <td><select [(ngModel)]="player.yearsBid" class="">
-              <option value=1>Ein Jahr</option>
-              <option value=2>Zwei Jahre</option>
-              <option value=3>Drei Jahre</option>
-              <option value=4>Vier Jahre</option>
-              <option value=5>Fünf Jahre</option>
+              <option value=1>One Year</option>
+              <option value=2>Two Years</option>
+              <option value=3>Three Years</option>
+              <option value=4>Four Years</option>
+              <option value=5>Five Years</option>
             </select>
         </td>
-        <td><button (click)="bid(player, player.salaryBid, player.yearsBid)" name="button">Gebot abgeben</button></td>
+        <td><button (click)="bid(player, player.salaryBid, player.yearsBid)" name="button">Comfirm Offer</button></td>
     </tr>
     </tbody>
     <tfoot>
