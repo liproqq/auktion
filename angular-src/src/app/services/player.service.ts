@@ -9,7 +9,7 @@ export class PlayerService {
   result: any;
 
   constructor(private http:Http) {
-    this.isDev = false; // Change to false before deployment
+    this.isDev = true; // Change to false before deployment
  }
 
   getAllPlayers(){
