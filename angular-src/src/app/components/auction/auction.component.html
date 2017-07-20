@@ -1,5 +1,4 @@
 <input on-focus="changeType('lastName')" [(ngModel)]="filterQuery"/>
-<button (click)="changeType('lastName')">Name</button>
 <select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
     <option value="">Position</option>
     <option value="PG">Point Guard</option>
@@ -15,8 +14,8 @@
           <th><mfDefaultSorter by="lastName">Name</mfDefaultSorter></th>
           <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
-          <th>Bid</th>
-          <th>Years</th>
+          <th>Offer</th>
+          <th>Length</th>
           <th>Confirm</th>
       </tr>
     </thead>
@@ -34,7 +33,7 @@
               <option value=5>Five Years</option>
             </select>
         </td>
-        <td><button (click)="bid(player, player.salaryBid, player.yearsBid)" name="button">Comfirm Offer</button></td>
+        <td><button (click)="bid(player, player.salaryBid, player.yearsBid)" name="button">Confirm Offer</button></td>
     </tr>
     </tbody>
     <tfoot>

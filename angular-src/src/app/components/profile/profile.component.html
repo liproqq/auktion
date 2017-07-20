@@ -1,10 +1,10 @@
 <div *ngIf="user">
-  <h2 class="page-header">Teamübersicht</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Username: {{user.username}}</li>
-    <li class="list-group-item">Email: {{user.email}}</li>
-    <li class="list-group-item">Team: {{user.team}}</li>
-    <li class="list-group-item">Payroll: {{payroll}}</li>
+  <h2 class="page-header">Overview</h2>
+  <ul class="list-inline">
+    <li class="list-inline-item">Username: {{user.username}}</li>
+    <!--<li class="list-inline-item">Email: {{user.email}}</li>-->
+    <li class="list-inline-item">Team: {{user.team}}</li>
+    <li class="list-inline-item">Payroll: {{payroll | currency : 'USD': true:"1.0-0"}}</li>
   </ul>
 </div>
 <button (click)="callGetRoster()">Roster</button>
@@ -27,7 +27,7 @@
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
         <td>{{player.salary | currency : 'USD': true:"1.0-0"}}</td>
-        <td>{{player.duration}}</td>        
+        <td>{{player.duration}}</td>
         <td *ngIf="showBids"><button (click)="withdrawOffer(player._id)">Withdraw Offer</button></td>
         <td *ngIf="!showBids">{{player.yearsInTeam}}</td>
     </tr>

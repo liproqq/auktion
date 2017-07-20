@@ -1,22 +1,6 @@
-<h1>Spielerliste</h1>
-<!--
-    * pre-angular-datatable
+<h1>Player list</h1>
 
-<input [(ngModel)]="query" name="query" type="text">
-
-<button (click)="clickForPlayerByLastName(query)">Nachname suchen</button>
-<button (click)="clickForPlayerByTeam(query)">Kader suchen</button>
-<button (click)="clickForAllPlayers()">Alle Spieler</button>
-<button (click)="clickForFreeAgents()">Free Agents</button>
-<button (click)="changeType('position')">Position</button>
--->
-
-
-
-
-
-<input class="" placeholder="" [(ngModel)]="filterQuery"/>
-<button (click)="changeType('lastName')">Name</button>
+<input on-focus="changeType('lastName')" class="" placeholder="Name" [(ngModel)]="filterQuery"/>
 
 <select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
     <option value="">Position</option>
