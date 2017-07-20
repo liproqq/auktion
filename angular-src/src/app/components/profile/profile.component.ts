@@ -11,9 +11,8 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user:Object;
-  roster: Array<any>;
+  roster: Array<Object>;
   showBids:boolean = false;
-  payroll:number =0;
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -23,7 +22,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.authService.getProfile().subscribe(profile => {
       this.user = profile.user;
-      this.callGetRoster();
     },
     err => {
       console.log(err);
@@ -34,13 +32,11 @@ export class ProfileComponent implements OnInit {
   callGetRoster(){this.playerService.getRoster(this.user).subscribe(roster => {
     this.roster = roster;
     this.showBids =false;
-    this.calculatePayroll();
     },
     err => {
       console.log(err);
       return false;
     });
-
   }
 
   callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
@@ -51,13 +47,6 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
-  }
-
-  calculatePayroll(){
-    for(var i =0; i< this.roster.length;i++){      
-      this.payroll += this.roster[i].salary;
-    }
-    Math.ceil(this.payroll);
   }
 
   withdrawOffer(id){
