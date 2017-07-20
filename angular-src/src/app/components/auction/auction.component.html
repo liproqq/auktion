@@ -1,4 +1,4 @@
-<input class="" placeholder="" [(ngModel)]="filterQuery"/>
+<input on-focus="changeType('lastName')" [(ngModel)]="filterQuery"/>
 <button (click)="changeType('lastName')">Name</button>
 <select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
     <option value="">Position</option>

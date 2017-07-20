@@ -42,7 +42,7 @@
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
           <th><mfDefaultSorter by="salary">Salary</mfDefaultSorter></th>
           <th><mfDefaultSorter by="duration">Duration</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="notes">Notes</mfDefaultSorter></th>
+          <!--<th><mfDefaultSorter by="notes">Notes</mfDefaultSorter></th>-->
           <th><mfDefaultSorter by="yearsInTeam">Years in team</mfDefaultSorter></th>
           <th><mfDefaultSorter by="team">Team</mfDefaultSorter></th>
       </tr>
@@ -52,9 +52,9 @@
         <td>{{player.lastName}}, {{player.firstName}}</td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
-        <td>{{player.salary}}</td>
+        <td>{{player.salary | currency : 'USD': true:"1.0-0"}}</td>
         <td>{{player.duration}}</td>
-        <td>{{player.notes}}</td>
+        <!--<td>{{player.notes}}</td>-->
         <td>{{player.yearsInTeam}}</td>
         <td>{{player.team}}</td>
     </tr>
