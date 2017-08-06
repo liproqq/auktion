@@ -8,12 +8,14 @@
     <option value="C">Center</option>
 </select>
 
-<table class="table table-striped" [mfData]="allPlayers | dataFilter : filterQuery : searchType" #mf="mfDataTable" [mfRowsOnPage]="15">
+<table class="table table-striped" [mfData]="freeAgents | dataFilter : filterQuery : searchType" #mf="mfDataTable" [mfRowsOnPage]="15">
     <thead>
       <tr>
           <th><mfDefaultSorter by="lastName">Name</mfDefaultSorter></th>
           <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
+          <th>Current Offer</th>
+          <th>Time to signing</th>
           <th>Offer</th>
           <th>Length</th>
           <th>Confirm</th>
@@ -24,7 +26,9 @@
         <td>{{player.lastName}}, {{player.firstName}}</td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
-        <td><input type="text" [(ngModel)]="player.salaryBid" name="" value=""></td>
+        <td>{{player.salaryBid | currency : 'USD': true:"1.0-0"}}/{{player.durationBid}}/{{player.teamBid}}</td>
+        <td>{{player.timeBid | timeleft}}</td>
+        <td><input type="text" [(ngModel)]="player.newSalaryBid" name="" value=""></td>
         <td><select [(ngModel)]="player.yearsBid" class="">
               <option value=1>One Year</option>
               <option value=2>Two Years</option>
@@ -33,7 +37,7 @@
               <option value=5>Five Years</option>
             </select>
         </td>
-        <td><button (click)="bid(player, player.salaryBid, player.yearsBid)" name="button">Confirm Offer</button></td>
+        <td><button (click)="bid(player, player.newSalaryBid, player.yearsBid)" name="button">Confirm Offer</button></td>
     </tr>
     </tbody>
     <tfoot>

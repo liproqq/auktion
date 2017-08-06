@@ -22,6 +22,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { PlayerComponent } from './components/player/player.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
+import { TimeleftPipe } from './pipes/timeleft.pipe';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes =  [
     PlayerComponent,
     DataFilterPipe,
     AuctionComponent,
-    RulesComponent
+    RulesComponent,
+    TimeleftPipe
   ],
   imports: [
     BrowserModule,

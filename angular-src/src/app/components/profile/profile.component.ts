@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
+  /*callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
     this.roster = roster;
     this.showBids = true;
     },
@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
-  }
+  }*/
 
   calculatePayroll(){
     this.payroll = 0;
@@ -61,12 +61,12 @@ export class ProfileComponent implements OnInit {
     this.payroll=Math.ceil(this.payroll);
   }
 
-  withdrawOffer(id){
+  /*withdrawOffer(id){
     this.playerService.deleteBid(id);
     this.flashMessage.show("Offer withdrawn", {
       cssClass: 'alert-success',
       timeout: 10000});
     this.router.navigate(['/profile']);
     this.roster = null;
-  }
+  }*/
 }
