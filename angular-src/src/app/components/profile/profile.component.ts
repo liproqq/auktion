@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
     for(var i =0; i< this.roster.length;i++){
       this.payroll += this.roster[i].salary;
     }
-    this.payroll=Math.ceil(this.payroll)*1000000;
+    this.payroll=Math.ceil(this.payroll);
   }
 
   withdrawOffer(id){
