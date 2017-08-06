@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuctionComponent } from './components/auction/auction.component';
+import { RulesComponent } from './components/rules/rules.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
@@ -26,6 +27,7 @@ const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path:'rules', component: RulesComponent},
   {path:'player', component: PlayerComponent, canActivate:[AuthGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
@@ -44,7 +46,8 @@ const appRoutes: Routes =  [
     ProfileComponent,
     PlayerComponent,
     DataFilterPipe,
-    AuctionComponent
+    AuctionComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,
