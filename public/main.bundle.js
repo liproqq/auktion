@@ -1,6 +1,6 @@
 webpackJsonp([1,4],{
 
-/***/ 1012:
+/***/ 1015:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(440);
@@ -175,7 +175,7 @@ webpackEmptyContext.id = 439;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(527);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(570);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(558);
 
 
@@ -211,8 +211,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
-        template: __webpack_require__(738),
-        styles: [__webpack_require__(728)]
+        template: __webpack_require__(740),
+        styles: [__webpack_require__(729)]
     })
 ], AppComponent);
 
@@ -229,7 +229,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable__ = __webpack_require__(571);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_datatable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(557);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_navbar_navbar_component__ = __webpack_require__(563);
@@ -239,14 +239,15 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__ = __webpack_require__(560);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__ = __webpack_require__(565);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__ = __webpack_require__(559);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_validate_service__ = __webpack_require__(368);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_auth_service__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_player_service__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__ = __webpack_require__(567);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_player_player_component__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_data_filter_pipe__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_rules_rules_component__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_validate_service__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_player_service__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_player_player_component__ = __webpack_require__(564);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pipes_data_filter_pipe__ = __webpack_require__(569);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -275,14 +276,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'player', component: __WEBPACK_IMPORTED_MODULE_19__components_player_player_component__["a" /* PlayerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'auction', component: __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'rules', component: __WEBPACK_IMPORTED_MODULE_14__components_rules_rules_component__["a" /* RulesComponent */] },
+    { path: 'player', component: __WEBPACK_IMPORTED_MODULE_20__components_player_player_component__["a" /* PlayerComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'auction', component: __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -299,19 +302,20 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */],
             __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
             __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
-            __WEBPACK_IMPORTED_MODULE_19__components_player_player_component__["a" /* PlayerComponent */],
-            __WEBPACK_IMPORTED_MODULE_20__pipes_data_filter_pipe__["a" /* DataFilterPipe */],
-            __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */]
+            __WEBPACK_IMPORTED_MODULE_20__components_player_player_component__["a" /* PlayerComponent */],
+            __WEBPACK_IMPORTED_MODULE_21__pipes_data_filter_pipe__["a" /* DataFilterPipe */],
+            __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__components_rules_rules_component__["a" /* RulesComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(appRoutes),
-            __WEBPACK_IMPORTED_MODULE_17_angular2_flash_messages__["FlashMessagesModule"],
+            __WEBPACK_IMPORTED_MODULE_18_angular2_flash_messages__["FlashMessagesModule"],
             __WEBPACK_IMPORTED_MODULE_5_angular2_datatable__["DataTableModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_14__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_15__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_16__services_player_service__["a" /* PlayerService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_15__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_16__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_17__services_player_service__["a" /* PlayerService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -440,8 +444,8 @@ var AuctionComponent = (function () {
 AuctionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-auction',
-        template: __webpack_require__(739),
-        styles: [__webpack_require__(729)]
+        template: __webpack_require__(741),
+        styles: [__webpack_require__(730)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _d || Object])
 ], AuctionComponent);
@@ -477,8 +481,8 @@ var DashboardComponent = (function () {
 DashboardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-dashboard',
-        template: __webpack_require__(740),
-        styles: [__webpack_require__(730)]
+        template: __webpack_require__(742),
+        styles: [__webpack_require__(731)]
     }),
     __metadata("design:paramtypes", [])
 ], DashboardComponent);
@@ -513,8 +517,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
-        template: __webpack_require__(741),
-        styles: [__webpack_require__(731)]
+        template: __webpack_require__(743),
+        styles: [__webpack_require__(732)]
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -583,8 +587,8 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
-        template: __webpack_require__(742),
-        styles: [__webpack_require__(732)]
+        template: __webpack_require__(744),
+        styles: [__webpack_require__(733)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
 ], LoginComponent);
@@ -639,8 +643,8 @@ var NavbarComponent = (function () {
 NavbarComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-navbar',
-        template: __webpack_require__(743),
-        styles: [__webpack_require__(733)]
+        template: __webpack_require__(745),
+        styles: [__webpack_require__(734)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
 ], NavbarComponent);
@@ -750,8 +754,8 @@ var PlayerComponent = (function () {
 PlayerComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-player',
-        template: __webpack_require__(744),
-        styles: [__webpack_require__(734)]
+        template: __webpack_require__(746),
+        styles: [__webpack_require__(735)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object])
 ], PlayerComponent);
@@ -846,8 +850,8 @@ var ProfileComponent = (function () {
 ProfileComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-profile',
-        template: __webpack_require__(745),
-        styles: [__webpack_require__(735)]
+        template: __webpack_require__(747),
+        styles: [__webpack_require__(736)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _d || Object])
 ], ProfileComponent);
@@ -927,8 +931,8 @@ var RegisterComponent = (function () {
 RegisterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-register',
-        template: __webpack_require__(746),
-        styles: [__webpack_require__(736)]
+        template: __webpack_require__(748),
+        styles: [__webpack_require__(737)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], RegisterComponent);
@@ -939,6 +943,42 @@ var _a, _b, _c, _d;
 /***/ }),
 
 /***/ 567:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RulesComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var RulesComponent = (function () {
+    function RulesComponent() {
+    }
+    RulesComponent.prototype.ngOnInit = function () {
+    };
+    return RulesComponent;
+}());
+RulesComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-rules',
+        template: __webpack_require__(749),
+        styles: [__webpack_require__(738)]
+    }),
+    __metadata("design:paramtypes", [])
+], RulesComponent);
+
+//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/rules.component.js.map
+
+/***/ }),
+
+/***/ 568:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -984,7 +1024,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 568:
+/***/ 569:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1022,7 +1062,7 @@ DataFilterPipe = __decorate([
 
 /***/ }),
 
-/***/ 569:
+/***/ 570:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1047,7 +1087,7 @@ var environment = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(577);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1129,28 +1169,10 @@ var _a;
 
 /***/ }),
 
-/***/ 728:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(39)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
 /***/ 729:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1168,7 +1190,7 @@ module.exports = module.exports.toString();
 /***/ 730:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1186,7 +1208,7 @@ module.exports = module.exports.toString();
 /***/ 731:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1204,7 +1226,7 @@ module.exports = module.exports.toString();
 /***/ 732:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1222,7 +1244,7 @@ module.exports = module.exports.toString();
 /***/ 733:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1240,7 +1262,7 @@ module.exports = module.exports.toString();
 /***/ 734:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1258,7 +1280,7 @@ module.exports = module.exports.toString();
 /***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1276,7 +1298,25 @@ module.exports = module.exports.toString();
 /***/ 736:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(39)();
+exports = module.exports = __webpack_require__(33)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 737:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(33)();
 // imports
 
 
@@ -1292,67 +1332,92 @@ module.exports = module.exports.toString();
 /***/ }),
 
 /***/ 738:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <flash-messages></flash-messages>\n  <router-outlet></router-outlet>\n</div>\n"
+exports = module.exports = __webpack_require__(33)();
+// imports
 
-/***/ }),
 
-/***/ 739:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "table{\r\n  width: 100%;\r\n  margin: 20px 0;\r\n}\r\n\r\nthead{\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n\r\ntd{\r\n  padding: 4px;\r\n  border: 1px solid black;\r\n}\r\ntd:nth-child(odd){\r\n  background-color: #DDD;\r\n}\r\n", ""]);
 
-module.exports = "<input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.salaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.yearsBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.salaryBid, player.yearsBid)\" name=\"button\">Confirm Offer</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 740:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n<p>Welcome to your dashboard</p>\n"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <flash-messages></flash-messages>\n  <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
 /***/ 741:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\n  <h1>Elite League App</h1>\n  <p class=\"lead\">Welcome to the NBA2k PC Sim League</p>\n  <div>\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-4\">\n    <h3>Team Management</h3>\n    <p>Sign Free Agents, trade with other teams and draft the next superstar. Based on the NBA collective bargaining agreement.</p>\n  </div>\n  <div class=\"col-md-4\">\n    <h3>Continious Roster</h3>\n    <p>Play with your team for multiple seasons and win the championship with the team you've built up.</p>\n  </div>\n  <div class=\"col-md-4\">\n    <h3>Simulation League</h3>\n    <p>Play with other people online with sim sliders, fight for your playoff seed in a wholesome community. </p>\n  </div>\n</div>\n"
+module.exports = "<input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.salaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.yearsBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.salaryBid, player.yearsBid)\" name=\"button\">Confirm Offer</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
 
 /***/ }),
 
 /***/ 742:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>\n"
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n<p>Welcome to your dashboard</p>\n"
 
 /***/ }),
 
 /***/ 743:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Elite League</a>\n        </div>\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\n          <ul class=\"nav navbar-nav navbar-left\">\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/dashboard']\">Dashboard</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/player']\">Player</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/auction']\">Auction</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\n            <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\n          </ul>\n        </div><!--/.nav-collapse -->\n      </div>\n    </nav>\n"
+module.exports = "<div class=\"jumbotron text-center\">\n  <h1>Elite League App</h1>\n  <p class=\"lead\">Welcome to the NBA2k PC Sim League</p>\n  <div>\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a> <a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-4\">\n    <h3>Team Management</h3>\n    <p>Sign Free Agents, trade with other teams and draft the next superstar. Based on the NBA collective bargaining agreement.</p>\n  </div>\n  <div class=\"col-md-4\">\n    <h3>Continious Roster</h3>\n    <p>Play with your team for multiple seasons and win the championship with the team you've built up.</p>\n  </div>\n  <div class=\"col-md-4\">\n    <h3>Simulation League</h3>\n    <p>Play with other people online with sim sliders, fight for your playoff seed in a wholesome community. </p>\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 744:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('lastName')\" class=\"\" placeholder=\"Name\" [(ngModel)]=\"filterQuery\"/>\r\n\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('team')\" >\r\n    <option value=\"\">Team</option>\r\n    <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\r\n    <!--<option value=\"BOS\">Boston Celtics</option>\r\n    <option value=\"BKN\">Brooklyn Nets</option>\r\n    <option value=\"CHA\">Charlotte Hornets</option>-->\r\n</select>\r\n\r\n<table *ngIf=\"show\" class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"salary\">Salary</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"duration\">Duration</mfDefaultSorter></th>\r\n          <!--<th><mfDefaultSorter by=\"notes\">Notes</mfDefaultSorter></th>-->\r\n          <th><mfDefaultSorter by=\"yearsInTeam\">Years in team</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"team\">Team</mfDefaultSorter></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <!--<td>{{player.notes}}</td>-->\r\n        <td>{{player.yearsInTeam}}</td>\r\n        <td>{{player.team}}</td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>\n"
 
 /***/ }),
 
 /***/ 745:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Overview</h2>\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <!--<li class=\"list-inline-item\">Email: {{user.email}}</li>-->\r\n    <li class=\"list-inline-item\">Team: {{user.team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'USD': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<button (click)=\"callGetRoster()\">Roster</button>\r\n<button (click)=\"callGetBids()\">Offers</button>\r\n<table class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n        <th *ngIf=\"showBids\">Withdraw</th>\r\n        <th *ngIf=\"!showBids\">Years in team</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of roster\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <td *ngIf=\"showBids\"><button (click)=\"withdrawOffer(player._id)\">Withdraw Offer</button></td>\r\n        <td *ngIf=\"!showBids\">{{player.yearsInTeam}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Elite League</a>\n        </div>\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\n          <ul class=\"nav navbar-nav navbar-left\">\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/rules']\">Rules</a></li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/dashboard']\">Dashboard</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/player']\">Player</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/auction']\">Auction</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\n            <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\n          </ul>\n        </div><!--/.nav-collapse -->\n      </div>\n    </nav>\n"
 
 /***/ }),
 
 /***/ 746:
 /***/ (function(module, exports) {
 
+module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('lastName')\" class=\"\" placeholder=\"Name\" [(ngModel)]=\"filterQuery\"/>\r\n\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('team')\" >\r\n    <option value=\"\">Team</option>\r\n    <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\r\n    <!--<option value=\"BOS\">Boston Celtics</option>\r\n    <option value=\"BKN\">Brooklyn Nets</option>\r\n    <option value=\"CHA\">Charlotte Hornets</option>-->\r\n</select>\r\n\r\n<table *ngIf=\"show\" class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"salary\">Salary</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"duration\">Duration</mfDefaultSorter></th>\r\n          <!--<th><mfDefaultSorter by=\"notes\">Notes</mfDefaultSorter></th>-->\r\n          <th><mfDefaultSorter by=\"yearsInTeam\">Years in team</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"team\">Team</mfDefaultSorter></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <!--<td>{{player.notes}}</td>-->\r\n        <td>{{player.yearsInTeam}}</td>\r\n        <td>{{player.team}}</td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+
+/***/ }),
+
+/***/ 747:
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Overview</h2>\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <!--<li class=\"list-inline-item\">Email: {{user.email}}</li>-->\r\n    <li class=\"list-inline-item\">Team: {{user.team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'USD': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<button (click)=\"callGetRoster()\">Roster</button>\r\n<button (click)=\"callGetBids()\">Offers</button>\r\n<table class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n        <th *ngIf=\"showBids\">Withdraw</th>\r\n        <th *ngIf=\"!showBids\">Years in team</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of roster\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <td *ngIf=\"showBids\"><button (click)=\"withdrawOffer(player._id)\">Withdraw Offer</button></td>\r\n        <td *ngIf=\"!showBids\">{{player.yearsInTeam}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
+
+/***/ }),
+
+/***/ 748:
+/***/ (function(module, exports) {
+
 module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Email</label>\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" >\n  </div>\n  <div class=\"form-group\">\n    <label>Team</label>\n    <select class=\"form-control\" [(ngModel)]=\"team\" name=\"team\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n"
+
+/***/ }),
+
+/***/ 749:
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Elite League Rules</h1>\r\n<h2 id=\"gameplay\">Gameplay</h2>\r\n\r\n<h3>Offense</h3>\r\n<ul>\r\n  <li>Don't walk around a defender in an iso situation you must make some form of a basketball move, crossover, in and out and beat your defender off a move dont just run around him</li>\r\n  <li>Fast Break: If there is a Steal, Block, Airball you can chuck it down court and turbo up the court. If a ballhandler, e.g. pg/sg or point forwards gets rebound or the rebound is past the free throw line you can run up the court but you cannot pass it down the court.</li>\r\n  <li>If someone fullcourt presses you are allowed to fastbreak</li>\r\n  <li>Points in the Paint: No limit, but DON'T ABUSE the paint (Stay around 50% -2nd chance - FB pts)</li>\r\n  <li>Turbo: Turbo in the halfcourt set should only be used if you have a wide open lane, or if you have beaten your defender with a fake or a dribble move. This means it must be clear you have beaten the defender. IE: if you pump fake and they dont jump you cant turbo by.</li>\r\n  <li>Wait for the defense to get setup after a made basket or a non fast break situation.</li>\r\n</ul>\r\n\r\n<h3>Defense</h3>\r\n<ul>\r\n    <li>On ball defense is required 100%, only exception is on a PNR and your switching to the big man to guard but switch back to on the ball when PNR is over</li>\r\n    <li>Inbound passes: You can steal any inbound pass that's on the defensive side of the court including the half court line.</li>\r\n    <li>No switching your defense in the middle of a possession (between man-to-man and zone except junk defense)</li>\r\n    <li>Charges should be taken within the 3pt line or in defensive side of the court during fastbreaks</li>\r\n</ul>\r\n\r\n<h3>Misc</h3>\r\n<ul>\r\n  <li>Disconnects: Every D/C game will be a different situation and the league will act accordingly, for the most part i will let the two players decide on how to act upon a D/C</li>\r\n</ul>\r\n\r\n\r\n<h2 id=\"FA\">Free Agency</h2>\r\n<p>Free Agents will be auctioned off, meaning every team has the chance to acquire a free agent. As in an auction, the highest bidder wins. However, to win the auction, your bid must stand the highest for at least 24 hours. The minimum contract length is 1 year. The maximum is 4 years, 5 years with bird rights. We will use this table for determining the trumping of bids:</p>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <td colspan=\"7\">\r\n        <div class=\"h2center\">Free Agency Bid Table</div>\r\n      </td>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr>\r\n      <td></td>\r\n      <td>Original: 1 year</td>\r\n      <td>Original: 2 years</td>\r\n      <td>Original: 3 years</td>\r\n      <td>Original: 4 years</td>\r\n      <td>Original: 5 years</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New: 1 year</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>2</td>\r\n      <td>2.22</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New: 2 years</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>2</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New: 3 years</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New: 4 years</td>\r\n      <td>0.51</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New: 5 years</td>\r\n      <td>0.45</td>\r\n      <td>0.51</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>-</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<p>The numbers in the table are the standard multipliers. The rows represent the number of years in your proposed contract, and the columns represent the number of years of the previous proposed contract, or contract. Minimum bid for a player is $1M. There is no maximum bid other than your remaining cap space.</p>\r\n<p>To top a bid with the same number of years the bid must increase by $0.1M. Only multiples of $0.1M are eligble as bids. Bids will be rounded down to the next $0.1M</p>\r\n<p>Players attain bird rights if they fulfilled a contract of a minimum of three years. The incumbent team can offer a five year contract to the player with bird rights.</p>\r\n"
 
 /***/ })
 
-},[1012]);
+},[1015]);
 //# sourceMappingURL=main.bundle.js.map
