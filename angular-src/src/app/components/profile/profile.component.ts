@@ -54,10 +54,11 @@ export class ProfileComponent implements OnInit {
   }
 
   calculatePayroll(){
-    for(var i =0; i< this.roster.length;i++){      
+    this.payroll = 0;
+    for(var i =0; i< this.roster.length;i++){
       this.payroll += this.roster[i].salary;
     }
-    Math.ceil(this.payroll);
+    this.payroll=Math.ceil(this.payroll)*1000000;
   }
 
   withdrawOffer(id){
