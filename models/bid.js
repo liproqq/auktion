@@ -9,7 +9,7 @@ const BidSchema = mongoose.Schema({
   "position" : String,
   "salary" : Number,
   "duration" : Number,
-  "team" : String,
+  "team" : String  
 });
 
 const Bid = module.exports = mongoose.model('Bid', BidSchema);

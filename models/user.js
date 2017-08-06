@@ -6,18 +6,25 @@ const config = require('../config/database');
 const UserSchema = mongoose.Schema({
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
     required: true
   },
   team: {
-    type: String
+    type: String,
+    required: true,
+    unique: true
+  },
+  money: {
+    type: Number
   }
 });
 
