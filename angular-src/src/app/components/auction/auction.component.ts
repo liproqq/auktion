@@ -36,7 +36,8 @@ export class AuctionComponent implements OnInit {
 
   bid(player, salaryBid, yearsBid){
     let teamBid = JSON.parse(localStorage.getItem("user")).team;
-
+    /*
+      NBA CBA
     //Validate offer
     if(salaryBid == undefined || yearsBid == undefined){
       this.flashMessage.show("Invalid Offer - No bid or contract length", {
@@ -103,7 +104,7 @@ export class AuctionComponent implements OnInit {
       return 30000000;
     } else {
       return 35000000;
-    }
+    }*/
   }
 
 }
