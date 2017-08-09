@@ -27,7 +27,7 @@ export class TimeleftPipe implements PipeTransform {
       this.timeleft ="5m+"
     } else if(elapsed>60*1){
       this.timeleft ="1m+"
-    } else if(elapsed<60*5 && elapsed>0){
+    } else if(elapsed<60*1 && elapsed>0){
       this.timeleft ="<1m"
     } else if(elapsed<0){
       this.timeleft ="signed"
