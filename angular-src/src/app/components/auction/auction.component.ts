@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./auction.component.css']
 })
 export class AuctionComponent implements OnInit {
-  allPlayers: Array<Object>;
+  freeAgents: Array<Object>;
   public team: String;
   public filterQuery = "";
   public searchType = "lastName";
@@ -21,8 +21,8 @@ export class AuctionComponent implements OnInit {
               private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
-    this.playerService.getFreeAgents().subscribe(allPlayers => {
-    this.allPlayers = allPlayers;
+    this.playerService.getFreeAgents().subscribe(freeAgents => {
+    this.freeAgents = freeAgents;
     },
     err => {
       console.log(err);
@@ -35,7 +35,95 @@ export class AuctionComponent implements OnInit {
   }
 
   bid(player, salaryBid, yearsBid){
-    let teamBid = JSON.parse(localStorage.getItem("user")).team;
+    let newTeamBid = JSON.parse(localStorage.getItem("user")).team;
+    player.newTeamBid = newTeamBid;
+    let newTimeBid = Date.now()/1;
+
+    //formatting bid
+    player.newSalaryBid = Math.floor(player.newSalaryBid/100000)*100000;
+    player.newDurationBid = parseInt(player.newDurationBid);
+    player.newTimeBid = newTimeBid;
+
+    function trumpBid(player){ //returns true if new bid trumped old bid
+
+      //todo: five years
+      if(player.durationBid == 5 || player.newDurationBid == 5){
+        return false;
+      }
+
+      //same years
+      if(player.durationBid == player.newDurationBid && player.salaryBid < player.newSalaryBid){
+          return true;
+      }
+
+      //new one year more
+      if(player.durationBid+1 == player.newDurationBid && player.salaryBid*.8 < player.newSalaryBid){
+        return true;
+      }
+
+      //new two years more
+      if(player.durationBid+2 == player.newDurationBid && player.salaryBid*.64 < player.newSalaryBid){
+        return true;
+      }
+
+      //new three years more
+      if(player.durationBid+3 == player.newDurationBid && player.salaryBid*.51 < player.newSalaryBid){
+        return true;
+      }
+
+      //new one year less
+      if(player.durationBid-1 == player.newDurationBid && player.salaryBid*1.3 < player.newSalaryBid){
+        return true;
+      }
+
+      //new two years less
+      if(player.durationBid-2 == player.newDurationBid && player.salaryBid*1.6 < player.newSalaryBid){
+        return true;
+      }
+
+      //new three years less
+      if(player.durationBid-3 == player.newDurationBid && player.salaryBid*2 < player.newSalaryBid){
+        return true;
+      }
+
+      return false;
+    }
+
+    //Validate offer
+    if(salaryBid == undefined || yearsBid == undefined){
+      this.flashMessage.show("Invalid Offer - No bid or contract length", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+    //Birds
+    if(player.lastTeam != newTeamBid && yearsBid == 5){
+      this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player with bird rights.", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+    //bid didn't trump
+    if(!trumpBid(player)){
+      this.flashMessage.show("Invalid Offer - Your bid didn't trump the current offer.", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+    if(trumpBid(player)){
+      this.playerService.placeBid(player);
+      console.log("bid to service");
+      console.log(player);
+      this.flashMessage.show(player.salaryBid +" bid for "+ player.lastName +" by "+player.teamBid,  {
+        cssClass: 'alert-success',
+        timeout: 5000});
+    }
+  }
+
+
     /*
       NBA CBA
     //Validate offer
@@ -104,7 +192,7 @@ export class AuctionComponent implements OnInit {
       return 30000000;
     } else {
       return 35000000;
-    }*/
-  }
+    }
+  }*/
 
 }

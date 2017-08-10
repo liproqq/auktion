@@ -14,7 +14,16 @@ const PlayerSchema = mongoose.Schema({
   "team" : String,
   "lastTeam" : String,
   "birthYear" : Number,
-  "age" : Number
+  "age" : Number,
+  "salaryBid": Number,
+  "durationBid": Number,
+  "teamBid":String,
+  "timeBid": Number,
+  "newSalaryBid": Number,
+  "newDurationBid": Number,
+  "newTeamBid": String,
+  "newTimeBid": Number,
+  "birds": Boolean
 });
 
 const Player = module.exports = mongoose.model('Player', PlayerSchema);

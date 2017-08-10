@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to true before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -59,24 +59,44 @@ var PlayerService = (function () {
         return this.http.get(ep)
             .map(function (res) { return res.json(); });
     };
-    PlayerService.prototype.makeBid = function (firstName, lastName, overall, position, salary, duration, team) {
+    /*  CBA
+    makeBid(firstName, lastName, overall, position, salary, duration, team){
+      let headers = new Headers();
+      headers.append('Content-Type','application/json');
+      let ep = this.prepEndpoint("bid/placebid");
+      var bid = {
+        firstName:firstName,
+        lastName:lastName,
+        overall: parseInt(overall),
+        position: position,
+        salary: parseInt(salary),
+        duration: parseInt(duration),
+        team: team
+      }
+      this.http.post(ep, bid, { headers: headers })
+       .map((res) => res.json()).subscribe(res => {
+         this.result = res;
+         console.log(this.result);
+       });
+    }*/
+    PlayerService.prototype.placeBid = function (player) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        var ep = this.prepEndpoint("bid/placebid");
-        var bid = {
-            firstName: firstName,
-            lastName: lastName,
-            overall: parseInt(overall),
-            position: position,
-            salary: parseInt(salary),
-            duration: parseInt(duration),
-            team: team
-        };
-        this.http.post(ep, bid, { headers: headers })
+        var ep = this.prepEndpoint("player/placebid");
+        //new bid to current bid
+        player.durationBid = player.newDurationBid;
+        player.newDurationBid = null;
+        player.salaryBid = player.newSalaryBid;
+        player.newSalaryBid = null;
+        player.timeBid = player.newTimeBid;
+        player.newTimeBid = null;
+        player.teamBid = player.newTeamBid;
+        player.newTeamBid = null;
+        this.http.post(ep, player, { headers: headers })
             .map(function (res) { return res.json(); }).subscribe(function (res) {
             _this.result = res;
-            console.log(_this.result);
+            //console.log(this.result);
         });
     };
     PlayerService.prototype.getBids = function (user) {
@@ -363,8 +383,8 @@ var AuctionComponent = (function () {
     }
     AuctionComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.playerService.getFreeAgents().subscribe(function (allPlayers) {
-            _this.allPlayers = allPlayers;
+        this.playerService.getFreeAgents().subscribe(function (freeAgents) {
+            _this.freeAgents = freeAgents;
         }, function (err) {
             console.log(err);
             return false;
@@ -374,76 +394,81 @@ var AuctionComponent = (function () {
         this.searchType = key;
     };
     AuctionComponent.prototype.bid = function (player, salaryBid, yearsBid) {
-        var teamBid = JSON.parse(localStorage.getItem("user")).team;
-        /*
-          NBA CBA
+        var newTeamBid = JSON.parse(localStorage.getItem("user")).team;
+        player.newTeamBid = newTeamBid;
+        var newTimeBid = Date.now() / 1;
+        //formatting bid
+        player.newSalaryBid = Math.floor(player.newSalaryBid / 100000) * 100000;
+        player.newDurationBid = parseInt(player.newDurationBid);
+        player.newTimeBid = newTimeBid;
+        function trumpBid(player) {
+            //todo: five years
+            if (player.durationBid == 5 || player.newDurationBid == 5) {
+                return false;
+            }
+            //same years
+            if (player.durationBid == player.newDurationBid && player.salaryBid < player.newSalaryBid) {
+                return true;
+            }
+            //new one year more
+            if (player.durationBid + 1 == player.newDurationBid && player.salaryBid * .8 < player.newSalaryBid) {
+                return true;
+            }
+            //new two years more
+            if (player.durationBid + 2 == player.newDurationBid && player.salaryBid * .64 < player.newSalaryBid) {
+                return true;
+            }
+            //new three years more
+            if (player.durationBid + 3 == player.newDurationBid && player.salaryBid * .51 < player.newSalaryBid) {
+                return true;
+            }
+            //new one year less
+            if (player.durationBid - 1 == player.newDurationBid && player.salaryBid * 1.3 < player.newSalaryBid) {
+                return true;
+            }
+            //new two years less
+            if (player.durationBid - 2 == player.newDurationBid && player.salaryBid * 1.6 < player.newSalaryBid) {
+                return true;
+            }
+            //new three years less
+            if (player.durationBid - 3 == player.newDurationBid && player.salaryBid * 2 < player.newSalaryBid) {
+                return true;
+            }
+            return false;
+        }
         //Validate offer
-        if(salaryBid == undefined || yearsBid == undefined){
-          this.flashMessage.show("Invalid Offer - No bid or contract length", {
-            cssClass: 'alert-danger',
-            timeout: 10000});
-          return false;
+        if (salaryBid == undefined || yearsBid == undefined) {
+            this.flashMessage.show("Invalid Offer - No bid or contract length", {
+                cssClass: 'alert-danger',
+                timeout: 10000
+            });
+            return false;
         }
-    
-        if(player.lastTeam != teamBid && yearsBid == 5){
-          this.flashMessage.show("Invalid Offer - Only former team can offer five years", {
-            cssClass: 'alert-danger',
-            timeout: 10000});
-          return false;
+        //Birds
+        if (player.lastTeam != newTeamBid && yearsBid == 5) {
+            this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player with bird rights.", {
+                cssClass: 'alert-danger',
+                timeout: 10000
+            });
+            return false;
         }
-    
-        //minimum salary
-        if(salaryBid < this.minSalary(player.age)){
-          this.flashMessage.show("Invalid Offer - minimum bid is "+this.minSalary(player.age) , {
-            cssClass: 'alert-danger',
-            timeout: 10000});
-          player.salaryBid = this.minSalary(player.age);
-          return false;
+        //bid didn't trump
+        if (!trumpBid(player)) {
+            this.flashMessage.show("Invalid Offer - Your bid didn't trump the current offer.", {
+                cssClass: 'alert-danger',
+                timeout: 10000
+            });
+            return false;
         }
-    
-        //maximum salary
-        if(salaryBid > this.maxSalary(player.age)){
-          this.flashMessage.show("Invalid Offer - maximum bid is "+this.maxSalary(player.age) , {
-            cssClass: 'alert-danger',
-            timeout: 10000});
-          player.salaryBid = this.maxSalary(player.age);
-          return false;
+        if (trumpBid(player)) {
+            this.playerService.placeBid(player);
+            console.log("bid to service");
+            console.log(player);
+            this.flashMessage.show(player.newSalaryBid + " bid for " + player.lastName + " by " + player.newTeamBid, {
+                cssClass: 'alert-success',
+                timeout: 5000
+            });
         }
-    
-    
-    
-        this.playerService.makeBid(player.firstName, player.lastName, player.overall, player.position, salaryBid, yearsBid, teamBid);
-        console.log("bid to service");
-        this.flashMessage.show(salaryBid +" bid for "+ player.lastName +" by "+teamBid,  {
-          cssClass: 'alert-success',
-          timeout: 5000});
-      }
-    
-      minSalary(age){
-        switch(age-20){
-          case 0: return 815615;
-          case 1: return 1345427;
-          case 2: return 1544951;
-          case 3: return 1638627;
-          case 4: return 1734954;
-          case 5: return 1880492;
-          case 6: return 2026033;
-          case 7: return 2171575;
-          case 8: return 2317118;
-          case 9: return 2328651;
-          default: return 2561518;
-        }
-      }
-    
-      maxSalary(age){
-        const exp = age-20;
-        if(exp <7){
-          return 25000000;
-        } else if (exp <10){
-          return 30000000;
-        } else {
-          return 35000000;
-        }*/
     };
     return AuctionComponent;
 }());
@@ -1102,7 +1127,7 @@ var TimeleftPipe = (function () {
         else if (elapsed > 60 * 1) {
             this.timeleft = "1m+";
         }
-        else if (elapsed < 60 * 5 && elapsed > 0) {
+        else if (elapsed < 60 * 1 && elapsed > 0) {
             this.timeleft = "<1m";
         }
         else if (elapsed < 0) {
@@ -1166,7 +1191,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to true before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -1419,7 +1444,7 @@ module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <flash
 /***/ 742:
 /***/ (function(module, exports) {
 
-module.exports = "<input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"freeAgents | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Current Offer</th>\r\n          <th>Time to signing</th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'USD': true:\"1.0-0\"}}/{{player.durationBid}}/{{player.teamBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.newSalaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.yearsBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.newSalaryBid, player.yearsBid)\" name=\"button\">Confirm Offer</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+module.exports = "<input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"freeAgents | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Current Offer</th>\r\n          <th>Time to signing</th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'USD': true:\"1.0-0\"}}/{{player.durationBid}}/{{player.teamBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.newSalaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.newDurationBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.newSalaryBid, player.newDurationBid)\" name=\"button\">Confirm Offer</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
 
 /***/ }),
 

@@ -29,7 +29,7 @@
         <td>{{player.salaryBid | currency : 'USD': true:"1.0-0"}}/{{player.durationBid}}/{{player.teamBid}}</td>
         <td>{{player.timeBid | timeleft}}</td>
         <td><input type="text" [(ngModel)]="player.newSalaryBid" name="" value=""></td>
-        <td><select [(ngModel)]="player.yearsBid" class="">
+        <td><select [(ngModel)]="player.newDurationBid" class="">
               <option value=1>One Year</option>
               <option value=2>Two Years</option>
               <option value=3>Three Years</option>
@@ -37,7 +37,7 @@
               <option value=5>Five Years</option>
             </select>
         </td>
-        <td><button (click)="bid(player, player.newSalaryBid, player.yearsBid)" name="button">Confirm Offer</button></td>
+        <td><button (click)="bid(player, player.newSalaryBid, player.newDurationBid)" name="button">Confirm Offer</button></td>
     </tr>
     </tbody>
     <tfoot>
