@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = false; // Change to true before deployment
+        this.isDev = true; // Change to false before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -464,7 +464,7 @@ var AuctionComponent = (function () {
             this.playerService.placeBid(player);
             console.log("bid to service");
             console.log(player);
-            this.flashMessage.show(player.newSalaryBid + " bid for " + player.lastName + " by " + player.newTeamBid, {
+            this.flashMessage.show(player.salaryBid + " bid for " + player.lastName + " by " + player.teamBid, {
                 cssClass: 'alert-success',
                 timeout: 5000
             });
@@ -1191,7 +1191,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = false; // Change to true before deployment
+        this.isDev = true; // Change to false before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
