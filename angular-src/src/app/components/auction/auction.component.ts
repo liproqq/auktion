@@ -103,6 +103,14 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    //Min salary
+    if(salaryBid <1000000){
+      this.flashMessage.show("Invalid Offer - Minimum salary is $1 Mio", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
     //Enough money
     if(salaryBid > money){
       this.flashMessage.show("Not enough salary cap left for this bid - check profile for your payroll - you have "+money/1000000+" Mio left", {

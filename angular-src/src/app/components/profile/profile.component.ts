@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   user:Object;
   roster: Array<any>;
   bids: Array<any>;
-  showBids:boolean = false;
+  showBids:boolean = true;
   payroll:number =0;
 
   constructor(private authService:AuthService,
@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
       this.user = profile.user;
       this.callGetRoster();
       this.callGetBids();
+      this.calculatePayroll()
     },
     err => {
       console.log(err);
@@ -34,7 +35,7 @@ export class ProfileComponent implements OnInit {
   }
 
   switchView(){
-    this.showBids= !this.showBids
+    this.showBids= !this.showBids;
     this.calculatePayroll()
   }
 
