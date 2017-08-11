@@ -17,6 +17,7 @@
         <th>Position</th>
         <th>Salary</th>
         <th>Duration</th>
+        <th>Time left</th>
     </tr>
   </thead>
     <tbody>
@@ -26,6 +27,7 @@
         <td>{{player.position}}</td>
         <td>{{player.salaryBid | currency : 'USD': true:"1.0-0"}}</td>
         <td>{{player.durationBid}}</td>
+        <td>{{player.timeBid | timeleft}}</td>
     </tr>
     </tbody>
 </table>
