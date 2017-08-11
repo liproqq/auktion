@@ -80,7 +80,7 @@ var PlayerService = (function () {
         });
     };
     PlayerService.prototype.getBids = function (user) {
-        var ep = this.prepEndpoint('bid/team/');
+        var ep = this.prepEndpoint('player/bids/team/');
         return this.http.get(ep + user.team).map(function (res) { return res.json(); });
     };
     PlayerService.prototype.deleteBid = function (id) {
@@ -375,6 +375,7 @@ var AuctionComponent = (function () {
     };
     AuctionComponent.prototype.bid = function (player, salaryBid, yearsBid) {
         var newTeamBid = JSON.parse(localStorage.getItem("user")).team;
+        var money = JSON.parse(localStorage.getItem("user")).money;
         player.newTeamBid = newTeamBid;
         var newTimeBid = Date.now() / 1;
         //formatting bid
@@ -423,6 +424,14 @@ var AuctionComponent = (function () {
         //Validate offer
         if (salaryBid == undefined || yearsBid == undefined) {
             this.flashMessage.show("Invalid Offer - No bid or contract length", {
+                cssClass: 'alert-danger',
+                timeout: 10000
+            });
+            return false;
+        }
+        //Enough money
+        if (salaryBid > money) {
+            this.flashMessage.show("Not enough salary cap left for this bid - check profile for your payroll - you have " + money / 1000000 + " Mio left", {
                 cssClass: 'alert-danger',
                 timeout: 10000
             });
@@ -819,37 +828,46 @@ var ProfileComponent = (function () {
         this.authService.getProfile().subscribe(function (profile) {
             _this.user = profile.user;
             _this.callGetRoster();
+            _this.callGetBids();
         }, function (err) {
             console.log(err);
             return false;
         });
     };
+    ProfileComponent.prototype.switchView = function () {
+        this.showBids = !this.showBids;
+    };
     ProfileComponent.prototype.callGetRoster = function () {
         var _this = this;
         this.playerService.getRoster(this.user).subscribe(function (roster) {
             _this.roster = roster;
-            _this.showBids = false;
             _this.calculatePayroll();
         }, function (err) {
             console.log(err);
             return false;
         });
     };
-    /*callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
-      this.roster = roster;
-      this.showBids = true;
-      },
-      err => {
-        console.log(err);
-        return false;
-      });
-    }*/
+    ProfileComponent.prototype.callGetBids = function () {
+        var _this = this;
+        this.playerService.getBids(this.user).subscribe(function (bids) {
+            _this.bids = bids;
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+    };
     ProfileComponent.prototype.calculatePayroll = function () {
         this.payroll = 0;
         for (var i = 0; i < this.roster.length; i++) {
             this.payroll += this.roster[i].salary;
         }
+        for (var i = 0; i < this.bids.length; i++) {
+            this.payroll += this.bids[i].salaryBid;
+        }
         this.payroll = Math.ceil(this.payroll);
+        var user = JSON.parse(localStorage.getItem('user'));
+        user.money = 100000000 - this.payroll;
+        localStorage.setItem('user', JSON.stringify(user));
     };
     return ProfileComponent;
 }());
@@ -1470,7 +1488,7 @@ module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('last
 /***/ 748:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Overview</h2>\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <!--<li class=\"list-inline-item\">Email: {{user.email}}</li>-->\r\n    <li class=\"list-inline-item\">Team: {{user.team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'USD': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<!--\r\n<button (click)=\"callGetRoster()\">Roster</button>\r\n<button (click)=\"callGetBids()\">Offers</button>-->\r\n<table class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n        <th *ngIf=\"showBids\">Withdraw</th>\r\n        <th *ngIf=\"!showBids\">Years in team</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of roster\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <td *ngIf=\"showBids\"><button (click)=\"withdrawOffer(player._id)\">Withdraw Offer</button></td>\r\n        <td *ngIf=\"!showBids\">{{player.yearsInTeam}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
+module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Overview</h2>\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <!--<li class=\"list-inline-item\">Email: {{user.email}}</li>-->\r\n    <li class=\"list-inline-item\">Team: {{user.team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'USD': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<button (click)=\"switchView()\">Roster</button>\r\n<button (click)=\"switchView()\">Offers</button>\r\n<table *ngIf=\"!showBids\" class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of bids\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.durationBid}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n<table *ngIf=\"showBids\" class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of roster\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'USD': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
 
 /***/ }),
 

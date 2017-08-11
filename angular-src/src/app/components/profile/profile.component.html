@@ -7,10 +7,9 @@
     <li class="list-inline-item">Payroll: {{payroll | currency : 'USD': true:"1.0-0"}}</li>
   </ul>
 </div>
-<!--
-<button (click)="callGetRoster()">Roster</button>
-<button (click)="callGetBids()">Offers</button>-->
-<table class="table table-striped">
+<button (click)="switchView()">Roster</button>
+<button (click)="switchView()">Offers</button>
+<table *ngIf="!showBids" class="table table-striped">
   <thead>
     <tr>
         <th>Name</th>
@@ -18,8 +17,26 @@
         <th>Position</th>
         <th>Salary</th>
         <th>Duration</th>
-        <th *ngIf="showBids">Withdraw</th>
-        <th *ngIf="!showBids">Years in team</th>
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let player of bids">
+        <td>{{player.lastName}}, {{player.firstName}}</td>
+        <td>{{player.overall}}</td>
+        <td>{{player.position}}</td>
+        <td>{{player.salaryBid | currency : 'USD': true:"1.0-0"}}</td>
+        <td>{{player.durationBid}}</td>
+    </tr>
+    </tbody>
+</table>
+<table *ngIf="showBids" class="table table-striped">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Overall</th>
+        <th>Position</th>
+        <th>Salary</th>
+        <th>Duration</th>
     </tr>
   </thead>
     <tbody>
@@ -29,8 +46,6 @@
         <td>{{player.position}}</td>
         <td>{{player.salary | currency : 'USD': true:"1.0-0"}}</td>
         <td>{{player.duration}}</td>
-        <td *ngIf="showBids"><button (click)="withdrawOffer(player._id)">Withdraw Offer</button></td>
-        <td *ngIf="!showBids">{{player.yearsInTeam}}</td>
     </tr>
     </tbody>
 </table>

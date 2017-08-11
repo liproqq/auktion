@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class ProfileComponent implements OnInit {
   user:Object;
   roster: Array<any>;
+  bids: Array<any>;
   showBids:boolean = false;
   payroll:number =0;
 
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit {
     this.authService.getProfile().subscribe(profile => {
       this.user = profile.user;
       this.callGetRoster();
+      this.callGetBids();
     },
     err => {
       console.log(err);
@@ -31,9 +33,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  switchView(){
+    this.showBids= !this.showBids
+  }
+
   callGetRoster(){this.playerService.getRoster(this.user).subscribe(roster => {
     this.roster = roster;
-    this.showBids =false;
     this.calculatePayroll();
     },
     err => {
@@ -43,22 +48,27 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  /*callGetBids(){this.playerService.getBids(this.user).subscribe(roster => {
-    this.roster = roster;
-    this.showBids = true;
+  callGetBids(){this.playerService.getBids(this.user).subscribe(bids => {
+    this.bids = bids;
     },
     err => {
       console.log(err);
       return false;
     });
-  }*/
+  }
 
   calculatePayroll(){
     this.payroll = 0;
     for(var i =0; i< this.roster.length;i++){
       this.payroll += this.roster[i].salary;
     }
+    for(var i =0; i< this.bids.length;i++){
+      this.payroll += this.bids[i].salaryBid;
+    }
     this.payroll=Math.ceil(this.payroll);
+    let user = JSON.parse(localStorage.getItem('user'));
+    user.money = 100000000-this.payroll;
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /*withdrawOffer(id){

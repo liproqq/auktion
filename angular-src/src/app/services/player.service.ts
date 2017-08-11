@@ -64,7 +64,7 @@ export class PlayerService {
   }
 
   getBids(user){
-    let ep = this.prepEndpoint('bid/team/');
+    let ep = this.prepEndpoint('player/bids/team/');
     return this.http.get(ep+user.team).map(res => res.json());
   }
 

@@ -30,7 +30,7 @@ router.get("/freeagents", (req, res, next) => {
         timeBid: null
         }
       }, (err, doc) => {
-        if (err) throw err;        
+        if (err) throw err;
       })
     });
   })
@@ -72,6 +72,14 @@ router.get("/team/:id", (req, res, next) => {
     console.log('retrieved ' + player);
   })
 })
+
+router.get("/bids/team/:id", (req, res, next) => {
+  Player.find({teamBid: req.params.id}, (err, player) => {
+    if (err) throw err;
+    res.json(player);
+    console.log(req.params.id+ "'s bids retrieved");
+  })
+});
 
 router.post('/placebid', (req, res, next) => {
   var player = req.body;

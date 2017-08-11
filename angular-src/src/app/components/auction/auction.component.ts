@@ -36,6 +36,7 @@ export class AuctionComponent implements OnInit {
 
   bid(player, salaryBid, yearsBid){
     let newTeamBid = JSON.parse(localStorage.getItem("user")).team;
+    let money = JSON.parse(localStorage.getItem("user")).money;
     player.newTeamBid = newTeamBid;
     let newTimeBid = Date.now()/1;
 
@@ -97,6 +98,14 @@ export class AuctionComponent implements OnInit {
     //Validate offer
     if(salaryBid == undefined || yearsBid == undefined){
       this.flashMessage.show("Invalid Offer - No bid or contract length", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
+    //Enough money
+    if(salaryBid > money){
+      this.flashMessage.show("Not enough salary cap left for this bid - check profile for your payroll - you have "+money/1000000+" Mio left", {
         cssClass: 'alert-danger',
         timeout: 10000});
       return false;
