@@ -35,6 +35,7 @@ export class ProfileComponent implements OnInit {
 
   switchView(){
     this.showBids= !this.showBids
+    this.calculatePayroll()
   }
 
   callGetRoster(){this.playerService.getRoster(this.user).subscribe(roster => {

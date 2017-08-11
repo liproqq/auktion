@@ -836,6 +836,7 @@ var ProfileComponent = (function () {
     };
     ProfileComponent.prototype.switchView = function () {
         this.showBids = !this.showBids;
+        this.calculatePayroll();
     };
     ProfileComponent.prototype.callGetRoster = function () {
         var _this = this;
