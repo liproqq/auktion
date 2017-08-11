@@ -11,8 +11,37 @@ router.get("/all", (req, res, next) => {
 });
 
 router.get("/freeagents", (req, res, next) => {
+  let dayAgo= (Date.now()/1)-1000*60*60*24;
+
+  Player.find({timeBid: {$lt: dayAgo}, duration: {$lt: 1} }, (err, player) => {
+    if (err) throw err;
+    console.log('retrieved list of '+player.length+' signed free agents');
+    player.forEach((player) => {
+      Player.updateOne(
+      {firstName: player.firstName, lastName: player.lastName},
+      {$set: {
+        duration: player.durationBid,
+        durationBid: null,
+        salary: player.salaryBid,
+        salaryBid: null,
+        team: player.teamBid,
+        lastTeam: player.teamBid,
+        teamBid: null,
+        timeBid: null
+        }
+      }, (err, doc) => {
+        if (err) throw err;        
+      })
+    });
+  })
+
+
+
   Player.find({duration:  0}, (err, player) => {
     if (err) throw err;
+    player.sort((a,b) => {
+      return a.timeBid-b.timeBid
+    })
     res.json(player);
     console.log('retrieved list of '+player.length+' free agents');
   })
@@ -47,31 +76,6 @@ router.get("/team/:id", (req, res, next) => {
 router.post('/placebid', (req, res, next) => {
   var player = req.body;
   delete player._id;
-  /*let player = new Player({
-    "_id": req.body._id,
-    "firstName" : req.body.firstName,
-    "lastName" : req.body.lastName,
-    "overall" : req.body.overall,
-    "position" : req.body.position,
-    "salary" : req.body.salary,
-    "duration" : req.body.duration,
-    "notes" : req.body.notes,
-    "yearsInTeam" : req.body.yearsInTeam,
-    "team" : req.body.team,
-    "lastTeam" : req.body.lastTeam,
-    "birthYear" : req.body.birthYear,
-    "age" : req.body.age,
-    "salaryBid": req.body.salaryBid,
-    "durationBid": req.body.durationBid,
-    "teamBid": req.body.teamBid,
-    "timeBid": req.body.timeBid,
-    "newSalaryBid": 0,
-    "newDurationBid": 0,
-    "newTeamBid": "",
-    "newTimeBid": 0,
-    "birds": req.body.birds
-  });*/
-  //console.log(player);
   Player.findOneAndUpdate({firstName: player.firstName, lastName: player.lastName}, player, function(err, doc){
     if (err) return res.send(500, { error: err });
     console.log(doc.firstName+" updated");

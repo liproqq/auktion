@@ -42,27 +42,6 @@ export class PlayerService {
         .map(res => res.json());
   }
 
-  /*  CBA
-  makeBid(firstName, lastName, overall, position, salary, duration, team){
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    let ep = this.prepEndpoint("bid/placebid");
-    var bid = {
-      firstName:firstName,
-      lastName:lastName,
-      overall: parseInt(overall),
-      position: position,
-      salary: parseInt(salary),
-      duration: parseInt(duration),
-      team: team
-    }
-    this.http.post(ep, bid, { headers: headers })
-     .map((res) => res.json()).subscribe(res => {
-       this.result = res;
-       console.log(this.result);
-     });
-  }*/
-
   placeBid(player){
     let headers = new Headers();
     headers.append('Content-Type','application/json');

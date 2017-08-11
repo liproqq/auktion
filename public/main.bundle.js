@@ -59,26 +59,6 @@ var PlayerService = (function () {
         return this.http.get(ep)
             .map(function (res) { return res.json(); });
     };
-    /*  CBA
-    makeBid(firstName, lastName, overall, position, salary, duration, team){
-      let headers = new Headers();
-      headers.append('Content-Type','application/json');
-      let ep = this.prepEndpoint("bid/placebid");
-      var bid = {
-        firstName:firstName,
-        lastName:lastName,
-        overall: parseInt(overall),
-        position: position,
-        salary: parseInt(salary),
-        duration: parseInt(duration),
-        team: team
-      }
-      this.http.post(ep, bid, { headers: headers })
-       .map((res) => res.json()).subscribe(res => {
-         this.result = res;
-         console.log(this.result);
-       });
-    }*/
     PlayerService.prototype.placeBid = function (player) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -405,6 +385,10 @@ var AuctionComponent = (function () {
             //todo: five years
             if (player.durationBid == 5 || player.newDurationBid == 5) {
                 return false;
+            }
+            //first bid
+            if (player.durationBid == null && player.salaryBid == null) {
+                return true;
             }
             //same years
             if (player.durationBid == player.newDurationBid && player.salaryBid < player.newSalaryBid) {

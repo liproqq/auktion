@@ -51,6 +51,11 @@ export class AuctionComponent implements OnInit {
         return false;
       }
 
+      //first bid
+      if(player.durationBid == null && player.salaryBid == null){
+          return true;
+      }
+
       //same years
       if(player.durationBid == player.newDurationBid && player.salaryBid < player.newSalaryBid){
           return true;
