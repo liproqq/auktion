@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to false before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -1114,38 +1114,49 @@ var TimeleftPipe = (function () {
     }
     TimeleftPipe.prototype.transform = function (timeBid) {
         var dayAgo = (Date.now() / 1) - 1000 * 60 * 60 * 24;
-        var elapsed = (timeBid - dayAgo) / 1000; //how much time is left in seconds
-        if (!elapsed) {
+        var s = (timeBid - dayAgo); //how much time is left in seconds
+        if (!s) {
             return "-";
         }
-        if (elapsed > 60 * 60 * 12) {
-            this.timeleft = "12h+";
+        if (s < 0) {
+            return "signed";
         }
-        else if (elapsed > 60 * 60 * 6) {
-            this.timeleft = "6h+";
+        function pad(n, z) {
+            z = z || 2;
+            return ('00' + n).slice(-z);
         }
-        else if (elapsed > 60 * 60) {
-            this.timeleft = "1h+";
+        var ms = s % 1000;
+        s = (s - ms) / 1000;
+        var secs = s % 60;
+        s = (s - secs) / 60;
+        var mins = s % 60;
+        var hrs = (s - mins) / 60;
+        return pad(hrs, 2) + ':' + pad(mins, 2) + ':' + pad(secs, 2);
+        /*
+    
+        if(elapsed>60*60*12){
+          this.timeleft ="12h+"
+        } else if(elapsed>60*60*6){
+          this.timeleft ="6h+"
+        } else if(elapsed>60*60){
+          this.timeleft ="1h+"
+        } else if(elapsed>60*30){
+          this.timeleft ="30m+"
+        } else if(elapsed>60*10){
+          this.timeleft ="10m+"
+        } else if(elapsed>60*5){
+          this.timeleft ="5m+"
+        } else if(elapsed>60*1){
+          this.timeleft ="1m+"
+        } else if(elapsed<60*1 && elapsed>0){
+          this.timeleft ="<1m"
+        } else if(elapsed<0){
+          this.timeleft ="signed"
         }
-        else if (elapsed > 60 * 30) {
-            this.timeleft = "30m+";
-        }
-        else if (elapsed > 60 * 10) {
-            this.timeleft = "10m+";
-        }
-        else if (elapsed > 60 * 5) {
-            this.timeleft = "5m+";
-        }
-        else if (elapsed > 60 * 1) {
-            this.timeleft = "1m+";
-        }
-        else if (elapsed < 60 * 1 && elapsed > 0) {
-            this.timeleft = "<1m";
-        }
-        else if (elapsed < 0) {
-            this.timeleft = "signed";
-        }
-        return this.timeleft;
+    
+    
+    
+        return this.timeleft;*/
     };
     return TimeleftPipe;
 }());
@@ -1203,7 +1214,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to false before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();

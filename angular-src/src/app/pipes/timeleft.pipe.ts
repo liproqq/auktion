@@ -8,10 +8,29 @@ export class TimeleftPipe implements PipeTransform {
 
   transform(timeBid: number):any {
     let dayAgo= (Date.now()/1)-1000*60*60*24;
-    let elapsed = (timeBid - dayAgo)/1000; //how much time is left in seconds
-    if(!elapsed){
+    let s = (timeBid - dayAgo); //how much time is left in milliseconds
+    if(!s){
       return "-"
     }
+    if(s<0){
+      return "signed"
+    }
+
+    function pad(n, z) {
+    z = z || 2;
+    return ('00' + n).slice(-z);
+    }
+
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
+
+    return pad(hrs, 2) + ':' + pad(mins, 2) + ':' + pad(secs, 2);
+
+    /*
 
     if(elapsed>60*60*12){
       this.timeleft ="12h+"
@@ -35,7 +54,7 @@ export class TimeleftPipe implements PipeTransform {
 
 
 
-    return this.timeleft;
+    return this.timeleft;*/
   }
 
 }
