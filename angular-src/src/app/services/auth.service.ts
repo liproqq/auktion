@@ -10,7 +10,7 @@ export class AuthService {
   isDev:boolean;
 
   constructor(private http:Http) {
-    this.isDev = true; // Change to false before deployment
+    this.isDev = false; // Change to false before deployment
   }
 
   registerUser(user){
@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   prepEndpoint(ep){
-    if(this.isDev){
+    if(!this.isDev){
       return ep;
     } else {
       return 'http://localhost:8080/'+ep;

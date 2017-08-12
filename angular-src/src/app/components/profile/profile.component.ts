@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       this.user = profile.user;
       this.callGetRoster();
       this.callGetBids();
-      this.calculatePayroll()
+      setTimeout(this.calculatePayroll(), 500)
     },
     err => {
       console.log(err);

@@ -9,7 +9,7 @@ export class PlayerService {
   result: any;
 
   constructor(private http:Http) {
-    this.isDev = true; // Change to false before deployment
+    this.isDev = false; // Change to false before deployment
  }
 
   getAllPlayers(){
@@ -78,7 +78,7 @@ export class PlayerService {
   }
 
   prepEndpoint(ep){
-    if(this.isDev){
+    if(!this.isDev){
       return ep;
     } else {
       return 'http://localhost:8080/'+ep;

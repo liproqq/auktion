@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to false before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -93,7 +93,7 @@ var PlayerService = (function () {
         });
     };
     PlayerService.prototype.prepEndpoint = function (ep) {
-        if (this.isDev) {
+        if (!this.isDev) {
             return ep;
         }
         else {
@@ -837,7 +837,7 @@ var ProfileComponent = (function () {
             _this.user = profile.user;
             _this.callGetRoster();
             _this.callGetBids();
-            _this.calculatePayroll();
+            setTimeout(_this.calculatePayroll(), 500);
         }, function (err) {
             console.log(err);
             return false;
@@ -1078,7 +1078,7 @@ var DataFilterPipe = (function () {
     function DataFilterPipe() {
     }
     DataFilterPipe.prototype.transform = function (array, query, type) {
-        if (query) {
+        if (query && type) {
             console.log(type);
             return __WEBPACK_IMPORTED_MODULE_0_lodash__["filter"](array, function (item) { return item[type].indexOf(query) > -1; });
         }
@@ -1214,7 +1214,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to false before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -1258,7 +1258,7 @@ var AuthService = (function () {
         localStorage.clear();
     };
     AuthService.prototype.prepEndpoint = function (ep) {
-        if (this.isDev) {
+        if (!this.isDev) {
             return ep;
         }
         else {

@@ -3,6 +3,13 @@ const router = express.Router();
 const Player = require("../models/player");
 
 router.get("/all", (req, res, next) => {
+
+  // bug fix for sort in front end
+  Player.updateMany({team: null}, {$set: {team: ""}},(err) => {
+    if (err) throw err;
+  })
+
+
   Player.find({}, (err, player) => {
     if (err) throw err;
     res.json(player);
