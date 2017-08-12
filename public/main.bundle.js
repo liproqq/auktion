@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
+        this.isDev = true; // Change to false before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -1114,7 +1114,7 @@ var TimeleftPipe = (function () {
     }
     TimeleftPipe.prototype.transform = function (timeBid) {
         var dayAgo = (Date.now() / 1) - 1000 * 60 * 60 * 24;
-        var s = (timeBid - dayAgo); //how much time is left in seconds
+        var s = (timeBid - dayAgo); //how much time is left in milliseconds
         if (!s) {
             return "-";
         }
@@ -1214,7 +1214,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
+        this.isDev = true; // Change to false before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
