@@ -9,10 +9,10 @@ export class TimeleftPipe implements PipeTransform {
   transform(timeBid: number):any {
     let dayAgo= (Date.now()/1)-1000*60*60*24;
     let s = (timeBid - dayAgo); //how much time is left in milliseconds
-    if(!s){
+    if(!s || timeBid == null){ //set free agents timeBid to null
       return "-"
     }
-    if(s<0 && timeBid){
+    if(s<0){
       return "signed"
     }
 

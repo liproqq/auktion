@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   user:Object;
   roster: Array<any>;
   bids: Array<any>;
-  showBids:boolean = true;
+  showBids:boolean = false;
   payroll:number =0;
 
   constructor(private authService:AuthService,
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       this.user = profile.user;
       this.callGetRoster();
       this.callGetBids();
-      setTimeout(this.calculatePayroll(), 500)
+      setTimeout(this.calculatePayroll(), 3000)
     },
     err => {
       console.log(err);
