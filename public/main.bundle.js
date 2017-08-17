@@ -1118,7 +1118,7 @@ var TimeleftPipe = (function () {
         if (!s) {
             return "-";
         }
-        if (s < 0) {
+        if (s < 0 && timeBid) {
             return "signed";
         }
         function pad(n, z) {

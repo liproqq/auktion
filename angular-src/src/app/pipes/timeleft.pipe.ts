@@ -12,7 +12,7 @@ export class TimeleftPipe implements PipeTransform {
     if(!s){
       return "-"
     }
-    if(s<0){
+    if(s<0 && timeBid){
       return "signed"
     }
 
