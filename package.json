@@ -14,8 +14,8 @@
     "cors":"*",
     "jsonwebtoken":"*",
     "body-parser":"*",
-    "passport":"3.10.10",
-    "passport-jwt":"3.10.10"
+    "passport":"*",
+    "passport-jwt":"*"
   },
   "author": "liproqq",
   "license": "ISC"
