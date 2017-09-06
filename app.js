@@ -53,6 +53,8 @@ app.use('/player', player);
 
 app.use('/bid', bid);
 
+app.use('/standings', standings);
+
 // Index Route
 app.get('/', (req, res) => {
   res.send('Invalid Endpoint');
