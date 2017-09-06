@@ -15,7 +15,7 @@
     "jsonwebtoken":"*",
     "body-parser":"*",
     "passport":"*",
-    "passport-jwt":"*"
+    "passport-jwt":"2.2.0"
   },
   "author": "liproqq",
   "license": "ISC"
