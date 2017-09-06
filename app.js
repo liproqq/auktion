@@ -27,6 +27,8 @@ const player = require('./routes/player');
 
 const bid = require('./routes/bid');
 
+const standings = require('./routes/standings');
+
 // Port Number
 const port = process.env.PORT || 8080;
 

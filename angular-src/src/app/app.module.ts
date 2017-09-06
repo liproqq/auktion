@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuctionComponent } from './components/auction/auction.component';
 import { RulesComponent } from './components/rules/rules.component';
+import { StandingsComponent } from './components/standings/standings.component';
 
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
@@ -31,6 +32,7 @@ const appRoutes: Routes =  [
   {path:'rules', component: RulesComponent},
   {path:'player', component: PlayerComponent, canActivate:[AuthGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+  {path:'standings', component: StandingsComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'auction', component: AuctionComponent, canActivate:[AuthGuard]}
 
@@ -49,7 +51,8 @@ const appRoutes: Routes =  [
     DataFilterPipe,
     AuctionComponent,
     RulesComponent,
-    TimeleftPipe
+    TimeleftPipe,
+    StandingsComponent
   ],
   imports: [
     BrowserModule,

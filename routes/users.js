@@ -64,4 +64,14 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
   res.json({user: req.user});
 });
 
+//
+router.get('/userlist', (req, res, next) => {
+
+    User.find({}, {team:1, username:1}, (err, user) => {
+      if (err) throw err;
+      res.json(user);
+      console.log("user list retrieved");
+    })
+});
+
 module.exports = router;

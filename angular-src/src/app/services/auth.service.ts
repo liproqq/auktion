@@ -21,6 +21,14 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  getUserList(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('users/userlist');
+    return this.http.get(ep, {headers: headers})
+      .map(res => res.json());
+  }
+
   authenticateUser(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');

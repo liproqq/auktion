@@ -1,18 +1,17 @@
 <div *ngIf="user">
-  <h2 class="page-header">Overview</h2>
+  <button class="btn btn-primary" *ngIf="showBids" (click)="switchView()">Show roster</button>
+  <button class="btn btn-primary" *ngIf="!showBids" (click)="switchView()">Show offers</button>
   <ul class="list-inline">
     <li class="list-inline-item">Username: {{user.username}}</li>
-    <!--<li class="list-inline-item">Email: {{user.email}}</li>-->
     <li class="list-inline-item">Team: {{user.team}}</li>
     <li class="list-inline-item">Payroll: {{payroll | currency : 'USD': true:"1.0-0"}}</li>
+
   </ul>
 </div>
-<button *ngIf="showBids" (click)="switchView()">Roster</button>
-<button *ngIf="!showBids" (click)="switchView()">Offers</button>
 <table *ngIf="showBids" class="table table-striped">
   <thead>
     <tr>
-        <th>Name</th>
+        <th>Offers</th>
         <th>Overall</th>
         <th>Position</th>
         <th>Salary</th>
@@ -34,7 +33,7 @@
 <table *ngIf="!showBids" class="table table-striped">
   <thead>
     <tr>
-        <th>Name</th>
+        <th>Roster</th>
         <th>Overall</th>
         <th>Position</th>
         <th>Salary</th>

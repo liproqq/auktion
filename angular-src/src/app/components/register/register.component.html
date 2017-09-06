@@ -20,3 +20,8 @@
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
+<h2>Reserved teams:</h2>
+<p>You can not register with them</p>
+<ul *ngFor="let user of userlist">
+  <li>{{user.team}} by {{user.username}}</li>
+</ul>
