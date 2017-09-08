@@ -21,12 +21,13 @@ export class StandingsService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     let ep = this.prepEndpoint('standings/result');
+    let date = new Date().getTime()
 
     report = {
       season:0,
       reporter: reporter,
       result: report,
-      date: Date()
+      date: date
     }
     this.http.post(ep, report, { headers: headers })
      .map((res) => res.json()).subscribe(res => {

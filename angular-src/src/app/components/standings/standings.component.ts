@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {StandingsService} from '../../services/standings.service';
+import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,7 +11,6 @@ import {Router} from '@angular/router';
 })
 export class StandingsComponent implements OnInit {
   results: any;
-  standings: any;
   user:any;
   report:Object = {
     for:Number,
@@ -22,17 +22,25 @@ export class StandingsComponent implements OnInit {
 
   constructor(private authService:AuthService,
               private router:Router,
+              private flashMessage:FlashMessagesService,
               private standingsService: StandingsService) { }
 
   ngOnInit() {
+    this.loadStandings();
+    this.user = JSON.parse(localStorage.getItem('user')).team;
+  }
+
+  loadStandings(){
     this.standingsService.getAllResults().subscribe(data =>{
         this.results = this.convertStandings(data);
+        this.sortByWins(this.results);
+        this.gamesBehind(this.results);
     },
     err => {
       console.log(err);
       return false;
     });
-    this.user = JSON.parse(localStorage.getItem('user')).team;
+
   }
 
   convertStandings(reports){
@@ -83,12 +91,18 @@ export class StandingsComponent implements OnInit {
 
   gamesBehind(standings){
     for(var i = 1;i<standings.length;i++){
-      standings[i].gb = ((standings[0].w - standings[i].w)+(standings[0].l - standings[i].l))/2;
+      standings[i].gb = ((standings[0].w - standings[i].w)+(standings[i].l - standings[0].l))/2;
     }
     return standings
   }
 
   reportGame(report){
-    this.standingsService.saveGame(report, this.user)
+    console.log(report);
+    if(typeof report.for != "Number" || typeof report.against != "Number" || typeof report.opponent != "String"){
+        this.flashMessage.show('Please fill in all fields!', {cssClass: 'alert-danger', timeout: 3000})
+        return false;
+    }
+    this.standingsService.saveGame(report, this.user);
+    this.flashMessage.show('Game saved!', {cssClass: 'alert-success', timeout: 3000});
   }
 }

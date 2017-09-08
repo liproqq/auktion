@@ -1,6 +1,7 @@
 <table class="table table-striped">
     <thead>
       <tr>
+        <th>#</th>
         <th>Team</th>
         <th>W</th>
         <th>L</th>
@@ -9,7 +10,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let standing of results">
+      <tr *ngFor="let standing of results;let i = index" [attr.data-index]="i">
+          <td>{{i+1}}</td>
           <td>{{standing.name | team}}</td>
           <td>{{standing.w}}</td>
           <td>{{standing.l}}</td>
@@ -21,11 +23,11 @@
     </tfoot>
 </table>
 <div class="jumbotron">
-  <h1>Report your game:</h1>
+  <h2>Report your game:</h2>
   {{user | team}} <input type="number" name="for" [(ngModel)]="report.for" value="" min="0" max="200" required> vs <input type="number" [(ngModel)]="report.against" name="against" value="" min="0" max="200" required>
   <select class="" name="opponent" [(ngModel)]="report.opponent">
-      <option value="opponent">Opponent</option>
       <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
   </select>
-  <input type="button" class="btn-small btn-primary" name="submit" value="Submit" (click)="reportGame(report)">
+  <input type="button" class="btn-small btn-danger" name="submit" value="Submit" (click)="reportGame(report)">
+  <input class="btn-small btn-success" type="button" (click)="this.loadStandings()" value="reload standings">
 </div>

@@ -25,7 +25,8 @@ const UserSchema = mongoose.Schema({
   },
   money: {
     type: Number
-  }
+  },
+  steam: String
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
