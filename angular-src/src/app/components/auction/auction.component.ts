@@ -43,7 +43,7 @@ export class AuctionComponent implements OnInit {
     let newTimeBid = Date.now()/1;
 
     //formatting bid
-    player.newSalaryBid = Math.floor(player.newSalaryBid/100000)*100000;
+    player.newSalaryBid = Math.floor(player.newSalaryBid);
     player.newDurationBid = parseInt(player.newDurationBid);
     player.newTimeBid = newTimeBid;
 
@@ -111,11 +111,21 @@ export class AuctionComponent implements OnInit {
     }
 
     //Min salary
-    if(salaryBid <1000000){
-      this.flashMessage.show("Invalid Offer - Minimum salary is $1 Mio", {
+    if(salaryBid <10){
+      this.flashMessage.show("Invalid Offer - Minimum salary is $10", {
         cssClass: 'alert-danger',
         timeout: 10000});
       return false;
+    }
+
+    //max salary
+    if(salaryBid>880){
+      {
+        this.flashMessage.show("Invalid Offer - Maximum salary is $880", {
+          cssClass: 'alert-danger',
+          timeout: 10000});
+        return false;
+      }
     }
 
     //Enough money

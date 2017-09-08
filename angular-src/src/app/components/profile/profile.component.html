@@ -5,7 +5,7 @@
     <li class="list-inline-item">Username: {{user.username}}</li>
     <li class="list-inline-item">Team: {{user.team | team}}</li>
     <li class="list-inline-item">Payroll: {{payroll | currency : 'USD': true:"1.0-0"}}</li>
-    <li class="list-inline-item">Available: {{100000000-payroll | currency : 'USD': true:"1.0-0"}}</li>
+    <li class="list-inline-item">Available: {{1000-payroll | currency : 'USD': true:"1.0-0"}}</li>
   </ul>
 </div>
 <table class="table table-striped">

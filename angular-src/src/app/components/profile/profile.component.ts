@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
     }
     this.payroll=Math.ceil(this.payroll);
     let user = JSON.parse(localStorage.getItem('user'));
-    user.money = 100000000-this.payroll;
+    user.money = 1000-this.payroll;
     localStorage.setItem('user', JSON.stringify(user));
     console.log("calc payroll")
     this.authService.updateMoney(user.team,user.money);
