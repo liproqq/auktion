@@ -37,6 +37,18 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  updateMoney(team, money){
+    let headers = new Headers();
+    var user= {team:team,money:money};
+    console.log("updateMoney", user);
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint('users/updatemoney');
+    this.http.post(ep, user,{headers: headers})
+      .map(res => res.json()).subscribe(res => {        
+        console.log(res);
+      });;
+  }
+
   getProfile(){
     let headers = new Headers();
     this.loadToken();

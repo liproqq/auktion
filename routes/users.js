@@ -64,14 +64,26 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
   res.json({user: req.user});
 });
 
-//
+// user list
 router.get('/userlist', (req, res, next) => {
 
-    User.find({}, {team:1, username:1}, (err, user) => {
+    User.find({}, {team:1, username:1, steam:1, money:1}, (err, user) => {
       if (err) throw err;
       res.json(user);
       console.log("user list retrieved");
     })
 });
+
+//update money
+router.post("/updateMoney", (req,res,next) => {
+  var money= req.body.money;
+  var team= req.body.team;
+
+  console.log(req.body)
+  User.findOneAndUpdate({team: team},{$set: {money: money}}, (err, user) => {
+    if (err) throw err;
+    res.json({success:true});
+  })
+})
 
 module.exports = router;

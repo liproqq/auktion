@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
 
   callGetBids(){this.playerService.getBids(this.user).subscribe(bids => {
     this.bids = bids;
+    this.calculatePayroll();
     },
     err => {
       console.log(err);
@@ -71,6 +72,8 @@ export class ProfileComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem('user'));
     user.money = 100000000-this.payroll;
     localStorage.setItem('user', JSON.stringify(user));
+    console.log("calc payroll")
+    this.authService.updateMoney(user.team,user.money);
   }
 
   /*withdrawOffer(id){

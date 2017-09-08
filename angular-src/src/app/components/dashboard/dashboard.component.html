@@ -1,2 +1,21 @@
-<h2 class="page-header">Dashboard</h2>
-<p>Welcome to your dashboard</p>
+<h2 class="page-header">User List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Team</th>
+      <th>Cap Space</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userlist">
+      <td ><a href="{{user.steam}}">{{user.username}}</a></td>
+      <td>{{user.team | team}}</td>
+      <td>{{user.money | currency : 'USD': true:"1.0-0"}}</td>
+    </tr>
+  </tbody>
+</table>
+<h1>Roster/Offers</h1>
+<app-profile></app-profile>
+<h1>Standings</h1>
+<app-standings></app-standings>

@@ -38,15 +38,12 @@ export class RegisterComponent implements OnInit {
         if (a > b) {
           return 1;
         }
-
-        // namen müssen gleich sein
         return 0;
 
 
       })
 
       this.userlist = data;
-      console.log(this.userlist)
     });
   }
 
