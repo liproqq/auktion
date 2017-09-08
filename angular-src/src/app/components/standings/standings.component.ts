@@ -98,7 +98,7 @@ export class StandingsComponent implements OnInit {
 
   reportGame(report){
     console.log(report);
-    if(typeof report.for != "Number" || typeof report.against != "Number" || typeof report.opponent != "String"){
+    if(typeof report.for == "function"|| report.for == null || typeof report.against == "function" || report.against == null || typeof report.opponent == "function"){
         this.flashMessage.show('Please fill in all fields!', {cssClass: 'alert-danger', timeout: 3000})
         return false;
     }

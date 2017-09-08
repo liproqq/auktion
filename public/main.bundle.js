@@ -32,7 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PlayerService = (function () {
     function PlayerService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
+        this.isDev = true; // Change to false before deployment
     }
     PlayerService.prototype.getAllPlayers = function () {
         var ep = this.prepEndpoint('player/all');
@@ -182,7 +182,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var StandingsService = (function () {
     function StandingsService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
+        this.isDev = true; // Change to false before deployment
     }
     StandingsService.prototype.getAllResults = function () {
         var ep = this.prepEndpoint('standings/all');
@@ -288,7 +288,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
-        this.isDev = false; // Change to false before deployment
+        this.isDev = true; // Change to false before deployment
     }
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -1372,7 +1372,7 @@ var StandingsComponent = (function () {
     };
     StandingsComponent.prototype.reportGame = function (report) {
         console.log(report);
-        if (typeof report.for != "Number" || typeof report.against != "Number" || typeof report.opponent != "String") {
+        if (typeof report.for == "function" || report.for == null || typeof report.against == "function" || report.against == null || typeof report.opponent == "function") {
             this.flashMessage.show('Please fill in all fields!', { cssClass: 'alert-danger', timeout: 3000 });
             return false;
         }
