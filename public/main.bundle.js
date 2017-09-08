@@ -182,7 +182,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var StandingsService = (function () {
     function StandingsService(http) {
         this.http = http;
-        this.isDev = true; // Change to false before deployment
+        this.isDev = false; // Change to false before deployment
     }
     StandingsService.prototype.getAllResults = function () {
         var ep = this.prepEndpoint('standings/all');
