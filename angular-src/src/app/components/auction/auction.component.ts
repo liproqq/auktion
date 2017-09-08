@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {ValidateService} from '../../services/validate.service';
 import {PlayerService} from '../../services/player.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
@@ -18,6 +19,7 @@ export class AuctionComponent implements OnInit {
   constructor(private authService:AuthService,
               private router:Router,
               private playerService: PlayerService,
+              private validateService: ValidateService,
               private flashMessage:FlashMessagesService) { }
 
   ngOnInit() {
@@ -100,6 +102,11 @@ export class AuctionComponent implements OnInit {
       this.flashMessage.show("Invalid Offer - No bid or contract length", {
         cssClass: 'alert-danger',
         timeout: 10000});
+      return false;
+    }
+
+    if(!this.validateService.validateBid(player.newSalaryBid)){
+      this.flashMessage.show('Please use only numbers in your bid', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }
 

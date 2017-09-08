@@ -19,11 +19,13 @@ import { StandingsComponent } from './components/standings/standings.component';
 import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {PlayerService} from './services/player.service';
+import {StandingsService} from './services/standings.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { PlayerComponent } from './components/player/player.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { TimeleftPipe } from './pipes/timeleft.pipe';
+import { TeamPipe } from './pipes/team.pipe';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -52,6 +54,7 @@ const appRoutes: Routes =  [
     AuctionComponent,
     RulesComponent,
     TimeleftPipe,
+    TeamPipe,
     StandingsComponent
   ],
   imports: [
@@ -62,7 +65,7 @@ const appRoutes: Routes =  [
     FlashMessagesModule,
     DataTableModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard, PlayerService],
+  providers: [ValidateService, AuthService, AuthGuard, PlayerService, StandingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

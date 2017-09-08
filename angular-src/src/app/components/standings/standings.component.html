@@ -9,19 +9,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-          <td>Name</td>
-          <td>W</td>
-          <td>L</td>
-          <td>%</td>
-          <td>GB</td>
+      <tr *ngFor="let standing of results">
+          <td>{{standing.name | team}}</td>
+          <td>{{standing.w}}</td>
+          <td>{{standing.l}}</td>
+          <td>{{standing.pct}}</td>
+          <td>{{standing.gb}}</td>
       </tr>
     </tbody>
     <tfoot>
-    <tr>
-        <td colspan="8">
-            <mfBootstrapPaginator></mfBootstrapPaginator>
-        </td>
-    </tr>
     </tfoot>
 </table>
+<div class="jumbotron">
+  <h1>Report your game:</h1>
+  {{user | team}} <input type="number" name="for" [(ngModel)]="report.for" value="" min="0" max="200" required> vs <input type="number" [(ngModel)]="report.against" name="against" value="" min="0" max="200" required>
+  <select class="" name="opponent" [(ngModel)]="report.opponent">
+      <option value="opponent">Opponent</option>
+      <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
+  </select>
+  <input type="button" class="btn-small btn-primary" name="submit" value="Submit" (click)="reportGame(report)">
+</div>
