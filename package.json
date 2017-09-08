@@ -10,7 +10,7 @@
   "dependencies":{
     "express":"*",
     "mongoose":"*",
-    "bcryptjs":"*",
+    "bcryptjs":"1.0.2",
     "cors":"*",
     "jsonwebtoken":"*",
     "body-parser":"*",
