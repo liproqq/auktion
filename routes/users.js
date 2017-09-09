@@ -13,7 +13,8 @@ router.post('/register', (req, res, next) => {
     username: req.body.username,
     password: req.body.password,
     team: req.body.team,
-    money: 10000000
+    steam: req.body.steam,
+    money: 1000
   });
 
   User.addUser(newUser, (err, user) => {
