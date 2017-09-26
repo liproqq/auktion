@@ -130,7 +130,7 @@ export class AuctionComponent implements OnInit {
 
     //Enough money
     if(salaryBid > money){
-      this.flashMessage.show("Not enough salary cap left for this bid - check profile for your payroll - you have "+money/1000000+" Mio left", {
+      this.flashMessage.show("Not enough salary cap left for this bid - check profile for your payroll - you have "+money+" Mio left", {
         cssClass: 'alert-danger',
         timeout: 10000});
       return false;

@@ -26,7 +26,7 @@
         <td>{{player.lastName}}, {{player.firstName}}</td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
-        <td>{{player.salaryBid | currency : 'USD': true:"1.0-0"}}/{{player.durationBid}}/{{player.teamBid}}</td>
+        <td>{{player.salaryBid | currency : 'EUR': true:"1.0-0"}}/{{player.durationBid}}/{{player.teamBid}}</td>
         <td>{{player.timeBid | timeleft}}</td>
         <td><input type="text" [(ngModel)]="player.newSalaryBid" name="" value=""></td>
         <td><select [(ngModel)]="player.newDurationBid" class="">

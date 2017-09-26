@@ -11,7 +11,7 @@
     <tr *ngFor="let user of userlist">
       <td ><a href="{{user.steam}}">{{user.username}}</a></td>
       <td>{{user.team | team}}</td>
-      <td>{{user.money | currency : 'USD': true:"1.0-0"}}</td>
+      <td>{{user.money | currency : 'EUR': true:"1.0-0"}}</td>
     </tr>
   </tbody>
 </table>
