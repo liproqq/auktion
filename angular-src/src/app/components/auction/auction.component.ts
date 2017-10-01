@@ -15,6 +15,7 @@ export class AuctionComponent implements OnInit {
   public team: String;
   public filterQuery = "";
   public searchType = "lastName";
+  public money:any = 0;
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -30,6 +31,9 @@ export class AuctionComponent implements OnInit {
       console.log(err);
       return false;
     });
+
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.money = user.money;
   }
 
   changeType(key){
@@ -119,7 +123,7 @@ export class AuctionComponent implements OnInit {
     }
 
     //max salary
-    if(salaryBid>880){
+    if(salaryBid>1000){
       {
         this.flashMessage.show("Invalid Offer - Maximum salary is $880", {
           cssClass: 'alert-danger',
@@ -152,7 +156,13 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    //succesful bid
     if(trumpBid(player)){
+
+      let user = JSON.parse(localStorage.getItem('user'));
+      user.money -= player.newSalaryBid;
+      this.money -= player.newSalaryBid;
+      localStorage.setItem('user', JSON.stringify(user));
       this.playerService.placeBid(player);
       console.log("bid to service");
       console.log(player);

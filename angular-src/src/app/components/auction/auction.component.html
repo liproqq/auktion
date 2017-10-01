@@ -1,12 +1,17 @@
-<input on-focus="changeType('lastName')" [(ngModel)]="filterQuery"/>
-<select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
-    <option value="">Position</option>
-    <option value="PG">Point Guard</option>
-    <option value="SG">Shooting Guard</option>
-    <option value="SF">Small Forward</option>
-    <option value="PF">Power Forward</option>
-    <option value="C">Center</option>
-</select>
+<div class="form-inline">
+  <input on-focus="changeType('lastName')" [(ngModel)]="filterQuery"/>
+  <select class="" [(ngModel)]="filterQuery" name="filterQuery" (ngModelChange)="changeType('position')">
+      <option value="">Position</option>
+      <option value="PG">Point Guard</option>
+      <option value="SG">Shooting Guard</option>
+      <option value="SF">Small Forward</option>
+      <option value="PF">Power Forward</option>
+      <option value="C">Center</option>
+  </select>
+  <h3 style="display:inline">
+    Available cap: {{money | currency : 'EUR': true:"1.0-0"}}
+  </h3>
+</div>
 
 <table class="table table-striped" [mfData]="freeAgents | dataFilter : filterQuery : searchType" #mf="mfDataTable" [mfRowsOnPage]="15">
     <thead>
