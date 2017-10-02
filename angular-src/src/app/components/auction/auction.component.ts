@@ -16,6 +16,7 @@ export class AuctionComponent implements OnInit {
   public filterQuery = "";
   public searchType = "lastName";
   public money:any = 0;
+  private now:any= Date.now()/1;
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -34,6 +35,18 @@ export class AuctionComponent implements OnInit {
 
     let user = JSON.parse(localStorage.getItem('user'));
     this.money = user.money;
+
+    if(this.now>1507140000 && this.now<1507485600){
+      this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in "+((1507485600-this.now)/60)+" Minutes for four hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+        cssClass: 'alert-success',
+        timeout: 30000});
+    }
+
+    if(this.now>1507485600 && this.now<1507500000){
+      this.flashMessage.show("Sudden Death Timer active for "+((1507500000-this.now)/60)+" minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+        cssClass: 'alert-alert',
+        timeout: 60000});
+    }
   }
 
   changeType(key){
@@ -116,7 +129,7 @@ export class AuctionComponent implements OnInit {
 
     //Min salary
     if(salaryBid <10){
-      this.flashMessage.show("Invalid Offer - Minimum salary is $10", {
+      this.flashMessage.show("Invalid Offer - Minimum salary is €10", {
         cssClass: 'alert-danger',
         timeout: 10000});
       return false;
@@ -125,7 +138,7 @@ export class AuctionComponent implements OnInit {
     //max salary
     if(salaryBid>1000){
       {
-        this.flashMessage.show("Invalid Offer - Maximum salary is $880", {
+        this.flashMessage.show("Invalid Offer - Maximum salary is €1000", {
           cssClass: 'alert-danger',
           timeout: 10000});
         return false;
@@ -160,8 +173,8 @@ export class AuctionComponent implements OnInit {
     if(trumpBid(player)){
 
       let user = JSON.parse(localStorage.getItem('user'));
-      user.money -= player.newSalaryBid;
-      this.money -= player.newSalaryBid;
+      user.money -= player.newSalaryBid; // cookie
+      this.money -= player.newSalaryBid; // UI
       localStorage.setItem('user', JSON.stringify(user));
       this.playerService.placeBid(player);
       console.log("bid to service");

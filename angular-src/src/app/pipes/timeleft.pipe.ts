@@ -6,8 +6,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeleftPipe implements PipeTransform {
   timeleft:String;
 
+  private now:any= Date.now()/1;
+
   transform(timeBid: number):any {
     let dayAgo= (Date.now()/1)-1000*60*60*24;
+
+    if(this.now>1507485600 && this.now<1507500000) {
+      dayAgo= (Date.now()/1)-1000*60*5
+    }
+
     let s = (timeBid - dayAgo); //how much time is left in milliseconds
     if(!s || timeBid == null){ //set free agents timeBid to null
       return "-"

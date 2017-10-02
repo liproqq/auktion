@@ -570,6 +570,7 @@ var AuctionComponent = (function () {
         this.filterQuery = "";
         this.searchType = "lastName";
         this.money = 0;
+        this.now = Date.now() / 1;
     }
     AuctionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -581,6 +582,18 @@ var AuctionComponent = (function () {
         });
         var user = JSON.parse(localStorage.getItem('user'));
         this.money = user.money;
+        if (this.now > 1507140000 && this.now < 1507485600) {
+            this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in " + ((1507485600 - this.now) / 60) + " Minutes for four hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+                cssClass: 'alert-success',
+                timeout: 30000
+            });
+        }
+        if (this.now > 1507485600 && this.now < 1507500000) {
+            this.flashMessage.show("Sudden Death Timer active for " + ((1507500000 - this.now) / 60) + " minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+                cssClass: 'alert-alert',
+                timeout: 60000
+            });
+        }
     };
     AuctionComponent.prototype.changeType = function (key) {
         this.searchType = key;
@@ -647,7 +660,7 @@ var AuctionComponent = (function () {
         }
         //Min salary
         if (salaryBid < 10) {
-            this.flashMessage.show("Invalid Offer - Minimum salary is $10", {
+            this.flashMessage.show("Invalid Offer - Minimum salary is €10", {
                 cssClass: 'alert-danger',
                 timeout: 10000
             });
@@ -656,7 +669,7 @@ var AuctionComponent = (function () {
         //max salary
         if (salaryBid > 1000) {
             {
-                this.flashMessage.show("Invalid Offer - Maximum salary is $880", {
+                this.flashMessage.show("Invalid Offer - Maximum salary is €1000", {
                     cssClass: 'alert-danger',
                     timeout: 10000
                 });
@@ -690,8 +703,8 @@ var AuctionComponent = (function () {
         //succesful bid
         if (trumpBid(player)) {
             var user = JSON.parse(localStorage.getItem('user'));
-            user.money -= player.newSalaryBid;
-            this.money -= player.newSalaryBid;
+            user.money -= player.newSalaryBid; // cookie
+            this.money -= player.newSalaryBid; // UI
             localStorage.setItem('user', JSON.stringify(user));
             this.playerService.placeBid(player);
             console.log("bid to service");
@@ -1701,9 +1714,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var TimeleftPipe = (function () {
     function TimeleftPipe() {
+        this.now = Date.now() / 1;
     }
     TimeleftPipe.prototype.transform = function (timeBid) {
         var dayAgo = (Date.now() / 1) - 1000 * 60 * 60 * 24;
+        if (this.now > 1507485600 && this.now < 1507500000) {
+            dayAgo = (Date.now() / 1) - 1000 * 60 * 5;
+        }
         var s = (timeBid - dayAgo); //how much time is left in milliseconds
         if (!s || timeBid == null) {
             return "-";

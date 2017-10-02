@@ -20,7 +20,11 @@ router.get("/all", (req, res, next) => {
 router.get("/freeagents", (req, res, next) => {
   let dayAgo= (Date.now()/1)-1000*60*60*24;
 
-  //check if a bid was more than 24h
+  if(this.now>1507485600 && this.now<1507500000) {
+    dayAgo= (Date.now()/1)-1000*60*5
+  }
+
+  //check if a bid was more than 24h/5m
   Player.find({timeBid: {$lt: dayAgo}, duration: {$lt: 1} }, (err, player) => {
     if (err) throw err;
     console.log('retrieved list of '+player.length+' signed free agents');
