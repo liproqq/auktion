@@ -26,6 +26,9 @@ import { PlayerComponent } from './components/player/player.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { TimeleftPipe } from './pipes/timeleft.pipe';
 import { TeamPipe } from './pipes/team.pipe';
+import { PlayerimagePipe } from './pipes/playerimage.pipe';
+import { PlayerdetailsComponent } from './components/playerdetails/playerdetails.component';
+import { TeamlogoPipe } from './pipes/teamlogo.pipe';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -33,6 +36,8 @@ const appRoutes: Routes =  [
   {path:'login', component: LoginComponent},
   {path:'rules', component: RulesComponent},
   {path:'player', component: PlayerComponent/*, canActivate:[AuthGuard]*/},
+  {path:'player/:id', component: PlayerComponent/*, canActivate:[AuthGuard]*/},
+  {path:'player/:id/:id2', component: PlayerdetailsComponent/*, canActivate:[AuthGuard]*/},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'standings', component: StandingsComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
@@ -55,7 +60,10 @@ const appRoutes: Routes =  [
     RulesComponent,
     TimeleftPipe,
     TeamPipe,
-    StandingsComponent
+    StandingsComponent,
+    PlayerimagePipe,
+    PlayerdetailsComponent,
+    TeamlogoPipe
   ],
   imports: [
     BrowserModule,

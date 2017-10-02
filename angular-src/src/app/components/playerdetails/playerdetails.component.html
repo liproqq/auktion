@@ -1,0 +1,37 @@
+<div *ngFor="let player of player" class="">
+  <table>
+    <td class="name">
+      <h1>{{player.firstName}} {{player.lastName}}</h1>
+      <h3>{{player.team |team}}</h3>
+      <h2>#{{player.number}}</h2>
+    </td>
+    <td>
+      <tr>
+        <td>
+          <p>Born: </p>
+          <p>Age: </p>
+          <p>Height: </p>
+          <p>Weight: </p>
+          <p>From: </p>
+        </td>
+        <td>
+          <p>{{player.born}}</p>
+          <p>{{2017 - player.born.substr(0,4)}}</p>
+          <p>{{player.height}} cm</p>
+          <p>{{player.weight}} kg</p>
+          <p>{{player.college}}</p>
+        </td>
+      </tr>
+    </td>
+    <td>
+      <img src="{{player | playerimage }}" alt="">
+    </td>
+    <td>
+      <img src="{{player | teamlogo}}" alt="">
+    </td>
+  </table>
+  <h1>Player Stats</h1>
+  <table>
+    <th></th>
+  </table>
+</div>

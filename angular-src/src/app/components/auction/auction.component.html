@@ -28,7 +28,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let player of mf.data">
-        <td>{{player.lastName}}, {{player.firstName}}</td>
+        <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
         <td>{{player.salaryBid | currency : 'EUR': true:"1.0-0"}}/{{player.durationBid}}/{{player.teamBid}}</td>

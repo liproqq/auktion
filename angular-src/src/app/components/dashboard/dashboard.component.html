@@ -10,7 +10,7 @@
   <tbody>
     <tr *ngFor="let user of userlist">
       <td ><a href="{{user.steam}}">{{user.username}}</a></td>
-      <td>{{user.team | team}}</td>
+      <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{user.team}}">{{user.team | team}}</a></td>
       <td>{{user.money | currency : 'EUR': true:"1.0-0"}}</td>
     </tr>
   </tbody>

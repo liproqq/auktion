@@ -73,6 +73,15 @@ router.get("/lastname/:id", (req, res, next) => {
   })
 })
 
+router.get("/name/:id/:id2", (req, res, next) => {
+  console.log(req.params.id);
+  Player.find({lastName: req.params.id, firstName: req.params.id2}, (err, player) => {
+    if (err) throw err;
+    res.json(player);
+    console.log('retrieved ' + player);
+  })
+})
+
 router.get("/team/:id", (req, res, next) => {
   Player.find({team: req.params.id}, (err, player) => {
     if (err) throw err;

@@ -1,0 +1,15 @@
+td{
+  padding: 10px;
+  vertical-align: top;
+}
+.name{
+  padding: 0 40px;
+  color: #f9c03b;
+  text-align: center;
+}
+img{
+  height: 150px
+}
+tr{
+  width: 230px;
+}

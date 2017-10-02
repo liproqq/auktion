@@ -24,6 +24,12 @@ export class PlayerService {
     .map(res => res.json());
   }
 
+  getPlayerByFullName(lastName, firstName){
+    let ep = this.prepEndpoint('player/name/');
+    return this.http.get(ep+lastName+"/"+firstName)
+    .map(res => res.json());
+  }
+
   getPlayerByTeam(team){
     let ep = this.prepEndpoint('player/team/');
     return this.http.get(ep+team)

@@ -23,20 +23,16 @@
           <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
           <th><mfDefaultSorter by="salary">Salary</mfDefaultSorter></th>
           <th><mfDefaultSorter by="duration">Duration</mfDefaultSorter></th>
-          <!--<th><mfDefaultSorter by="notes">Notes</mfDefaultSorter></th>
-          <th><mfDefaultSorter by="yearsInTeam">Birds</mfDefaultSorter></th>-->
           <th><mfDefaultSorter by="team">Team</mfDefaultSorter></th>
       </tr>
     </thead>
     <tbody>
     <tr *ngFor="let player of mf.data">
-        <td>{{player.lastName}}, {{player.firstName}}</td>
+        <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
         <td>{{player.salary | currency : 'EUR': true:"1.0-0"}}</td>
         <td>{{player.duration}}</td>
-        <!--<td>{{player.notes}}</td>
-        <td>{{player.bird}}</td>-->
         <td>{{player.team}}</td>
     </tr>
     </tbody>
