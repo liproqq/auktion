@@ -570,7 +570,7 @@ var AuctionComponent = (function () {
         this.filterQuery = "";
         this.searchType = "lastName";
         this.money = 0;
-        this.now = Date.now() / 1;
+        this.now = 0;
     }
     AuctionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -580,17 +580,20 @@ var AuctionComponent = (function () {
             console.log(err);
             return false;
         });
+        this.now = Date.now();
         var user = JSON.parse(localStorage.getItem('user'));
         this.money = user.money;
-        if (this.now > 1507140000 && this.now < 1507485600) {
-            this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in " + ((1507485600 - this.now) / 60) + " Minutes (Sunday October 8th 8 pm CEST) for four hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+        if (this.now > 1507140000000 && this.now < 1507485600000) {
+            console.log("auction active");
+            this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in " + ((1507485600000 - this.now) / 60000) + " Minutes (Sunday October 8th 8 pm CEST) for four hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
                 cssClass: 'alert-success',
                 timeout: 30000
             });
         }
-        if (this.now > 1507485600 && this.now < 1507500000) {
-            this.flashMessage.show("Sudden Death Timer active for " + ((1507500000 - this.now) / 60) + " minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
-                cssClass: 'alert-alert',
+        if (this.now > 1507485600000 && this.now < 1507485600000) {
+            console.log("auction sudden death active");
+            this.flashMessage.show("Sudden Death Timer active for " + ((1507485600000 - this.now) / 60000) + " minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+                cssClass: 'alert-danger',
                 timeout: 60000
             });
         }
@@ -1714,11 +1717,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var TimeleftPipe = (function () {
     function TimeleftPipe() {
-        this.now = Date.now() / 1;
+        this.now = Date.now();
     }
     TimeleftPipe.prototype.transform = function (timeBid) {
         var dayAgo = (Date.now() / 1) - 1000 * 60 * 60 * 24;
-        if (this.now > 1507485600 && this.now < 1507500000) {
+        if (this.now > 1507485600000 && this.now < 1507500000000) {
             dayAgo = (Date.now() / 1) - 1000 * 60 * 5;
         }
         var s = (timeBid - dayAgo); //how much time is left in milliseconds

@@ -19,8 +19,9 @@ router.get("/all", (req, res, next) => {
 
 router.get("/freeagents", (req, res, next) => {
   let dayAgo= (Date.now()/1)-1000*60*60*24;
+  let now= (Date.now()/1);
 
-  if(this.now>1507485600 && this.now<1507500000) {
+  if(now>1507485600000 && now<1507500000000) {
     dayAgo= (Date.now()/1)-1000*60*5
   }
 

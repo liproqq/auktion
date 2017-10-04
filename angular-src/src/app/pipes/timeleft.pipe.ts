@@ -6,12 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeleftPipe implements PipeTransform {
   timeleft:String;
 
-  private now:any= Date.now()/1;
+  private now:any= Date.now();
 
   transform(timeBid: number):any {
     let dayAgo= (Date.now()/1)-1000*60*60*24;
 
-    if(this.now>1507485600 && this.now<1507500000) {
+    if(this.now>1507485600000 && this.now<1507500000000) {
       dayAgo= (Date.now()/1)-1000*60*5
     }
 
