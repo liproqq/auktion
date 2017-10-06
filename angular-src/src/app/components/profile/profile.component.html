@@ -8,24 +8,40 @@
     <li class="list-inline-item">Available: {{1000-payroll | currency : 'EUR': true:"1.0-0"}}</li>
   </ul>
 </div>
-<table class="table table-striped">
+<table class="table table-striped" [mfData]="roster" #mf="mfDataTable" [mfRowsOnPage]="15">
   <thead>
     <tr>
-        <th>Roster</th>
-        <th>Overall</th>
-        <th>Position</th>
-        <th>Salary</th>
-        <th>Duration</th>
+        <th><mfDefaultSorter by="lastName">Roster</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="salary">Season #{{season}}</mfDefaultSorter></th>
+        <th>Season #{{season+1}}</th>
+        <th>Season #{{season+2}}</th>
+        <th>Season #{{season+3}}</th>
+        <th>Season #{{season+4}}</th>
     </tr>
   </thead>
     <tbody>
-    <tr *ngFor="let player of roster">
-        <td>{{player.lastName}}, {{player.firstName}}</td>
+    <tr *ngFor="let player of mf.data">
+        <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
         <td>{{player.overall}}</td>
         <td>{{player.position}}</td>
-        <td>{{player.salary | currency : 'EUR': true:"1.0-0"}}</td>
-        <td>{{player.duration}}</td>
+        <td>{{player.duration > 0 ? (player.salary | currency : 'EUR': true:"1.0-0"): ""}}</td>
+        <td>{{player.duration > 1 ? (player.salary | currency : 'EUR': true:"1.0-0"): ""}}</td>
+        <td>{{player.duration > 2 ? (player.salary | currency : 'EUR': true:"1.0-0"): ""}}</td>
+        <td>{{player.duration > 3 ? (player.salary | currency : 'EUR': true:"1.0-0"): ""}}</td>
+        <td>{{player.duration > 4 ? (player.salary | currency : 'EUR': true:"1.0-0"): ""}}</td>
     </tr>
+    <!--<tr>
+      <td>Total</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>-->
     </tbody>
 </table>
 <table class="table table-striped">

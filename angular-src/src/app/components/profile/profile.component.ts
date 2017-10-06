@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   bids: Array<any>;
   showBids:boolean = false;
   payroll:number =0;
+  season:Number = 1;
+  salaryPerSeason:Array<Number>;
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -72,8 +74,23 @@ export class ProfileComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem('user'));
     user.money = 1000-this.payroll;
     localStorage.setItem('user', JSON.stringify(user));
-    console.log("calc payroll")
     this.authService.updateMoney(user.team,user.money);
+  }
+
+  /*calcSalaryPerSeason(){
+    for(let i = 1; i <=5;i++){
+      let salary = 0;
+      this.roster.reduce( (prev, curr)=>{
+        if (curr.duration>=i){
+          prev +=curr.salary
+        }
+      })
+      this.salaryPerSeason.push(salary)
+    }
+    console.log(this.salaryPerSeason,
+    "this.calcSalaryPerSeason()")
+
+
   }
 
   /*withdrawOffer(id){
