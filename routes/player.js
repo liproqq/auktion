@@ -70,7 +70,6 @@ router.get("/position/:id", (req, res, next) => {
 
 
 router.get("/lastname/:id", (req, res, next) => {
-  console.log(req.params.id);
   Player.find({lastName: req.params.id}, (err, player) => {
     if (err) throw err;
     res.json(player);
@@ -112,5 +111,35 @@ router.post('/placebid', (req, res, next) => {
     return res.send("succesfully saved");
   });
 });
+
+//watchlist
+router.get("/watchlist/team/:id", (req, res, next) => {
+  Player.find({watchlist: req.params.id}, (err, player) => {
+    if (err) throw err;
+    res.json(player);
+    console.log(req.params.id+ "'s watchlist retrieved");
+  })
+});
+
+router.post('/watchlist/edit/:id', (req, res, next) => {
+  var player = req.body;
+
+  if (player.watchlist.indexOf(req.params.id) == -1) {
+      player.watchlist.push(req.params.id);
+      console.log("watchlist not found");
+  } else {
+    player.watchlist.splice(player.watchlist.indexOf(req.params.id), 1);
+    console.log("watchlist found");
+  }
+
+  delete player._id;
+  Player.findOneAndUpdate({firstName: player.firstName, lastName: player.lastName}, player, function(err, doc){
+    if (err) return res.send(500, { error: err });
+    console.log(doc.firstName+" updated");
+    return res.send("succesfully saved");
+  });
+});
+
+
 
 module.exports = router;

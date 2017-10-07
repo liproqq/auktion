@@ -23,7 +23,14 @@ const PlayerSchema = mongoose.Schema({
   "newDurationBid": Number,
   "newTeamBid": String,
   "newTimeBid": Number,
-  "birds": Boolean
+  "birds": Boolean,
+  "number": Number,
+  "weight": Number,
+  "height": Number,
+  "born": String,
+  "college": String,
+  "draft": String,
+  "watchlist": Array
 });
 
 const Player = module.exports = mongoose.model('Player', PlayerSchema);

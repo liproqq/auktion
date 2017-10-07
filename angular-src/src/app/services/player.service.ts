@@ -74,14 +74,31 @@ export class PlayerService {
     return this.http.get(ep+user.team).map(res => res.json());
   }
 
-  deleteBid(id){
-    let ep = this.prepEndpoint("bid/delete/"+id);
-    this.http.delete(ep)
+  getWatchlist(user){
+    let ep = this.prepEndpoint('player/watchlist/team/');
+    return this.http.get(ep+user.team).map(res => res.json());
+  }
+
+  updateWatchlist(player, user){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    let ep = this.prepEndpoint("player/watchlist/edit/");
+
+
+    this.http.post(ep+user.team, player, { headers: headers })
      .map((res) => res.json()).subscribe(res => {
        this.result = res;
-       console.log(this.result);
      });
   }
+
+  // deleteBid(id){
+  //   let ep = this.prepEndpoint("bid/delete/"+id);
+  //   this.http.delete(ep)
+  //    .map((res) => res.json()).subscribe(res => {
+  //      this.result = res;
+  //      console.log(this.result);
+  //    });
+  // }
 
   prepEndpoint(ep){
     if(!this.isDev){

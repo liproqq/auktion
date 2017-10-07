@@ -188,6 +188,11 @@ export class AuctionComponent implements OnInit {
     }
   }
 
+  addToWatchlist(player){
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.playerService.updateWatchlist(player, user);
+  }
+
 
     /*
       NBA CBA

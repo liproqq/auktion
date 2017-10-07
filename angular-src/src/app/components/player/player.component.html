@@ -24,6 +24,7 @@
           <th><mfDefaultSorter by="salary">Salary</mfDefaultSorter></th>
           <th><mfDefaultSorter by="duration">Duration</mfDefaultSorter></th>
           <th><mfDefaultSorter by="team">Team</mfDefaultSorter></th>
+          <th>Watch</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,7 @@
         <td>{{player.salary | currency : 'EUR': true:"1.0-0"}}</td>
         <td>{{player.duration}}</td>
         <td>{{player.team}}</td>
+        <td><button (click)="addToWatchlist(player)" name="button" class="btn btn-success">Watch</button></td>
     </tr>
     </tbody>
     <tfoot>

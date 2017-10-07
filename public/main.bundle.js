@@ -1,119 +1,10 @@
 webpackJsonp([1,4],{
 
-/***/ 1026:
+/***/ 1029:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(441);
 
-
-/***/ }),
-
-/***/ 124:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var PlayerService = (function () {
-    function PlayerService(http) {
-        this.http = http;
-        this.isDev = false; // Change to false before deployment
-    }
-    PlayerService.prototype.getAllPlayers = function () {
-        var ep = this.prepEndpoint('player/all');
-        return this.http.get(ep)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.getPlayerByLastName = function (lastName) {
-        var ep = this.prepEndpoint('player/lastname/');
-        return this.http.get(ep + lastName)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.getPlayerByFullName = function (lastName, firstName) {
-        var ep = this.prepEndpoint('player/name/');
-        return this.http.get(ep + lastName + "/" + firstName)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.getPlayerByTeam = function (team) {
-        var ep = this.prepEndpoint('player/team/');
-        return this.http.get(ep + team)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.getRoster = function (user) {
-        var ep = this.prepEndpoint('player/team/');
-        return this.http.get(ep + user.team)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.getFreeAgents = function () {
-        var ep = this.prepEndpoint('player/freeagents');
-        return this.http.get(ep)
-            .map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.placeBid = function (player) {
-        var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        var ep = this.prepEndpoint("player/placebid");
-        //new bid to current bid
-        player.durationBid = player.newDurationBid;
-        player.newDurationBid = null;
-        player.salaryBid = player.newSalaryBid;
-        player.newSalaryBid = null;
-        player.timeBid = player.newTimeBid;
-        player.newTimeBid = null;
-        player.teamBid = player.newTeamBid;
-        player.newTeamBid = null;
-        this.http.post(ep, player, { headers: headers })
-            .map(function (res) { return res.json(); }).subscribe(function (res) {
-            _this.result = res;
-            //console.log(this.result);
-        });
-    };
-    PlayerService.prototype.getBids = function (user) {
-        var ep = this.prepEndpoint('player/bids/team/');
-        return this.http.get(ep + user.team).map(function (res) { return res.json(); });
-    };
-    PlayerService.prototype.deleteBid = function (id) {
-        var _this = this;
-        var ep = this.prepEndpoint("bid/delete/" + id);
-        this.http.delete(ep)
-            .map(function (res) { return res.json(); }).subscribe(function (res) {
-            _this.result = res;
-            console.log(_this.result);
-        });
-    };
-    PlayerService.prototype.prepEndpoint = function (ep) {
-        if (!this.isDev) {
-            return ep;
-        }
-        else {
-            return 'http://localhost:8080/' + ep;
-        }
-    };
-    return PlayerService;
-}());
-PlayerService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
-], PlayerService);
-
-var _a;
-//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/player.service.js.map
 
 /***/ }),
 
@@ -163,83 +54,15 @@ ValidateService = __decorate([
 
 /***/ }),
 
-/***/ 369:
+/***/ 34:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandingsService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var StandingsService = (function () {
-    function StandingsService(http) {
-        this.http = http;
-        this.isDev = false; // Change to false before deployment
-    }
-    StandingsService.prototype.getAllResults = function () {
-        var ep = this.prepEndpoint('standings/all');
-        return this.http.get(ep)
-            .map(function (res) { return res.json(); });
-    };
-    StandingsService.prototype.saveGame = function (report, reporter) {
-        var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        var ep = this.prepEndpoint('standings/result');
-        var date = new Date().getTime();
-        report = {
-            season: 0,
-            reporter: reporter,
-            result: report,
-            date: date
-        };
-        this.http.post(ep, report, { headers: headers })
-            .map(function (res) { return res.json(); }).subscribe(function (res) {
-            _this.result = res;
-        });
-    };
-    StandingsService.prototype.prepEndpoint = function (ep) {
-        if (!this.isDev) {
-            return ep;
-        }
-        else {
-            return 'http://localhost:8080/' + ep;
-        }
-    };
-    return StandingsService;
-}());
-StandingsService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
-], StandingsService);
-
-var _a;
-//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/standings.service.js.map
-
-/***/ }),
-
-/***/ 38:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__(585);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -340,6 +163,74 @@ var _a;
 
 /***/ }),
 
+/***/ 369:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandingsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var StandingsService = (function () {
+    function StandingsService(http) {
+        this.http = http;
+        this.isDev = false; // Change to false before deployment
+    }
+    StandingsService.prototype.getAllResults = function () {
+        var ep = this.prepEndpoint('standings/all');
+        return this.http.get(ep)
+            .map(function (res) { return res.json(); });
+    };
+    StandingsService.prototype.saveGame = function (report, reporter) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        var ep = this.prepEndpoint('standings/result');
+        var date = new Date().getTime();
+        report = {
+            season: 0,
+            reporter: reporter,
+            result: report,
+            date: date
+        };
+        this.http.post(ep, report, { headers: headers })
+            .map(function (res) { return res.json(); }).subscribe(function (res) {
+            _this.result = res;
+        });
+    };
+    StandingsService.prototype.prepEndpoint = function (ep) {
+        if (!this.isDev) {
+            return ep;
+        }
+        else {
+            return 'http://localhost:8080/' + ep;
+        }
+    };
+    return StandingsService;
+}());
+StandingsService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
+], StandingsService);
+
+var _a;
+//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/standings.service.js.map
+
+/***/ }),
+
 /***/ 440:
 /***/ (function(module, exports) {
 
@@ -361,7 +252,7 @@ webpackEmptyContext.id = 440;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(528);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(577);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(578);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(559);
 
 
@@ -397,8 +288,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
-        template: __webpack_require__(749),
-        styles: [__webpack_require__(736)]
+        template: __webpack_require__(751),
+        styles: [__webpack_require__(737)]
     })
 ], AppComponent);
 
@@ -413,9 +304,9 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(519);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable__ = __webpack_require__(579);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_datatable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_datatable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(558);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_navbar_navbar_component__ = __webpack_require__(564);
@@ -428,19 +319,20 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_rules_rules_component__ = __webpack_require__(569);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_standings_standings_component__ = __webpack_require__(570);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_validate_service__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_player_service__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_player_service__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_standings_service__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__ = __webpack_require__(572);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_player_player_component__ = __webpack_require__(565);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pipes_data_filter_pipe__ = __webpack_require__(572);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes_timeleft_pipe__ = __webpack_require__(576);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes_team_pipe__ = __webpack_require__(574);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pipes_playerimage_pipe__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pipes_data_filter_pipe__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pipes_timeleft_pipe__ = __webpack_require__(577);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pipes_team_pipe__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pipes_playerimage_pipe__ = __webpack_require__(574);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_playerdetails_playerdetails_component__ = __webpack_require__(566);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipes_teamlogo_pipe__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipes_teamlogo_pipe__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_watchlist_watchlist_component__ = __webpack_require__(571);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -448,6 +340,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -488,7 +381,8 @@ var appRoutes = [
     { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'standings', component: __WEBPACK_IMPORTED_MODULE_15__components_standings_standings_component__["a" /* StandingsComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'auction', component: __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'auction', component: __WEBPACK_IMPORTED_MODULE_13__components_auction_auction_component__["a" /* AuctionComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'watchlist', component: __WEBPACK_IMPORTED_MODULE_29__components_watchlist_watchlist_component__["a" /* WatchlistComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__["a" /* AuthGuard */]] }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -514,7 +408,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__components_standings_standings_component__["a" /* StandingsComponent */],
             __WEBPACK_IMPORTED_MODULE_26__pipes_playerimage_pipe__["a" /* PlayerimagePipe */],
             __WEBPACK_IMPORTED_MODULE_27__components_playerdetails_playerdetails_component__["a" /* PlayerdetailsComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__pipes_teamlogo_pipe__["a" /* TeamlogoPipe */]
+            __WEBPACK_IMPORTED_MODULE_28__pipes_teamlogo_pipe__["a" /* TeamlogoPipe */],
+            __WEBPACK_IMPORTED_MODULE_29__components_watchlist_watchlist_component__["a" /* WatchlistComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -538,10 +433,10 @@ AppModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_validate_service__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_player_service__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_player_service__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuctionComponent; });
@@ -718,13 +613,17 @@ var AuctionComponent = (function () {
             });
         }
     };
+    AuctionComponent.prototype.addToWatchlist = function (player) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        this.playerService.updateWatchlist(player, user);
+    };
     return AuctionComponent;
 }());
 AuctionComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-auction',
-        template: __webpack_require__(750),
-        styles: [__webpack_require__(737)]
+        template: __webpack_require__(752),
+        styles: [__webpack_require__(738)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__["FlashMessagesService"]) === "function" && _e || Object])
 ], AuctionComponent);
@@ -740,8 +639,8 @@ var _a, _b, _c, _d, _e;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
@@ -789,8 +688,8 @@ var DashboardComponent = (function () {
 DashboardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-dashboard',
-        template: __webpack_require__(751),
-        styles: [__webpack_require__(738)]
+        template: __webpack_require__(753),
+        styles: [__webpack_require__(739)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], DashboardComponent);
@@ -826,8 +725,8 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-home',
-        template: __webpack_require__(752),
-        styles: [__webpack_require__(739)]
+        template: __webpack_require__(754),
+        styles: [__webpack_require__(740)]
     }),
     __metadata("design:paramtypes", [])
 ], HomeComponent);
@@ -841,9 +740,9 @@ HomeComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -896,8 +795,8 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-login',
-        template: __webpack_require__(753),
-        styles: [__webpack_require__(740)]
+        template: __webpack_require__(755),
+        styles: [__webpack_require__(741)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
 ], LoginComponent);
@@ -912,9 +811,9 @@ var _a, _b, _c;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -952,8 +851,8 @@ var NavbarComponent = (function () {
 NavbarComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-navbar',
-        template: __webpack_require__(754),
-        styles: [__webpack_require__(741)]
+        template: __webpack_require__(756),
+        styles: [__webpack_require__(742)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
 ], NavbarComponent);
@@ -968,8 +867,8 @@ var _a, _b, _c;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1065,13 +964,17 @@ var PlayerComponent = (function () {
         this.allPlayers = null;
         this.filterQuery = "";
     };
+    PlayerComponent.prototype.addToWatchlist = function (player) {
+        var user = JSON.parse(localStorage.getItem('user'));
+        this.playerService.updateWatchlist(player, user);
+    };
     return PlayerComponent;
 }());
 PlayerComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-player',
-        template: __webpack_require__(755),
-        styles: [__webpack_require__(742)]
+        template: __webpack_require__(757),
+        styles: [__webpack_require__(743)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */]) === "function" && _d || Object])
 ], PlayerComponent);
@@ -1086,8 +989,8 @@ var _a, _b, _c, _d;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerdetailsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1126,8 +1029,8 @@ var PlayerdetailsComponent = (function () {
 PlayerdetailsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-playerdetails',
-        template: __webpack_require__(756),
-        styles: [__webpack_require__(743)]
+        template: __webpack_require__(758),
+        styles: [__webpack_require__(744)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */]) === "function" && _d || Object])
 ], PlayerdetailsComponent);
@@ -1142,9 +1045,9 @@ var _a, _b, _c, _d;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
@@ -1227,8 +1130,8 @@ var ProfileComponent = (function () {
 ProfileComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-profile',
-        template: __webpack_require__(757),
-        styles: [__webpack_require__(744)]
+        template: __webpack_require__(759),
+        styles: [__webpack_require__(745)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _d || Object])
 ], ProfileComponent);
@@ -1244,8 +1147,8 @@ var _a, _b, _c, _d;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
@@ -1324,8 +1227,8 @@ var RegisterComponent = (function () {
 RegisterComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-register',
-        template: __webpack_require__(758),
-        styles: [__webpack_require__(745)]
+        template: __webpack_require__(760),
+        styles: [__webpack_require__(746)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], RegisterComponent);
@@ -1361,8 +1264,8 @@ var RulesComponent = (function () {
 RulesComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-rules',
-        template: __webpack_require__(759),
-        styles: [__webpack_require__(746)]
+        template: __webpack_require__(761),
+        styles: [__webpack_require__(747)]
     }),
     __metadata("design:paramtypes", [])
 ], RulesComponent);
@@ -1376,9 +1279,9 @@ RulesComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_standings_service__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandingsComponent; });
@@ -1488,8 +1391,8 @@ var StandingsComponent = (function () {
 StandingsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-standings',
-        template: __webpack_require__(760),
-        styles: [__webpack_require__(747)]
+        template: __webpack_require__(762),
+        styles: [__webpack_require__(748)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__services_standings_service__["a" /* StandingsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_standings_service__["a" /* StandingsService */]) === "function" && _d || Object])
 ], StandingsComponent);
@@ -1504,8 +1407,67 @@ var _a, _b, _c, _d;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WatchlistComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var WatchlistComponent = (function () {
+    function WatchlistComponent(authService, playerService, flashMessage) {
+        this.authService = authService;
+        this.playerService = playerService;
+        this.flashMessage = flashMessage;
+        this.user = JSON.parse(localStorage.getItem('user'));
+    }
+    WatchlistComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.playerService.getWatchlist(this.user).subscribe(function (watchlist) {
+            _this.watchlist = watchlist;
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+    };
+    WatchlistComponent.prototype.removeFromWatchlist = function (player) {
+        this.playerService.updateWatchlist(player, this.user);
+        this.watchlist.splice(player.watchlist.indexOf(player.lastName), 1);
+    };
+    return WatchlistComponent;
+}());
+WatchlistComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-watchlist',
+        template: __webpack_require__(763),
+        styles: [__webpack_require__(749)]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+], WatchlistComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/watchlist.component.js.map
+
+/***/ }),
+
+/***/ 572:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(34);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1545,7 +1507,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 572:
+/***/ 573:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1583,7 +1545,7 @@ DataFilterPipe = __decorate([
 
 /***/ }),
 
-/***/ 573:
+/***/ 574:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1614,7 +1576,7 @@ PlayerimagePipe = __decorate([
 
 /***/ }),
 
-/***/ 574:
+/***/ 575:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1656,7 +1618,7 @@ TeamPipe = __decorate([
 
 /***/ }),
 
-/***/ 575:
+/***/ 576:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1702,7 +1664,7 @@ TeamlogoPipe = __decorate([
 
 /***/ }),
 
-/***/ 576:
+/***/ 577:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1780,7 +1742,7 @@ TimeleftPipe = __decorate([
 
 /***/ }),
 
-/***/ 577:
+/***/ 578:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1794,24 +1756,6 @@ var environment = {
     production: false
 };
 //# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/environment.js.map
-
-/***/ }),
-
-/***/ 736:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(27)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
 
 /***/ }),
 
@@ -1931,7 +1875,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, "td{\r\n  padding: 10px;\r\n  vertical-align: top;\r\n}\r\n.name{\r\n  padding: 0 40px;\r\n  color: #f9c03b;\r\n  text-align: center;\r\n}\r\nimg{\r\n  height: 150px\r\n}\r\ntr{\r\n  width: 230px;\r\n}\r\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1949,7 +1893,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "td{\r\n  padding: 10px;\r\n  vertical-align: top;\r\n}\r\n.name{\r\n  padding: 0 40px;\r\n  color: #f9c03b;\r\n  text-align: center;\r\n}\r\nimg{\r\n  height: 150px\r\n}\r\ntr{\r\n  width: 230px;\r\n}\r\n", ""]);
 
 // exports
 
@@ -1985,7 +1929,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, "table{\r\n  width: 100%;\r\n  margin: 20px 0;\r\n}\r\n\r\nthead{\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n\r\ntd{\r\n  padding: 4px;\r\n  border: 1px solid black;\r\n}\r\ntd:nth-child(odd){\r\n  background-color: #DDD;\r\n}\r\n", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1996,6 +1940,24 @@ module.exports = module.exports.toString();
 /***/ }),
 
 /***/ 747:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(27)();
+// imports
+
+
+// module
+exports.push([module.i, "table{\r\n  width: 100%;\r\n  margin: 20px 0;\r\n}\r\n\r\nthead{\r\n  font-size: 18px;\r\n  font-weight: bold;\r\n}\r\n\r\ntd{\r\n  padding: 4px;\r\n  border: 1px solid black;\r\n}\r\ntd:nth-child(odd){\r\n  background-color: #DDD;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 748:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(27)();
@@ -2014,88 +1976,235 @@ module.exports = module.exports.toString();
 /***/ }),
 
 /***/ 749:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <flash-messages></flash-messages>\n  <router-outlet></router-outlet>\n</div>\n"
+exports = module.exports = __webpack_require__(27)();
+// imports
 
-/***/ }),
 
-/***/ 750:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "", ""]);
 
-module.exports = "<div class=\"form-inline\">\r\n  <input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n  <select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n      <option value=\"\">Position</option>\r\n      <option value=\"PG\">Point Guard</option>\r\n      <option value=\"SG\">Shooting Guard</option>\r\n      <option value=\"SF\">Small Forward</option>\r\n      <option value=\"PF\">Power Forward</option>\r\n      <option value=\"C\">Center</option>\r\n  </select>\r\n  <h3 style=\"display:inline\">\r\n    Available cap: {{money | currency : 'EUR': true:\"1.0-0\"}}\r\n  </h3>\r\n</div>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"freeAgents | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Current Offer</th>\r\n          <th><mfDefaultSorter by=\"timeBid\">Time left</mfDefaultSorter></th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'EUR': true:\"1.0-0\"}}/{{player.durationBid}}/{{player.teamBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.newSalaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.newDurationBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.newSalaryBid, player.newDurationBid)\" name=\"button\" class=\"btn btn-success\">Confirm Offer</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
 /***/ 751:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">User List</h2>\n<table class=\"table\">\n  <thead>\n    <tr>\n      <th>User</th>\n      <th>Team</th>\n      <th>Cap Space</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let user of userlist\">\n      <td ><a href=\"{{user.steam}}\">{{user.username}}</a></td>\n      <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{user.team}}\">{{user.team | team}}</a></td>\n      <td>{{user.money | currency : 'EUR': true:\"1.0-0\"}}</td>\n    </tr>\n  </tbody>\n</table>\n<h1>Roster/Offers</h1>\n<app-profile></app-profile>\n<h1>Standings</h1>\n<app-standings></app-standings>\n"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n  <flash-messages></flash-messages>\n  <router-outlet></router-outlet>\n</div>\n"
 
 /***/ }),
 
 /***/ 752:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron text-center\">\r\n  <h1>Elite League App</h1>\r\n  <p class=\"lead\">Welcome to the NBA2k PC Sim League</p>\r\n  <div>\r\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a>\r\n    <a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\r\n    <a class=\"btn btn-primary\" href=\"https://discord.gg/uWqpHbK\">Discord</a>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-4\">\r\n    <h3>Team Management</h3>\r\n    <p>Sign Free Agents, trade with other teams and build your own dynasty.</p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>Continuous Rosters</h3>\r\n    <p>Play with your team for multiple seasons and win the championship with the team you've built up.</p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>Simulation League</h3>\r\n    <p>Play with other people online with sim sliders, fight for your playoff seed in a wholesome community. </p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>How to join?</h3>\r\n    <p>Join the discord to introduce yourself to the community. You can also register on the website after that.</p>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"form-inline\">\r\n  <input on-focus=\"changeType('lastName')\" [(ngModel)]=\"filterQuery\"/>\r\n  <select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n      <option value=\"\">Position</option>\r\n      <option value=\"PG\">Point Guard</option>\r\n      <option value=\"SG\">Shooting Guard</option>\r\n      <option value=\"SF\">Small Forward</option>\r\n      <option value=\"PF\">Power Forward</option>\r\n      <option value=\"C\">Center</option>\r\n  </select>\r\n  <h3 style=\"display:inline\">\r\n    Available cap: {{money | currency : 'EUR': true:\"1.0-0\"}}\r\n  </h3>\r\n</div>\r\n\r\n<table class=\"table table-striped\" [mfData]=\"freeAgents | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th>Current Offer</th>\r\n          <th><mfDefaultSorter by=\"timeBid\">Time left</mfDefaultSorter></th>\r\n          <th>Offer</th>\r\n          <th>Length</th>\r\n          <th>Confirm</th>\r\n          <th>Watch</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'EUR': true:\"1.0-0\"}}/{{player.durationBid}}/{{player.teamBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n        <td><input type=\"text\" [(ngModel)]=\"player.newSalaryBid\" name=\"\" value=\"\"></td>\r\n        <td><select [(ngModel)]=\"player.newDurationBid\" class=\"\">\r\n              <option value=1>One Year</option>\r\n              <option value=2>Two Years</option>\r\n              <option value=3>Three Years</option>\r\n              <option value=4>Four Years</option>\r\n              <option value=5>Five Years</option>\r\n            </select>\r\n        </td>\r\n        <td><button (click)=\"bid(player, player.newSalaryBid, player.newDurationBid)\" name=\"button\" class=\"btn btn-success\">Confirm Offer</button></td>\r\n        <td><button (click)=\"addToWatchlist(player)\" name=\"button\" class=\"btn btn-success\">Watch</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n\r\n<app-watchlist></app-watchlist>\r\n"
 
 /***/ }),
 
 /***/ 753:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username (case sensitive)</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>\n"
+module.exports = "<h2 class=\"page-header\">User List</h2>\n<table class=\"table\">\n  <thead>\n    <tr>\n      <th>User</th>\n      <th>Team</th>\n      <th>Cap Space</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let user of userlist\">\n      <td ><a href=\"{{user.steam}}\">{{user.username}}</a></td>\n      <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{user.team}}\">{{user.team | team}}</a></td>\n      <td>{{user.money | currency : 'EUR': true:\"1.0-0\"}}</td>\n    </tr>\n  </tbody>\n</table>\n<h1>Roster/Offers</h1>\n<app-profile></app-profile>\n<h1>Standings</h1>\n<app-standings></app-standings>\n"
 
 /***/ }),
 
 /***/ 754:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Elite League</a>\n        </div>\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\n          <ul class=\"nav navbar-nav navbar-left\">\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/rules']\">Rules</a></li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/dashboard']\">Dashboard</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/standings']\">Standings</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/player']\">Players</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/auction']\">Auction</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\n            <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\n          </ul>\n        </div><!--/.nav-collapse -->\n      </div>\n    </nav>\n"
+module.exports = "<div class=\"jumbotron text-center\">\r\n  <h1>Elite League App</h1>\r\n  <p class=\"lead\">Welcome to the NBA2k PC Sim League</p>\r\n  <div>\r\n    <a class=\"btn btn-primary\" [routerLink]=\"['/register']\">Register</a>\r\n    <a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\r\n    <a class=\"btn btn-primary\" href=\"https://discord.gg/uWqpHbK\">Discord</a>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n  <div class=\"col-md-4\">\r\n    <h3>Team Management</h3>\r\n    <p>Sign Free Agents, trade with other teams and build your own dynasty.</p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>Continuous Rosters</h3>\r\n    <p>Play with your team for multiple seasons and win the championship with the team you've built up.</p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>Simulation League</h3>\r\n    <p>Play with other people online with sim sliders, fight for your playoff seed in a wholesome community. </p>\r\n  </div>\r\n  <div class=\"col-md-4\">\r\n    <h3>How to join?</h3>\r\n    <p>Join the discord to introduce yourself to the community. You can also register on the website after that.</p>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 755:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('lastName')\" class=\"\" placeholder=\"Name\" [(ngModel)]=\"filterQuery\"/>\r\n\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('team')\" >\r\n    <option value=\"\">Team</option>\r\n    <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\r\n</select>\r\n\r\n<table *ngIf=\"show\" class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"salary\">Salary</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"duration\">Duration</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"team\">Team</mfDefaultSorter></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'EUR': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <td>{{player.team}}</td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
+module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username (case sensitive)</label>\n    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"username\" name=\"username\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Login\">\n</form>\n"
 
 /***/ }),
 
 /***/ 756:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngFor=\"let player of player\" class=\"\">\n  <table>\n    <td class=\"name\">\n      <h1>{{player.firstName}} {{player.lastName}}</h1>\n      <h3>{{player.team |team}}</h3>\n      <h2>#{{player.number}}</h2>\n    </td>\n    <td>\n      <tr>\n        <td>\n          <p>Born: </p>\n          <p>Age: </p>\n          <p>Height: </p>\n          <p>Weight: </p>\n          <p>From: </p>\n        </td>\n        <td>\n          <p>{{player.born}}</p>\n          <p>{{2017 - player.born.substr(0,4)}}</p>\n          <p>{{player.height}} cm</p>\n          <p>{{player.weight}} kg</p>\n          <p>{{player.college}}</p>\n        </td>\n      </tr>\n    </td>\n    <td>\n      <img src=\"{{player | playerimage }}\" alt=\"\">\n    </td>\n    <td>\n      <img src=\"{{player | teamlogo}}\" alt=\"\">\n    </td>\n  </table>\n  <h1>Player Stats</h1>\n  <table>\n    <th></th>\n  </table>\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-default\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\r\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Elite League</a>\n        </div>\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\n          <ul class=\"nav navbar-nav navbar-left\">\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/']\">Home</a></li>\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/rules']\">Rules</a></li>\n          </ul>\n\n          <ul class=\"nav navbar-nav navbar-right\">\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/dashboard']\">Dashboard</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/standings']\">Standings</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/profile']\">Profile</a></li>\n            <li [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/player']\">Players</a></li>\n            <li *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/auction']\">Auction</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/login']\">Login</a></li>\n            <li *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a [routerLink]=\"['/register']\">Register</a></li>\n            <li *ngIf=\"authService.loggedIn()\"><a (click)=\"onLogoutClick()\" href=\"#\">Logout</a></li>\n          </ul>\n        </div><!--/.nav-collapse -->\n      </div>\n    </nav>\n"
 
 /***/ }),
 
 /***/ 757:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\" class=\"\">\r\n  <!--<button class=\"btn btn-primary\" *ngIf=\"showBids\" (click)=\"switchView()\">Show roster</button>\r\n  <button class=\"btn btn-primary\" *ngIf=\"!showBids\" (click)=\"switchView()\">Show offers</button>-->\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <li class=\"list-inline-item\">Team: {{user.team | team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'EUR': true:\"1.0-0\"}}</li>\r\n    <li class=\"list-inline-item\">Available: {{1000-payroll | currency : 'EUR': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<table class=\"table table-striped\" [mfData]=\"roster\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n  <thead>\r\n    <tr>\r\n        <th><mfDefaultSorter by=\"lastName\">Roster</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"salary\">Season #{{season}}</mfDefaultSorter></th>\r\n        <th>Season #{{season+1}}</th>\r\n        <th>Season #{{season+2}}</th>\r\n        <th>Season #{{season+3}}</th>\r\n        <th>Season #{{season+4}}</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.duration > 0 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 1 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 2 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 3 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 4 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n    </tr>\r\n    <!--<tr>\r\n      <td>Total</td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n    </tr>-->\r\n    </tbody>\r\n</table>\r\n<table class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Offers</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n        <th>Time left</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of bids\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'EUR': true:\"1.0-0\"}}</td>\r\n        <td>{{player.durationBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n"
+module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('lastName')\" class=\"\" placeholder=\"Name\" [(ngModel)]=\"filterQuery\"/>\r\n\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('position')\">\r\n    <option value=\"\">Position</option>\r\n    <option value=\"PG\">Point Guard</option>\r\n    <option value=\"SG\">Shooting Guard</option>\r\n    <option value=\"SF\">Small Forward</option>\r\n    <option value=\"PF\">Power Forward</option>\r\n    <option value=\"C\">Center</option>\r\n</select>\r\n<select class=\"\" [(ngModel)]=\"filterQuery\" name=\"filterQuery\" (ngModelChange)=\"changeType('team')\" >\r\n    <option value=\"\">Team</option>\r\n    <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\r\n</select>\r\n\r\n<table *ngIf=\"show\" class=\"table table-striped\" [mfData]=\"allPlayers | dataFilter : filterQuery : searchType\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n    <thead>\r\n      <tr>\r\n          <th><mfDefaultSorter by=\"lastName\">Name</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"salary\">Salary</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"duration\">Duration</mfDefaultSorter></th>\r\n          <th><mfDefaultSorter by=\"team\">Team</mfDefaultSorter></th>\r\n          <th>Watch</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salary | currency : 'EUR': true:\"1.0-0\"}}</td>\r\n        <td>{{player.duration}}</td>\r\n        <td>{{player.team}}</td>\r\n        <td><button (click)=\"addToWatchlist(player)\" name=\"button\" class=\"btn btn-success\">Watch</button></td>\r\n    </tr>\r\n    </tbody>\r\n    <tfoot>\r\n    <tr>\r\n        <td colspan=\"8\">\r\n            <mfBootstrapPaginator></mfBootstrapPaginator>\r\n        </td>\r\n    </tr>\r\n    </tfoot>\r\n</table>\r\n"
 
 /***/ }),
 
 /***/ 758:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Email</label>\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" >\n  </div>\n  <div class=\"form-group\">\n    <label>Team</label>\n    <select class=\"form-control\" [(ngModel)]=\"team\" name=\"team\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Steam Profile</label>\n    <input type=\"text\" [(ngModel)]=\"steam\" name=\"steam\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n<h2>Reserved teams:</h2>\n<p>You can not register with them. Teams that are managed by the Commision can be attained. Contact a commissioner via discord.</p>\n<ul *ngFor=\"let user of userlist\">\n  <li>{{user.team}} by {{user.username}}</li>\n</ul>\n"
+module.exports = "<div *ngFor=\"let player of player\" class=\"\">\n  <table>\n    <td class=\"name\">\n      <h1>{{player.firstName}} {{player.lastName}}</h1>\n      <h3>{{player.team |team}}</h3>\n      <h2>#{{player.number}}</h2>\n    </td>\n    <td>\n      <tr>\n        <td>\n          <p>Born: </p>\n          <p>Age: </p>\n          <p>Height: </p>\n          <p>Weight: </p>\n          <p>From: </p>\n        </td>\n        <td>\n          <p>{{player.born}}</p>\n          <p>{{2017 - player.born.substr(0,4)}}</p>\n          <p>{{player.height}} cm</p>\n          <p>{{player.weight}} kg</p>\n          <p>{{player.college}}</p>\n        </td>\n      </tr>\n    </td>\n    <td>\n      <img src=\"{{player | playerimage }}\" alt=\"\">\n    </td>\n    <td>\n      <img src=\"{{player | teamlogo}}\" alt=\"\">\n    </td>\n  </table>\n  <h1>Player Stats</h1>\n  <table>\n    <th></th>\n  </table>\n</div>\n"
 
 /***/ }),
 
 /***/ 759:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Elite League Rules</h1>\r\n\r\n<h2>General</h2>\r\n<p>This league is emulating the myGM-Mode expierence within an online environment.</p>\r\n<ul>\r\n  <li>There will be 20 teams to ensure every team has enough talent to be fun.</li>\r\n  <li>There will be two seasons per year. Each season constitutes of a regular season, playoffs, and off-season.</li>\r\n  <li>Each team will play against the other teams twice per season.</li>\r\n</ul>\r\n<h2 id=\"gameplay\">Gameplay</h2>\r\n\r\n<h3>Offense</h3>\r\n<ul>\r\n  <li>Don't abuse cheese. We appreciate a realistic playstyle.</li>\r\n</ul>\r\n\r\n<h3>Defense</h3>\r\n<ul>\r\n  <li>Inbound passes: You can steal any inbound pass that's on your defensive side of the court including the half court line.</li>\r\n  <li>No switching your defense in the middle of a possession (between man-to-man and zone except junk defense)</li>\r\n</ul>\r\n\r\n<h3>Misc</h3>\r\n<ul>\r\n  <li>Disconnects: Every D/C game will be a different situation and the league will act accordingly, for the most part i will let the two players decide on how to act upon a D/C</li>\r\n  <li>Sliders are to be determined</li>\r\n</ul>\r\n\r\n\r\n<h2 id=\"FA\">Free Agency</h2>\r\n<p>Free Agents will be auctioned off, meaning every team has the chance to acquire a free agent. As in an auction, the highest bidder wins. However, to win the auction, your bid must stand the highest for at least 24 hours. The minimum contract length is\r\n  1 year. The maximum is 4 years, 5 years with bird rights. We will use this table for determining the trumping of bids:</p>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <td colspan=\"7\">\r\n        <div class=\"h2center\">Free Agency Bid Table</div>\r\n      </td>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr>\r\n      <td></td>\r\n      <td>Original bid: 1 year</td>\r\n      <td>Original bid: 2 years</td>\r\n      <td>Original bid: 3 years</td>\r\n      <td>Original bid: 4 years</td>\r\n      <td>Original bid: 5 years</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 1 year</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>2</td>\r\n      <td>2.1</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 2 years</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>1.9</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 3 years</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.45</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 4 years</td>\r\n      <td>0.51</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.1</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 5 years</td>\r\n      <td>0.47</td>\r\n      <td>0.53</td>\r\n      <td>0.69</td>\r\n      <td>0.91</td>\r\n      <td>-</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<p>The numbers in the table are the standard multipliers. The rows represent the number of years in your proposed contract, and the columns represent the number of years of the previous proposed contract, or contract. Minimum bid for a player is $1M. There\r\n  is no maximum bid other than your remaining cap space.</p>\r\n<p>To top a bid with the same number of years the bid must increase by $1. Only multiples of $1 are eligble as bids. Bids will be rounded down to the next $1</p>\r\n<p>Only the incumbent team can offer a five year contract to the player.</p>\r\n<h2>Roster</h2>\r\n<p>You can only have up to 15 players on your roster ingame. If you have less than 13 players on your roster it will be filled up by a low overall player.</p>\r\n<p>You have a salary cap of $1000 each season. You can never go over it. If you abuse a bug to get over the cap without reporting it you might be excluded from the league.</p>\r\n<p>You can only sign players who are available in the standard roster of the current NBA2K.</p>\r\n<p>New general managers can void one contract during the offseason in order to fix their team.</p>\r\n<h2>Trades</h2>\r\n<p>Trades are allow throughout the season until the start of the playoffs. Trades must be posted in the appropiate discord channel and have to be approved be the trade council before they take effect.</p>\r\n<h2>Draft</h2>\r\n<p>There will be no draft. Rookies are available through the free agency when they are available ingame.</p>\r\n"
+module.exports = "<div *ngIf=\"user\" class=\"\">\r\n  <!--<button class=\"btn btn-primary\" *ngIf=\"showBids\" (click)=\"switchView()\">Show roster</button>\r\n  <button class=\"btn btn-primary\" *ngIf=\"!showBids\" (click)=\"switchView()\">Show offers</button>-->\r\n  <ul class=\"list-inline\">\r\n    <li class=\"list-inline-item\">Username: {{user.username}}</li>\r\n    <li class=\"list-inline-item\">Team: {{user.team | team}}</li>\r\n    <li class=\"list-inline-item\">Payroll: {{payroll | currency : 'EUR': true:\"1.0-0\"}}</li>\r\n    <li class=\"list-inline-item\">Available: {{1000-payroll | currency : 'EUR': true:\"1.0-0\"}}</li>\r\n  </ul>\r\n</div>\r\n<table class=\"table table-striped\" [mfData]=\"roster\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\r\n  <thead>\r\n    <tr>\r\n        <th><mfDefaultSorter by=\"lastName\">Roster</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\r\n        <th><mfDefaultSorter by=\"salary\">Season #{{season}}</mfDefaultSorter></th>\r\n        <th>Season #{{season+1}}</th>\r\n        <th>Season #{{season+2}}</th>\r\n        <th>Season #{{season+3}}</th>\r\n        <th>Season #{{season+4}}</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of mf.data\">\r\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.duration > 0 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 1 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 2 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 3 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n        <td>{{player.duration > 4 ? (player.salary | currency : 'EUR': true:\"1.0-0\"): \"\"}}</td>\r\n    </tr>\r\n    <!--<tr>\r\n      <td>Total</td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n      <td></td>\r\n    </tr>-->\r\n    </tbody>\r\n</table>\r\n<table class=\"table table-striped\">\r\n  <thead>\r\n    <tr>\r\n        <th>Offers</th>\r\n        <th>Overall</th>\r\n        <th>Position</th>\r\n        <th>Salary</th>\r\n        <th>Duration</th>\r\n        <th>Time left</th>\r\n    </tr>\r\n  </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let player of bids\">\r\n        <td>{{player.lastName}}, {{player.firstName}}</td>\r\n        <td>{{player.overall}}</td>\r\n        <td>{{player.position}}</td>\r\n        <td>{{player.salaryBid | currency : 'EUR': true:\"1.0-0\"}}</td>\r\n        <td>{{player.durationBid}}</td>\r\n        <td>{{player.timeBid | timeleft}}</td>\r\n    </tr>\r\n    </tbody>\r\n</table>\r\n<app-watchlist> </app-watchlist>\r\n"
 
 /***/ }),
 
 /***/ 760:
 /***/ (function(module, exports) {
 
+module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Email</label>\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" >\n  </div>\n  <div class=\"form-group\">\n    <label>Team</label>\n    <select class=\"form-control\" [(ngModel)]=\"team\" name=\"team\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Steam Profile</label>\n    <input type=\"text\" [(ngModel)]=\"steam\" name=\"steam\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n<h2>Reserved teams:</h2>\n<p>You can not register with them. Teams that are managed by the Commision can be attained. Contact a commissioner via discord.</p>\n<ul *ngFor=\"let user of userlist\">\n  <li>{{user.team}} by {{user.username}}</li>\n</ul>\n"
+
+/***/ }),
+
+/***/ 761:
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Elite League Rules</h1>\r\n\r\n<h2>General</h2>\r\n<p>This league is emulating the myGM-Mode expierence within an online environment.</p>\r\n<ul>\r\n  <li>There will be 20 teams to ensure every team has enough talent to be fun.</li>\r\n  <li>There will be two seasons per year. Each season constitutes of a regular season, playoffs, and off-season.</li>\r\n  <li>Each team will play against the other teams twice per season.</li>\r\n</ul>\r\n<h2 id=\"gameplay\">Gameplay</h2>\r\n\r\n<h3>Offense</h3>\r\n<ul>\r\n  <li>Don't abuse cheese. We appreciate a realistic playstyle.</li>\r\n</ul>\r\n\r\n<h3>Defense</h3>\r\n<ul>\r\n  <li>Inbound passes: You can steal any inbound pass that's on your defensive side of the court including the half court line.</li>\r\n  <li>No switching your defense in the middle of a possession (between man-to-man and zone except junk defense)</li>\r\n</ul>\r\n\r\n<h3>Misc</h3>\r\n<ul>\r\n  <li>Disconnects: Every D/C game will be a different situation and the league will act accordingly, for the most part i will let the two players decide on how to act upon a D/C</li>\r\n  <li>Sliders are to be determined</li>\r\n</ul>\r\n\r\n\r\n<h2 id=\"FA\">Free Agency</h2>\r\n<p>Free Agents will be auctioned off, meaning every team has the chance to acquire a free agent. As in an auction, the highest bidder wins. However, to win the auction, your bid must stand the highest for at least 24 hours. The minimum contract length is\r\n  1 year. The maximum is 4 years, 5 years with bird rights. We will use this table for determining the trumping of bids:</p>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <td colspan=\"7\">\r\n        <div class=\"h2center\">Free Agency Bid Table</div>\r\n      </td>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr>\r\n      <td></td>\r\n      <td>Original bid: 1 year</td>\r\n      <td>Original bid: 2 years</td>\r\n      <td>Original bid: 3 years</td>\r\n      <td>Original bid: 4 years</td>\r\n      <td>Original bid: 5 years</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 1 year</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>2</td>\r\n      <td>2.1</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 2 years</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.6</td>\r\n      <td>1.9</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 3 years</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.3</td>\r\n      <td>1.45</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 4 years</td>\r\n      <td>0.51</td>\r\n      <td>0.64</td>\r\n      <td>0.8</td>\r\n      <td>1</td>\r\n      <td>1.1</td>\r\n    </tr>\r\n    <tr>\r\n      <td>New bid: 5 years</td>\r\n      <td>0.47</td>\r\n      <td>0.53</td>\r\n      <td>0.69</td>\r\n      <td>0.91</td>\r\n      <td>-</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<p>The numbers in the table are the standard multipliers. The rows represent the number of years in your proposed contract, and the columns represent the number of years of the previous proposed contract, or contract. Minimum bid for a player is $1M. There\r\n  is no maximum bid other than your remaining cap space.</p>\r\n<p>To top a bid with the same number of years the bid must increase by $1. Only multiples of $1 are eligble as bids. Bids will be rounded down to the next $1</p>\r\n<p>Only the incumbent team can offer a five year contract to the player.</p>\r\n<h2>Roster</h2>\r\n<p>You can only have up to 15 players on your roster ingame. If you have less than 13 players on your roster it will be filled up by a low overall player.</p>\r\n<p>You have a salary cap of $1000 each season. You can never go over it. If you abuse a bug to get over the cap without reporting it you might be excluded from the league.</p>\r\n<p>You can only sign players who are available in the standard roster of the current NBA2K.</p>\r\n<p>New general managers can void one contract during the offseason in order to fix their team.</p>\r\n<h2>Trades</h2>\r\n<p>Trades are allow throughout the season until the start of the playoffs. Trades must be posted in the appropiate discord channel and have to be approved be the trade council before they take effect.</p>\r\n<h2>Draft</h2>\r\n<p>There will be no draft. Rookies are available through the free agency when they are available ingame.</p>\r\n"
+
+/***/ }),
+
+/***/ 762:
+/***/ (function(module, exports) {
+
 module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Team</th>\n        <th>W</th>\n        <th>L</th>\n        <th>%</th>\n        <th>GB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let standing of results;let i = index\" [attr.data-index]=\"i\">\n          <td>{{i+1}}</td>\n          <td>{{standing.name | team}}</td>\n          <td>{{standing.w}}</td>\n          <td>{{standing.l}}</td>\n          <td>{{standing.pct}}</td>\n          <td>{{standing.gb}}</td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n<div class=\"jumbotron\">\n  <h2>Report your game:</h2>\n  {{user | team}} <input type=\"number\" name=\"for\" [(ngModel)]=\"report.for\" value=\"\" min=\"0\" max=\"200\" required> vs <input type=\"number\" [(ngModel)]=\"report.against\" name=\"against\" value=\"\" min=\"0\" max=\"200\" required>\n  <select class=\"\" name=\"opponent\" [(ngModel)]=\"report.opponent\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n  </select>\n  <input type=\"button\" class=\"btn-small btn-danger\" name=\"submit\" value=\"Submit\" (click)=\"reportGame(report)\">\n  <input class=\"btn-small btn-success\" type=\"button\" (click)=\"this.loadStandings()\" value=\"reload standings\">\n</div>\n"
+
+/***/ }),
+
+/***/ 763:
+/***/ (function(module, exports) {
+
+module.exports = "<table class=\"table table-striped\" [mfData]=\"watchlist\" #mf=\"mfDataTable\" [mfRowsOnPage]=\"15\">\n  <thead>\n    <tr>\n        <th><mfDefaultSorter by=\"lastName\">Watchlist</mfDefaultSorter></th>\n        <th><mfDefaultSorter by=\"overall\">Overall</mfDefaultSorter></th>\n        <th><mfDefaultSorter by=\"position\">Position</mfDefaultSorter></th>\n        <th>Contract/Offer</th>\n        <th>Unwatch</th>\n\n    </tr>\n  </thead>\n    <tbody>\n    <tr *ngFor=\"let player of mf.data\">\n        <td [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\"><a routerLink=\"/player/{{player.lastName}}/{{player.firstName}}/\">{{player.lastName}}, {{player.firstName}}</a></td>\n        <td>{{player.overall}}</td>\n        <td>{{player.position}}</td>\n        <td>{{(player.team != \"\")? \"\":\"FA: \" }}{{(player.team != \"\")? (player.salary | currency : 'EUR': true:\"1.0-0\"): (player.salaryBid | currency : 'EUR': true:\"1.0-0\") }}/{{(player.team != \"\")? (player.duration): (player.durationBid)}}/{{(player.team != \"\")? player.team: (player.teamBid)}}/{{(player.team != \"\")? \"\": (player.timeBid | timeleft)}}</td>\n        <td><button (click)=\"removeFromWatchlist(player)\" name=\"button\" class=\"button button-success\">\n          Unwatch\n        </button></td>\n    </tr>\n    </tbody>\n</table>\n"
+
+/***/ }),
+
+/***/ 95:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayerService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PlayerService = (function () {
+    function PlayerService(http) {
+        this.http = http;
+        this.isDev = false; // Change to false before deployment
+    }
+    PlayerService.prototype.getAllPlayers = function () {
+        var ep = this.prepEndpoint('player/all');
+        return this.http.get(ep)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getPlayerByLastName = function (lastName) {
+        var ep = this.prepEndpoint('player/lastname/');
+        return this.http.get(ep + lastName)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getPlayerByFullName = function (lastName, firstName) {
+        var ep = this.prepEndpoint('player/name/');
+        return this.http.get(ep + lastName + "/" + firstName)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getPlayerByTeam = function (team) {
+        var ep = this.prepEndpoint('player/team/');
+        return this.http.get(ep + team)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getRoster = function (user) {
+        var ep = this.prepEndpoint('player/team/');
+        return this.http.get(ep + user.team)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getFreeAgents = function () {
+        var ep = this.prepEndpoint('player/freeagents');
+        return this.http.get(ep)
+            .map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.placeBid = function (player) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        var ep = this.prepEndpoint("player/placebid");
+        //new bid to current bid
+        player.durationBid = player.newDurationBid;
+        player.newDurationBid = null;
+        player.salaryBid = player.newSalaryBid;
+        player.newSalaryBid = null;
+        player.timeBid = player.newTimeBid;
+        player.newTimeBid = null;
+        player.teamBid = player.newTeamBid;
+        player.newTeamBid = null;
+        this.http.post(ep, player, { headers: headers })
+            .map(function (res) { return res.json(); }).subscribe(function (res) {
+            _this.result = res;
+            //console.log(this.result);
+        });
+    };
+    PlayerService.prototype.getBids = function (user) {
+        var ep = this.prepEndpoint('player/bids/team/');
+        return this.http.get(ep + user.team).map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.getWatchlist = function (user) {
+        var ep = this.prepEndpoint('player/watchlist/team/');
+        return this.http.get(ep + user.team).map(function (res) { return res.json(); });
+    };
+    PlayerService.prototype.updateWatchlist = function (player, user) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        var ep = this.prepEndpoint("player/watchlist/edit/");
+        this.http.post(ep + user.team, player, { headers: headers })
+            .map(function (res) { return res.json(); }).subscribe(function (res) {
+            _this.result = res;
+        });
+    };
+    // deleteBid(id){
+    //   let ep = this.prepEndpoint("bid/delete/"+id);
+    //   this.http.delete(ep)
+    //    .map((res) => res.json()).subscribe(res => {
+    //      this.result = res;
+    //      console.log(this.result);
+    //    });
+    // }
+    PlayerService.prototype.prepEndpoint = function (ep) {
+        if (!this.isDev) {
+            return ep;
+        }
+        else {
+            return 'http://localhost:8080/' + ep;
+        }
+    };
+    return PlayerService;
+}());
+PlayerService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
+], PlayerService);
+
+var _a;
+//# sourceMappingURL=C:/Users/Manuel/Downloads/JS Learning/traversy/auktion/angular-src/src/player.service.js.map
 
 /***/ })
 
-},[1026]);
+},[1029]);
 //# sourceMappingURL=main.bundle.js.map

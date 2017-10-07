@@ -1,0 +1,23 @@
+<table class="table table-striped" [mfData]="watchlist" #mf="mfDataTable" [mfRowsOnPage]="15">
+  <thead>
+    <tr>
+        <th><mfDefaultSorter by="lastName">Watchlist</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="overall">Overall</mfDefaultSorter></th>
+        <th><mfDefaultSorter by="position">Position</mfDefaultSorter></th>
+        <th>Contract/Offer</th>
+        <th>Unwatch</th>
+
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let player of mf.data">
+        <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
+        <td>{{player.overall}}</td>
+        <td>{{player.position}}</td>
+        <td>{{(player.team != "")? "":"FA: " }}{{(player.team != "")? (player.salary | currency : 'EUR': true:"1.0-0"): (player.salaryBid | currency : 'EUR': true:"1.0-0") }}/{{(player.team != "")? (player.duration): (player.durationBid)}}/{{(player.team != "")? player.team: (player.teamBid)}}/{{(player.team != "")? "": (player.timeBid | timeleft)}}</td>
+        <td><button (click)="removeFromWatchlist(player)" name="button" class="button button-success">
+          Unwatch
+        </button></td>
+    </tr>
+    </tbody>
+</table>

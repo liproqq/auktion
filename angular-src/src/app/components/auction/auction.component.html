@@ -24,6 +24,7 @@
           <th>Offer</th>
           <th>Length</th>
           <th>Confirm</th>
+          <th>Watch</th>
       </tr>
     </thead>
     <tbody>
@@ -43,6 +44,7 @@
             </select>
         </td>
         <td><button (click)="bid(player, player.newSalaryBid, player.newDurationBid)" name="button" class="btn btn-success">Confirm Offer</button></td>
+        <td><button (click)="addToWatchlist(player)" name="button" class="btn btn-success">Watch</button></td>
     </tr>
     </tbody>
     <tfoot>
@@ -53,3 +55,5 @@
     </tr>
     </tfoot>
 </table>
+
+<app-watchlist></app-watchlist>

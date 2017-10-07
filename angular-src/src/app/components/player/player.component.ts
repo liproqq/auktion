@@ -100,4 +100,9 @@ export class PlayerComponent implements OnInit {
     this.allPlayers = null;
     this.filterQuery= "";
   }
+
+  addToWatchlist(player){
+    let user = JSON.parse(localStorage.getItem('user'));
+    this.playerService.updateWatchlist(player, user);
+  }
 }
