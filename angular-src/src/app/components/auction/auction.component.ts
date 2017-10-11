@@ -156,6 +156,15 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    1507743715817
+    //regular season
+    if(this.now>1507743715817 && yearsBid > 1){
+      this.flashMessage.show("Invalid Offer - You can only offer one season contracts during the regular season.", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
     //Birds
     if(player.lastTeam != newTeamBid && yearsBid == 5){
       this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player with bird rights.", {
