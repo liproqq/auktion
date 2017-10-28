@@ -22,6 +22,17 @@
     <tfoot>
     </tfoot>
 </table>
+<h2>Recent results</h2>
+<table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let game of teamResults">
+          <td>{{game.for<game.against?"L":"W"}} vs {{game.opponent}} </td>
+      </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+
 <div class="jumbotron">
   <h2>Report your game:</h2>
   {{user | team}} <input type="number" name="for" [(ngModel)]="report.for" value="" min="0" max="200" required> vs <input type="number" [(ngModel)]="report.against" name="against" value="" min="0" max="200" required>

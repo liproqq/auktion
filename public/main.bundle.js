@@ -194,6 +194,11 @@ var StandingsService = (function () {
         return this.http.get(ep)
             .map(function (res) { return res.json(); });
     };
+    StandingsService.prototype.getTeamResults = function (team) {
+        var ep = this.prepEndpoint('standings/team/' + team + "/1");
+        return this.http.get(ep)
+            .map(function (res) { return res.json(); });
+    };
     StandingsService.prototype.saveGame = function (report, reporter) {
         var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -1324,6 +1329,7 @@ var StandingsComponent = (function () {
     StandingsComponent.prototype.ngOnInit = function () {
         this.loadStandings();
         this.user = JSON.parse(localStorage.getItem('user')).team;
+        this.loadResults();
     };
     StandingsComponent.prototype.loadStandings = function () {
         var _this = this;
@@ -1331,6 +1337,16 @@ var StandingsComponent = (function () {
             _this.results = _this.convertStandings(data);
             _this.sortByWins(_this.results);
             _this.gamesBehind(_this.results);
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+    };
+    StandingsComponent.prototype.loadResults = function () {
+        var _this = this;
+        this.standingsService.getTeamResults(this.user).subscribe(function (data) {
+            _this.teamResults = data[0].reports;
+            console.log(_this.teamResults);
         }, function (err) {
             console.log(err);
             return false;
@@ -2082,7 +2098,7 @@ module.exports = "<h1>Elite League Rules</h1>\r\n\r\n<h2>General</h2>\r\n<p>This
 /***/ 762:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Team</th>\n        <th>W</th>\n        <th>L</th>\n        <th>%</th>\n        <th>GB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let standing of results;let i = index\" [attr.data-index]=\"i\">\n          <td>{{i+1}}</td>\n          <td>{{standing.name | team}}</td>\n          <td>{{standing.w}}</td>\n          <td>{{standing.l}}</td>\n          <td>{{standing.pct}}</td>\n          <td>{{standing.gb}}</td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n<div class=\"jumbotron\">\n  <h2>Report your game:</h2>\n  {{user | team}} <input type=\"number\" name=\"for\" [(ngModel)]=\"report.for\" value=\"\" min=\"0\" max=\"200\" required> vs <input type=\"number\" [(ngModel)]=\"report.against\" name=\"against\" value=\"\" min=\"0\" max=\"200\" required>\n  <select class=\"\" name=\"opponent\" [(ngModel)]=\"report.opponent\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n  </select>\n  <input type=\"button\" class=\"btn-small btn-danger\" name=\"submit\" value=\"Submit\" (click)=\"reportGame(report)\">\n  <input class=\"btn-small btn-success\" type=\"button\" (click)=\"this.loadStandings()\" value=\"reload standings\">\n</div>\n"
+module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Team</th>\n        <th>W</th>\n        <th>L</th>\n        <th>%</th>\n        <th>GB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let standing of results;let i = index\" [attr.data-index]=\"i\">\n          <td>{{i+1}}</td>\n          <td>{{standing.name | team}}</td>\n          <td>{{standing.w}}</td>\n          <td>{{standing.l}}</td>\n          <td>{{standing.pct}}</td>\n          <td>{{standing.gb}}</td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n<h2>Recent results</h2>\n<table class=\"table table-striped\">\n    <tbody>\n      <tr *ngFor=\"let game of teamResults\">\n          <td>{{game.for<game.against?\"L\":\"W\"}} vs {{game.opponent}} </td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n\n<div class=\"jumbotron\">\n  <h2>Report your game:</h2>\n  {{user | team}} <input type=\"number\" name=\"for\" [(ngModel)]=\"report.for\" value=\"\" min=\"0\" max=\"200\" required> vs <input type=\"number\" [(ngModel)]=\"report.against\" name=\"against\" value=\"\" min=\"0\" max=\"200\" required>\n  <select class=\"\" name=\"opponent\" [(ngModel)]=\"report.opponent\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n  </select>\n  <input type=\"button\" class=\"btn-small btn-danger\" name=\"submit\" value=\"Submit\" (click)=\"reportGame(report)\">\n  <input class=\"btn-small btn-success\" type=\"button\" (click)=\"this.loadStandings()\" value=\"reload standings\">\n</div>\n"
 
 /***/ }),
 

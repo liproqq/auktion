@@ -17,6 +17,12 @@ export class StandingsService {
         .map(res => res.json());
   }
 
+  getTeamResults(team){
+    let ep = this.prepEndpoint('standings/team/'+team+"/1");
+    return this.http.get(ep)
+        .map(res => res.json());
+  }
+
   saveGame(report, reporter){
     let headers = new Headers();
     headers.append('Content-Type','application/json');

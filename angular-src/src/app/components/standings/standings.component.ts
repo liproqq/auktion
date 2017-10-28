@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class StandingsComponent implements OnInit {
   results: any;
+  teamResults: any;
   user:any;
   report:Object = {
     for:Number,
@@ -28,6 +29,7 @@ export class StandingsComponent implements OnInit {
   ngOnInit() {
     this.loadStandings();
     this.user = JSON.parse(localStorage.getItem('user')).team;
+    this.loadResults();
   }
 
   loadStandings(){
@@ -35,6 +37,18 @@ export class StandingsComponent implements OnInit {
         this.results = this.convertStandings(data);
         this.sortByWins(this.results);
         this.gamesBehind(this.results);
+    },
+    err => {
+      console.log(err);
+      return false;
+    });
+
+  }
+
+  loadResults(){
+    this.standingsService.getTeamResults(this.user).subscribe(data =>{
+        this.teamResults = data[0].reports;
+        console.log(this.teamResults);
     },
     err => {
       console.log(err);
