@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   team: {
-    type: String,
+    type: String, // todo validate in Enum
     required: true,
     unique: true
   },

@@ -40,11 +40,11 @@ router.post('/authenticate', (req, res, next) => {
     User.comparePassword(password, user.password, (err, isMatch) => {
       if(err) throw err;
       if(isMatch){
-        const token = jwt.sign(user, config.secret, {
+        const token = jwt.sign(user.toObject(), config.secret, {
           expiresIn: 604800 // 1 week
         });
 
-        res.json({
+        return res.json({
           success: true,
           token: 'JWT '+token,
           user: {
@@ -53,9 +53,9 @@ router.post('/authenticate', (req, res, next) => {
             team: user.team
           }
         });
-      } else {
-        return res.json({success: false, msg: 'Wrong password'});
       }
+      
+      return res.json({success: false, msg: 'Wrong password'});
     });
   });
 });
@@ -76,9 +76,9 @@ router.get('/userlist', (req, res, next) => {
 });
 
 //update money
-router.post("/updateMoney", (req,res,next) => {
-  var money= req.body.money;
-  var team= req.body.team;
+router.post("/updateMoney", (req, res, next) => {
+  var money = req.body.money;
+  var team = req.body.team;
 
   console.log(req.body)
   User.findOneAndUpdate({team: team},{$set: {money: money}}, (err, user) => {

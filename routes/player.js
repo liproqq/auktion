@@ -18,11 +18,11 @@ router.get("/all", (req, res, next) => {
 });
 
 router.get("/freeagents", (req, res, next) => {
-  let dayAgo= (Date.now()/1)-1000*60*60*24;
-  let now= (Date.now()/1);
+  let dayAgo = (Date.now()/1)-1000*60*60*24;
+  let now = (Date.now()/1);
 
   if(now>1507485600000 && now<1507500000000) {
-    dayAgo= (Date.now()/1)-1000*60*5
+    dayAgo = (Date.now()/1)-1000*60*5
   }
 
   //check if a bid was more than 24h/5m
@@ -52,7 +52,7 @@ router.get("/freeagents", (req, res, next) => {
   // return actual free agents
   Player.find({duration:  0}, (err, player) => {
     if (err) throw err;
-    player.sort((a,b) => {
+    player.sort((a,b) => { // TODO should be sorted in query
       return a.timeBid-b.timeBid
     })
     res.json(player);

@@ -1,5 +1,3 @@
-module.exports = {
-  database: 'mongodb://liproqq:liproqq@ds137220.mlab.com:37220/auktion',   //prod
-  //database: 'mongodb://localhost:27017/auktion',    //dev
-  secret: 'yoursecret'
-}
+exports.database = process.env.DATABASE || 'mongodb://localhost:27017/auktion' + (process.env.NODE_ENV === 'test' ? '_test' : '');
+
+exports.secret = process.env.SECRET || 'yoursecret';
