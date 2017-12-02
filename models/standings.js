@@ -13,4 +13,4 @@ const StandingsSchema = mongoose.Schema({
   }
 });
 
-const Standings = module.exports = mongoose.model('Standings', StandingsSchema);
+module.exports = mongoose.model('Standings', StandingsSchema);
