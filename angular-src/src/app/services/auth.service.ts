@@ -44,7 +44,7 @@ export class AuthService {
     headers.append('Content-Type','application/json');
     let ep = this.prepEndpoint('users/updatemoney');
     this.http.post(ep, user,{headers: headers})
-      .map(res => res.json()).subscribe(res => {        
+      .map(res => res.json()).subscribe(res => {
         console.log(res);
       });;
   }

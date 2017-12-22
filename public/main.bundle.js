@@ -1330,6 +1330,7 @@ var StandingsComponent = (function () {
         this.loadStandings();
         this.user = JSON.parse(localStorage.getItem('user')).team;
         this.loadResults();
+        this.getActiveTeams();
     };
     StandingsComponent.prototype.loadStandings = function () {
         var _this = this;
@@ -1410,6 +1411,19 @@ var StandingsComponent = (function () {
         }
         this.standingsService.saveGame(report, this.user);
         this.flashMessage.show('Game saved!', { cssClass: 'alert-success', timeout: 3000 });
+    };
+    StandingsComponent.prototype.getActiveTeams = function () {
+        var _this = this;
+        this.authService.getUserList().subscribe(function (data) {
+            _this.activeTeams = data;
+            console.log(_this.activeTeams);
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
+    };
+    StandingsComponent.prototype.countInArray = function (array, value) {
+        return array.reduce(function (n, x) { return n + (x.opponent === value); }, 0);
     };
     return StandingsComponent;
 }());
@@ -1659,23 +1673,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var TeamlogoPipe = (function () {
     function TeamlogoPipe() {
         this.teams = [{ short: "ATL", long: "Atlanta Hawks" }, { short: "BOS", long: "Boston Celtics" }, { short: "BKN", long: "Brooklyn Nets" }, { short: "CHA", long: "Charlotte Hornets" }, { short: "CHI", long: "Chicago Bulls" }, { short: "CLE", long: "Cleveland Cavaliers" }, { short: "DAL", long: "Dallas Mavericks" }, { short: "DEN", long: "Denver Nuggets" }, { short: "DET", long: "Detroit Pistons" }, { short: "GSW", long: "Golden State Warriors" }, { short: "HOU", long: "Houston Rockets" }, { short: "IND", long: "Indiana Pacers" }, { short: "LAC", long: "Los Angeles Clippers" }, { short: "LAL", long: "Los Angeles Lakers" }, { short: "MEM", long: "Memphis Grizzlies" }, { short: "MIA", long: "Miami Heat" }, { short: "MIL", long: "Milwaukee Bucks" }, { short: "MIN", long: "Minnesota Timberwolves" }, { short: "NOP", long: "New Orleans Pelicans" }, { short: "NYK", long: "New York Knicks" }, { short: "OKC", long: "Oklahoma City Thunder" }, { short: "ORL", long: "Orlando Magic" }, { short: "PHI", long: "Philadelphia 76ers" }, { short: "PHX", long: "Phoenix Suns" }, { short: "POR", long: "Portland Trail Blazers" }, { short: "SAC", long: "Sacramento Kings" }, { short: "SAS", long: "San Antonio Spurs" }, { short: "TOR", long: "Toronto Raptors" }, { short: "UTA", long: "Utah Jazz" }, { short: "WAS", long: "Washington Wizards" }];
-    }
-    TeamlogoPipe.prototype.transform = function (player) {
-        if (player.team.length != 3) {
-            return "Free Agent";
-        }
-        var team = this.shortToLong(player.team).replace(/\s/g, "-");
-        return "http://www.2kratings.com/wp-content/uploads/" + team + ".svg";
-    };
-    TeamlogoPipe.prototype.shortToLong = function (teamshort) {
-        var index = -1;
-        for (var i = 0, len = this.teams.length; i < len; i++) {
+        /*shortToLong(teamshort: string):any {
+          var index = -1;
+          for(var i = 0, len = this.teams.length; i < len; i++) {
             if (this.teams[i].short === teamshort) {
                 index = i;
                 break;
             }
-        }
-        return this.teams[i].long;
+          }
+          return this.teams[i].long;
+        }*/
+    }
+    TeamlogoPipe.prototype.transform = function (team) {
+        //if(player.team.length != 3){return "Free Agent"}
+        //let team = this.shortToLong(player.team).replace(/\s/g, "-");
+        team == "NOP" ? team = "no" : "";
+        return "http://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/" + team + ".png";
     };
     return TeamlogoPipe;
 }());
@@ -1990,7 +2003,7 @@ exports = module.exports = __webpack_require__(27)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "img{\r\n  height: 50px\r\n}\r\n", ""]);
 
 // exports
 
@@ -2070,7 +2083,7 @@ module.exports = "<h1>Player list</h1>\r\n\r\n<input on-focus=\"changeType('last
 /***/ 758:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngFor=\"let player of player\" class=\"\">\n  <table>\n    <td class=\"name\">\n      <h1>{{player.firstName}} {{player.lastName}}</h1>\n      <h3>{{player.team |team}}</h3>\n      <h2>#{{player.number}}</h2>\n    </td>\n    <td>\n      <tr>\n        <td>\n          <p>Born: </p>\n          <p>Age: </p>\n          <p>Height: </p>\n          <p>Weight: </p>\n          <p>From: </p>\n        </td>\n        <td>\n          <p>{{player.born}}</p>\n          <p>{{2017 - player.born.substr(0,4)}}</p>\n          <p>{{player.height}} cm</p>\n          <p>{{player.weight}} kg</p>\n          <p>{{player.college}}</p>\n        </td>\n      </tr>\n    </td>\n    <td>\n      <img src=\"{{player | playerimage }}\" alt=\"\">\n    </td>\n    <td>\n      <img src=\"{{player | teamlogo}}\" alt=\"\">\n    </td>\n  </table>\n  <h1>Player Stats</h1>\n  <table>\n    <th></th>\n  </table>\n</div>\n"
+module.exports = "<div *ngFor=\"let player of player\" class=\"\">\n  <table>\n    <td class=\"name\">\n      <h1>{{player.firstName}} {{player.lastName}}</h1>\n      <h3>{{player.team |team}}</h3>\n      <h2>#{{player.number}}</h2>\n    </td>\n    <td>\n      <tr>\n        <td>\n          <p>Born: </p>\n          <p>Age: </p>\n          <p>Height: </p>\n          <p>Weight: </p>\n          <p>From: </p>\n        </td>\n        <td>\n          <p>{{player.born}}</p>\n          <p>{{2018 - player.born.substr(0,4)}}</p>\n          <p>{{player.height}} cm</p>\n          <p>{{player.weight}} kg</p>\n          <p>{{player.college}}</p>\n        </td>\n      </tr>\n    </td>\n    <td>\n      <img src=\"{{player | playerimage }}\" alt=\"\">\n    </td>\n    <td>\n      <img src=\"{{player.team | teamlogo}}\" alt=\"\">\n    </td>\n  </table>\n  <h1>Player Stats</h1>\n  <table>\n    <th></th>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -2098,7 +2111,7 @@ module.exports = "<h1>Elite League Rules</h1>\r\n\r\n<h2>General</h2>\r\n<p>This
 /***/ 762:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Team</th>\n        <th>W</th>\n        <th>L</th>\n        <th>%</th>\n        <th>GB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let standing of results;let i = index\" [attr.data-index]=\"i\">\n          <td>{{i+1}}</td>\n          <td>{{standing.name | team}}</td>\n          <td>{{standing.w}}</td>\n          <td>{{standing.l}}</td>\n          <td>{{standing.pct}}</td>\n          <td>{{standing.gb}}</td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n<h2>Recent results</h2>\n<table class=\"table table-striped\">\n    <tbody>\n      <tr *ngFor=\"let game of teamResults\">\n          <td>{{game.for<game.against?\"L\":\"W\"}} vs {{game.opponent}} </td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n\n<div class=\"jumbotron\">\n  <h2>Report your game:</h2>\n  {{user | team}} <input type=\"number\" name=\"for\" [(ngModel)]=\"report.for\" value=\"\" min=\"0\" max=\"200\" required> vs <input type=\"number\" [(ngModel)]=\"report.against\" name=\"against\" value=\"\" min=\"0\" max=\"200\" required>\n  <select class=\"\" name=\"opponent\" [(ngModel)]=\"report.opponent\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n  </select>\n  <input type=\"button\" class=\"btn-small btn-danger\" name=\"submit\" value=\"Submit\" (click)=\"reportGame(report)\">\n  <input class=\"btn-small btn-success\" type=\"button\" (click)=\"this.loadStandings()\" value=\"reload standings\">\n</div>\n"
+module.exports = "<div class=\"jumbotron\">\n  <h2>Report your game:</h2>\n  {{user | team}} <input type=\"number\" name=\"for\" [(ngModel)]=\"report.for\" value=\"\" min=\"0\" max=\"200\" required> vs <input type=\"number\" [(ngModel)]=\"report.against\" name=\"against\" value=\"\" min=\"0\" max=\"200\" required>\n  <select class=\"\" name=\"opponent\" [(ngModel)]=\"report.opponent\">\n      <option *ngFor=\"let team of teams\" value={{team.short}}>{{team.long}}</option>\n  </select>\n  <input type=\"button\" class=\"btn-small btn-danger\" name=\"submit\" value=\"Submit\" (click)=\"reportGame(report)\">\n  <input class=\"btn-small btn-success\" type=\"button\" (click)=\"this.loadStandings()\" value=\"reload standings\">\n</div>\n<table class=\"table table-striped\">\n    <thead>\n      <tr>\n        <th>#</th>\n        <th>Team</th>\n        <th></th>\n        <th>W</th>\n        <th>L</th>\n        <th>%</th>\n        <th>GB</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let standing of results;let i = index\" [attr.data-index]=\"i\">\n          <td>{{i+1}}</td>\n          <td><img src='{{standing.name | teamlogo}}'></td>\n          <td>{{standing.name | team}}</td>\n          <td>{{standing.w}}</td>\n          <td>{{standing.l}}</td>\n          <td>{{standing.pct}}</td>\n          <td>{{standing.gb}}</td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n\n\n<h2>Recent results</h2>\n<table class=\"table table-striped\">\n    <tbody>\n      <tr>\n          <td *ngFor=\"let game of teamResults | slice:0:4; let i=index\">{{game.for < game.against?\"L\":\"W\"}} vs <img src='{{game.opponent | teamlogo}}'> </td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n<h2>Games played</h2>\n<table class=\"table table-striped\">\n  <thead>\n  </thead>\n    <tbody>\n      <tr *ngFor=\"let team of activeTeams\">\n        <td>{{countInArray(teamResults, team.team)}}/2</td>\n        <td><img src='{{team.team | teamlogo}}'> <td>\n        <td>{{team.team | team}}</td>\n        <td><a href=\"{{team.steam}}\">{{team.username}}</a></td>\n      </tr>\n    </tbody>\n    <tfoot>\n    </tfoot>\n</table>\n"
 
 /***/ }),
 

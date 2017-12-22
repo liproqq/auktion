@@ -1,8 +1,18 @@
+<div class="jumbotron">
+  <h2>Report your game:</h2>
+  {{user | team}} <input type="number" name="for" [(ngModel)]="report.for" value="" min="0" max="200" required> vs <input type="number" [(ngModel)]="report.against" name="against" value="" min="0" max="200" required>
+  <select class="" name="opponent" [(ngModel)]="report.opponent">
+      <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
+  </select>
+  <input type="button" class="btn-small btn-danger" name="submit" value="Submit" (click)="reportGame(report)">
+  <input class="btn-small btn-success" type="button" (click)="this.loadStandings()" value="reload standings">
+</div>
 <table class="table table-striped">
     <thead>
       <tr>
         <th>#</th>
         <th>Team</th>
+        <th></th>
         <th>W</th>
         <th>L</th>
         <th>%</th>
@@ -12,6 +22,7 @@
     <tbody>
       <tr *ngFor="let standing of results;let i = index" [attr.data-index]="i">
           <td>{{i+1}}</td>
+          <td><img src='{{standing.name | teamlogo}}'></td>
           <td>{{standing.name | team}}</td>
           <td>{{standing.w}}</td>
           <td>{{standing.l}}</td>
@@ -22,23 +33,30 @@
     <tfoot>
     </tfoot>
 </table>
+
+
 <h2>Recent results</h2>
 <table class="table table-striped">
     <tbody>
-      <tr *ngFor="let game of teamResults">
-          <td>{{game.for<game.against?"L":"W"}} vs {{game.opponent}} </td>
+      <tr>
+          <td *ngFor="let game of teamResults | slice:0:4; let i=index">{{game.for < game.against?"L":"W"}} vs <img src='{{game.opponent | teamlogo}}'> </td>
       </tr>
     </tbody>
     <tfoot>
     </tfoot>
 </table>
-
-<div class="jumbotron">
-  <h2>Report your game:</h2>
-  {{user | team}} <input type="number" name="for" [(ngModel)]="report.for" value="" min="0" max="200" required> vs <input type="number" [(ngModel)]="report.against" name="against" value="" min="0" max="200" required>
-  <select class="" name="opponent" [(ngModel)]="report.opponent">
-      <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
-  </select>
-  <input type="button" class="btn-small btn-danger" name="submit" value="Submit" (click)="reportGame(report)">
-  <input class="btn-small btn-success" type="button" (click)="this.loadStandings()" value="reload standings">
-</div>
+<h2>Games played</h2>
+<table class="table table-striped">
+  <thead>
+  </thead>
+    <tbody>
+      <tr *ngFor="let team of activeTeams">
+        <td>{{countInArray(teamResults, team.team)}}/2</td>
+        <td><img src='{{team.team | teamlogo}}'> <td>
+        <td>{{team.team | team}}</td>
+        <td><a href="{{team.steam}}">{{team.username}}</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>

@@ -16,7 +16,7 @@
         </td>
         <td>
           <p>{{player.born}}</p>
-          <p>{{2017 - player.born.substr(0,4)}}</p>
+          <p>{{2018 - player.born.substr(0,4)}}</p>
           <p>{{player.height}} cm</p>
           <p>{{player.weight}} kg</p>
           <p>{{player.college}}</p>
@@ -27,7 +27,7 @@
       <img src="{{player | playerimage }}" alt="">
     </td>
     <td>
-      <img src="{{player | teamlogo}}" alt="">
+      <img src="{{player.team | teamlogo}}" alt="">
     </td>
   </table>
   <h1>Player Stats</h1>
