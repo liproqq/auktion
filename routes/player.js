@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Player = require("../models/player");
+const season = require('../config/season');
 
 router.get("/all", (req, res, next) => {
 
@@ -21,7 +22,7 @@ router.get("/freeagents", (req, res, next) => {
   let dayAgo= (Date.now()/1)-1000*60*60*24;
   let now= (Date.now()/1);
 
-  if(now>1507485600000 && now<1507500000000) {
+  if(now>season.startSuddenDeath && now<season.endSuddenDeath) {
     dayAgo= (Date.now()/1)-1000*60*5
   }
 

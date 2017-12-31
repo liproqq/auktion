@@ -6,12 +6,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimeleftPipe implements PipeTransform {
   timeleft:String;
 
+  private startFA = 1514916000000;
+  private startSuddenDeath = 1515952800000;
+  private endSuddenDeath = 1515960000000;
+  private regularSeasonStart = 1515970000000;
+
   private now:any= Date.now();
 
   transform(timeBid: number):any {
     let dayAgo= (Date.now()/1)-1000*60*60*24;
 
-    if(this.now>1507485600000 && this.now<1507500000000) {
+
+    //sudden death
+    if(this.now>this.startSuddenDeath && this.now<this.endSuddenDeath) {
       dayAgo= (Date.now()/1)-1000*60*5
     }
 

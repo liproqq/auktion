@@ -16,7 +16,17 @@ export class AuctionComponent implements OnInit {
   public filterQuery = "";
   public searchType = "lastName";
   public money:any = 0;
+  public bidMultiplier:Array<any>= [
+                                              [1.0,1.3,1.6,2.0,2.1],
+                                              [0.8,1.0,1.3,1.6,1.9],
+                                              [0.64,0.8,1.0,1.3,1.45],
+                                              [0.51,0.64,0.8,1.0,1.1],
+                                              [0.47,0.53,0.69,0.91]];
   private now:any= 0;
+  private startFA = 1514916000000;
+  private startSuddenDeath = 1515952800000;
+  private endSuddenDeath = 1515960000000;
+  private regularSeasonStart = 1515970000000;
 
   constructor(private authService:AuthService,
               private router:Router,
@@ -37,16 +47,17 @@ export class AuctionComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem('user'));
     this.money = user.money;
 
-    if(this.now>1507140000000 && this.now<1507485600000){
+
+    if(this.now>this.startFA && this.now<this.startSuddenDeath){
       console.log("auction active")
-      this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in "+Math.floor((1507485600000-this.now)/60000)+" Minutes (Sunday October 8th 8 pm CEST) for four hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+      this.flashMessage.show("Auctions are active. Sudden Death Timer will be active in "+Math.floor((this.startSuddenDeath-this.now)/60000)+" Minutes (Sunday January 14th 8 pm CET) for two hours. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
         cssClass: 'alert-success',
         timeout: 30000});
     }
 
-    if(this.now>1507485600000 && this.now<1507485600000){
+    if(this.now>this.startSuddenDeath && this.now<this.endSuddenDeath){
       console.log("auction sudden death active")
-      this.flashMessage.show("Sudden Death Timer active for "+Math.floor((1507485600000-this.now)/60000)+" minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
+      this.flashMessage.show("Sudden Death Timer active for "+Math.floor((this.endSuddenDeath-this.now)/60000)+" minutes. On Sudden Death Timer every successful bid will be signed after being highest bid for 5 minutes.", {
         cssClass: 'alert-danger',
         timeout: 60000});
     }
@@ -67,9 +78,29 @@ export class AuctionComponent implements OnInit {
     player.newDurationBid = parseInt(player.newDurationBid);
     player.newTimeBid = newTimeBid;
 
-    function trumpBid(player){ //returns true if new bid trumped old bid
 
-      //todo: five years
+    function trumpBid(player){
+      let bidMultiplier= [[1.0,1.3,1.6,2.0,2.1],
+                          [0.8,1.0,1.3,1.6,1.9],
+                          [0.64,0.8,1.0,1.3,1.45],
+                          [0.51,0.64,0.8,1.0,1.1],
+                          [0.47,0.53,0.69,0.91]];
+      //first bid
+
+      if(player.durationBid == null && player.salaryBid == null){
+          return true;
+      }
+
+      if( player.salaryBid*bidMultiplier[player.newDurationBid-1][player.durationBid-1] < player.newSalaryBid){
+
+        return true
+      }
+      return false
+    }
+
+    /*function trumpBid(player){ //returns true if new bid trumped old bid
+
+
       if(player.durationBid == 5 || player.newDurationBid == 5){
         return false;
       }
@@ -83,6 +114,9 @@ export class AuctionComponent implements OnInit {
       if(player.durationBid == player.newDurationBid && player.salaryBid < player.newSalaryBid){
           return true;
       }
+
+
+      //new more
 
       //new one year more
       if(player.durationBid+1 == player.newDurationBid && player.salaryBid*.8 < player.newSalaryBid){
@@ -99,6 +133,31 @@ export class AuctionComponent implements OnInit {
         return true;
       }
 
+      //new four years more
+      if(player.durationBid+4 == player.newDurationBid && player.salaryBid*.47 < player.newSalaryBid){
+        return true;
+      }
+
+      //5 years new
+      if(
+        player.newDurationBid == 5 &&
+        player.DurationBid == 4 &&
+        player.salaryBid*.91 < player.newSalaryBid
+        )
+        {
+        return true;
+      }
+
+      if(
+        player.newDurationBid == 5 &&
+        player.DurationBid == 3 &&
+        player.salaryBid*.69 < player.newSalaryBid
+        )
+        {
+        return true;
+      }
+      //new less
+
       //new one year less
       if(player.durationBid-1 == player.newDurationBid && player.salaryBid*1.3 < player.newSalaryBid){
         return true;
@@ -114,7 +173,24 @@ export class AuctionComponent implements OnInit {
         return true;
       }
 
+      //new four years less
+      if(player.durationBid-4 == player.newDurationBid && player.salaryBid*2.1 < player.newSalaryBid){
+        return true;
+      }
+
       return false;
+    }*/
+
+    function bidSuggestion(player){
+      let bidMultiplier= [[1.0,1.3,1.6,2.0,2.1],
+                          [0.8,1.0,1.3,1.6,1.9],
+                          [0.64,0.8,1.0,1.3,1.45],
+                          [0.51,0.64,0.8,1.0,1.1],
+                          [0.47,0.53,0.69,0.91]];
+
+
+    return player.salaryBid*bidMultiplier[player.newDurationBid-1][player.durationBid-1];
+
     }
 
     //Validate offer
@@ -156,9 +232,9 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
-    1507743715817
+
     //regular season
-    if(this.now>1507743715817 && yearsBid > 1){
+    if(this.now>this.regularSeasonStart && yearsBid > 1){
       this.flashMessage.show("Invalid Offer - You can only offer one season contracts during the regular season.", {
         cssClass: 'alert-danger',
         timeout: 10000});
@@ -167,7 +243,7 @@ export class AuctionComponent implements OnInit {
 
     //Birds
     if(player.lastTeam != newTeamBid && yearsBid == 5){
-      this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player with bird rights.", {
+      this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player.", {
         cssClass: 'alert-danger',
         timeout: 10000});
       return false;
@@ -175,9 +251,10 @@ export class AuctionComponent implements OnInit {
 
     //bid didn't trump
     if(!trumpBid(player)){
-      this.flashMessage.show("Invalid Offer - Your bid didn't trump the current offer.", {
+      this.flashMessage.show("Invalid Offer - Your bid didn't trump the current offer. You have to offer "+(bidSuggestion(player)+1)+" €", {
         cssClass: 'alert-danger',
         timeout: 10000});
+      player.newSalaryBid = bidSuggestion(player)+1;
       return false;
     }
 
