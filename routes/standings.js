@@ -20,7 +20,7 @@ router.get("/team/:id/:season", (req, res, next) => {
 });
 
 router.post("/result", (req, res, next) => {
-  Standings.update({season: 1, reporter: req.body.reporter}, {$push: {reports: req.body.result}}, {upsert: true} , (err, data) => {
+  Standings.update({season: 2, reporter: req.body.reporter}, {$push: {reports: req.body.result}}, {upsert: true} , (err, data) => {
     if (err) return res.send(500, { error: err });
     return res.send("succesfully saved");
   })
