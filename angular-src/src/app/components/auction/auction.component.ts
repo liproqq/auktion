@@ -241,6 +241,14 @@ export class AuctionComponent implements OnInit {
       return false;
     }
 
+    //pre FA start
+    if(this.now<this.startFA){
+      this.flashMessage.show("Invalid Offer - Free Agency didn't start yet.", {
+        cssClass: 'alert-danger',
+        timeout: 10000});
+      return false;
+    }
+
     //Birds
     if(player.lastTeam != newTeamBid && yearsBid == 5){
       this.flashMessage.show("Invalid Offer - Only former team can offer five years on a player.", {
