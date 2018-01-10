@@ -12,13 +12,13 @@ export class StandingsService {
   }
 
   getAllResults(){
-    let ep = this.prepEndpoint('standings/all');
+    let ep = this.prepEndpoint('standings/all/2');
     return this.http.get(ep)
         .map(res => res.json());
   }
 
   getTeamResults(team){
-    let ep = this.prepEndpoint('standings/team/'+team+"/1");
+    let ep = this.prepEndpoint('standings/team/'+team+"/2");
     return this.http.get(ep)
         .map(res => res.json());
   }
@@ -30,7 +30,7 @@ export class StandingsService {
     let date = new Date().getTime()
 
     report = {
-      season:0,
+      season:2,
       reporter: reporter,
       result: report,
       date: date

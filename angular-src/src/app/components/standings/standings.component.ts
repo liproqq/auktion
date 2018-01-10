@@ -13,7 +13,7 @@ export class StandingsComponent implements OnInit {
   results: any;
   teamResults: any;
   user:any;
-  report:Object = {
+  report:any = {
     for:Number,
     against:Number,
     opponent:String,
@@ -120,6 +120,7 @@ export class StandingsComponent implements OnInit {
         return false;
     }
     this.standingsService.saveGame(report, this.user);
+    this.report.for = this.report.against = undefined;
     this.flashMessage.show('Game saved!', {cssClass: 'alert-success', timeout: 3000});
   }
 

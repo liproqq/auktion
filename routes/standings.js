@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Standings = require("../models/standings");
 
-router.get("/all", (req, res, next) => {
+router.get("/all/:id", (req, res, next) => {
 
-  Standings.find({}, (err, data) => {
+  Standings.find({ season: req.params.id }, (err, data) => {
     if (err) throw err;
     res.json(data);
     console.log('retrieved all game results');

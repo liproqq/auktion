@@ -190,12 +190,12 @@ var StandingsService = (function () {
         this.isDev = false; // Change to false before deployment
     }
     StandingsService.prototype.getAllResults = function () {
-        var ep = this.prepEndpoint('standings/all');
+        var ep = this.prepEndpoint('standings/all/2');
         return this.http.get(ep)
             .map(function (res) { return res.json(); });
     };
     StandingsService.prototype.getTeamResults = function (team) {
-        var ep = this.prepEndpoint('standings/team/' + team + "/1");
+        var ep = this.prepEndpoint('standings/team/' + team + "/2");
         return this.http.get(ep)
             .map(function (res) { return res.json(); });
     };
@@ -206,7 +206,7 @@ var StandingsService = (function () {
         var ep = this.prepEndpoint('standings/result');
         var date = new Date().getTime();
         report = {
-            season: 0,
+            season: 2,
             reporter: reporter,
             result: report,
             date: date
@@ -1495,6 +1495,7 @@ var StandingsComponent = (function () {
             return false;
         }
         this.standingsService.saveGame(report, this.user);
+        this.report.for = this.report.against = undefined;
         this.flashMessage.show('Game saved!', { cssClass: 'alert-success', timeout: 3000 });
     };
     StandingsComponent.prototype.getActiveTeams = function () {
