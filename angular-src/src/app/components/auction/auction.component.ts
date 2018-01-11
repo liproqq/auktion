@@ -24,9 +24,9 @@ export class AuctionComponent implements OnInit {
                                               [0.47,0.53,0.69,0.91]];
   private now:any= 0;
   private startFA = 1514916000000;
-  private startSuddenDeath = 1515952800000;
-  private endSuddenDeath = 1515960000000;
-  private regularSeasonStart = 1515970000000;
+  private startSuddenDeath = 1515632300000;
+  private endSuddenDeath = 1515632300000;
+  private regularSeasonStart = 1515632400000;
 
   constructor(private authService:AuthService,
               private router:Router,

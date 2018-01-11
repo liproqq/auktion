@@ -479,9 +479,9 @@ var AuctionComponent = (function () {
         ];
         this.now = 0;
         this.startFA = 1514916000000;
-        this.startSuddenDeath = 1515952800000;
-        this.endSuddenDeath = 1515960000000;
-        this.regularSeasonStart = 1515970000000;
+        this.startSuddenDeath = 1515632300000;
+        this.endSuddenDeath = 1515632300000;
+        this.regularSeasonStart = 1515632400000;
     }
     AuctionComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1804,9 +1804,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var TimeleftPipe = (function () {
     function TimeleftPipe() {
         this.startFA = 1514916000000;
-        this.startSuddenDeath = 1515952800000;
-        this.endSuddenDeath = 1515960000000;
-        this.regularSeasonStart = 1515970000000;
+        this.startSuddenDeath = 1515632300000;
+        this.endSuddenDeath = 1515632300000;
+        this.regularSeasonStart = 1515632400000;
         this.now = Date.now();
     }
     TimeleftPipe.prototype.transform = function (timeBid) {

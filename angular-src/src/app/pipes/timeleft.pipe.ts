@@ -7,9 +7,9 @@ export class TimeleftPipe implements PipeTransform {
   timeleft:String;
 
   private startFA = 1514916000000;
-  private startSuddenDeath = 1515952800000;
-  private endSuddenDeath = 1515960000000;
-  private regularSeasonStart = 1515970000000;
+  private startSuddenDeath = 1515632300000;
+  private endSuddenDeath = 1515632300000;
+  private regularSeasonStart = 1515632400000;
 
   private now:any= Date.now();
 
