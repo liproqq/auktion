@@ -10,12 +10,8 @@
   <tbody>
     <tr *ngFor="let user of userlist">
       <td ><a href="{{user.steam}}">{{user.username}}</a></td>
-      <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{user.team}}">{{user.team | team}}</a></td>
+      <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{user.team}}"><img style="width:40px" src="{{user.team | teamlogo}}"> {{user.team | team}}</a></td>
       <td>{{user.money | currency : 'EUR': true:"1.0-0"}}</td>
     </tr>
   </tbody>
 </table>
-<h1>Roster/Offers</h1>
-<app-profile></app-profile>
-<h1>Standings</h1>
-<app-standings></app-standings>

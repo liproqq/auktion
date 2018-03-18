@@ -21,6 +21,8 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
+//Routes
+
 const users = require('./routes/users');
 
 const player = require('./routes/player');
@@ -28,6 +30,8 @@ const player = require('./routes/player');
 const bid = require('./routes/bid');
 
 const standings = require('./routes/standings');
+
+const trades = require('./routes/trades');
 
 // Port Number
 const port = process.env.PORT || 8080;
@@ -54,6 +58,8 @@ app.use('/player', player);
 app.use('/bid', bid);
 
 app.use('/standings', standings);
+
+app.use('/trades', trades);
 
 // Index Route
 app.get('/', (req, res) => {

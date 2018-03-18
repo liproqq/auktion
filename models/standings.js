@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/database');
 
-//player Schema
+//standings Schema
 const StandingsSchema = mongoose.Schema({
   "season" : Number,
   "reporter" : String,

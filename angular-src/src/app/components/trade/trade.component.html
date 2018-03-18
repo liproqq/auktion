@@ -1,0 +1,87 @@
+<div class="flex-container">
+  <div class="">
+    <div>
+      <h2>Your Players in trade:</h2>
+      {{ownPlayersInTrade.length==0?"None":""}}
+
+      <table class="table table-striped">
+        <tr *ngFor="let player of ownPlayersInTrade" class="">
+          <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
+
+          <td><button (click)="removeOwnPlayer(player)" name="button" class="btn btn-success">Remove</button></td>
+
+        </tr>
+      </table>
+
+
+    </div>
+  </div>
+  <div class="">
+    <h2 class="">Other Players in trade:</h2>
+      {{otherPlayersInTrade.length==0?"None":""}}
+      <table class="table table-striped">
+        <tr *ngFor="let player of otherPlayersInTrade" class="">
+          <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
+
+          <td><button (click)="removeOtherPlayer(player)" name="button" class="btn btn-success">Remove</button></td>
+
+        </tr>
+      </table>
+
+  </div>
+
+</div>
+
+<div *ngIf="otherPlayersInTrade.length > 0 || ownPlayersInTrade.length > 0" class="center btn-success btn flex-container">
+  SUBMIT TRADE
+</div>
+<div class="flex-container">
+  <div class="">
+    <h2 class="">
+      Your Team:
+    </h2>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Add</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of ownPlayers">
+          <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
+          <td><button (click)="addPlayer(player, ownPlayersInTrade)" name="button" class="btn btn-success">Add</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="">
+    <select class="" [(ngModel)]="filterQuery" name="filterQuery" >
+        <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
+    </select>
+
+    <table *ngIf="filterQuery != ''" class="table table-striped" [mfData]="allPlayers | dataFilter : filterQuery : searchType" #mf="mfDataTable" [mfRowsOnPage]="15">
+        <thead>
+          <tr>
+              <th><mfDefaultSorter by="lastName">Name</mfDefaultSorter></th>
+              <th>Add</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let player of mf.data">
+            <td [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a routerLink="/player/{{player.lastName}}/{{player.firstName}}/">{{player.lastName}}, {{player.firstName}}</a></td>
+            <td><button (click)="addPlayer(player, otherPlayersInTrade)" name="button" class="btn btn-success">Add</button></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="8">
+                <mfBootstrapPaginator></mfBootstrapPaginator>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+  </div>
+
+</div>

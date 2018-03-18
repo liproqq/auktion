@@ -13,6 +13,7 @@ export class TeamlogoPipe implements PipeTransform {
     //let team = this.shortToLong(player.team).replace(/\s/g, "-");
 
     team =="NOP"?team="no":"";
+    team =="UTA"?team="utah":"";
 
 
 

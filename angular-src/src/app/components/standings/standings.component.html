@@ -5,7 +5,7 @@
       <option *ngFor="let team of teams" value={{team.short}}>{{team.long}}</option>
   </select>
   <input type="button" class="btn-small btn-danger" name="submit" value="Submit" (click)="reportGame(report)">
-  <input class="btn-small btn-success" type="button" (click)="this.loadStandings()" value="reload standings">
+  <!--<input class="btn-small btn-success" type="button" (click)="this.loadStandings()" value="reload standings">-->
 </div>
 <table class="table table-striped">
     <thead>
@@ -39,7 +39,7 @@
 <table class="table table-striped">
     <tbody>
       <tr>
-          <td *ngFor="let game of teamResults | slice:0:4; let i=index">{{game.for < game.against?"L":"W"}} vs <img src='{{game.opponent | teamlogo}}'> </td>
+          <td *ngFor="let game of teamResults | slice:-4; let i=index">{{game.for < game.against?"L":"W"}} {{game.for}}:{{game.against}} vs <img src='{{game.opponent | teamlogo}}'> </td>
       </tr>
     </tbody>
     <tfoot>

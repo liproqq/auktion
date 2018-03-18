@@ -25,75 +25,26 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() {
     this.playerService.getAllPlayers().subscribe(allPlayers => {
-    this.allPlayers = allPlayers;
-    //console.log(allPlayers);
-    },
-    err => {
-      console.log(err);
-      return false;
+        this.allPlayers = allPlayers;
+        //console.log(allPlayers);
+        },
+        err => {
+          console.log(err);
+          return false;
     });
     this.show = true;
 
-    //check for team param
+    //check for team param in URL
 
     this.sub = this.route.params.subscribe(params => {
        this.filterQuery = params['id'];
        this.searchType = "team";
-
-
     });
   }
 
   changeType(key){
     this.searchType=key;
-  }
-
-  clickForAllPlayers(){
-    this.resetQuery();
-    this.playerService.getAllPlayers().subscribe(allPlayers => {
-      this.allPlayers = allPlayers;
-      console.log(allPlayers);
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-    this.show = true;
-  }
-  clickForPlayerByLastName(lastName){
-    this.resetQuery();
-    this.playerService.getPlayerByLastName(lastName).subscribe(allPlayers => {
-    this.allPlayers = allPlayers;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-    this.show = true;
-  }
-
-  clickForPlayerByTeam(team){
-    this.resetQuery();
-    this.playerService.getPlayerByTeam(team).subscribe(allPlayers => {
-    this.allPlayers = allPlayers;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-    this.show = true;
-  }
-
-  clickForFreeAgents(){
-    this.resetQuery();
-    this.playerService.getFreeAgents().subscribe(allPlayers => {
-    this.allPlayers = allPlayers;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
-    this.show = true;
+    console.log(key)
   }
 
   resetQuery(){

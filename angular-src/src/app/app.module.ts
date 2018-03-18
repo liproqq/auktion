@@ -30,6 +30,7 @@ import { PlayerimagePipe } from './pipes/playerimage.pipe';
 import { PlayerdetailsComponent } from './components/playerdetails/playerdetails.component';
 import { TeamlogoPipe } from './pipes/teamlogo.pipe';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { TradeComponent } from './components/trade/trade.component';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -43,7 +44,8 @@ const appRoutes: Routes =  [
   {path:'standings', component: StandingsComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'auction', component: AuctionComponent, canActivate:[AuthGuard]},
-  {path:'watchlist', component: WatchlistComponent, canActivate:[AuthGuard]}
+  {path:'watchlist', component: WatchlistComponent, canActivate:[AuthGuard]},
+  {path:'trade', component: TradeComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -65,7 +67,8 @@ const appRoutes: Routes =  [
     PlayerimagePipe,
     PlayerdetailsComponent,
     TeamlogoPipe,
-    WatchlistComponent
+    WatchlistComponent,
+    TradeComponent
   ],
   imports: [
     BrowserModule,

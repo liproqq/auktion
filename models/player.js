@@ -30,7 +30,8 @@ const PlayerSchema = mongoose.Schema({
   "born": String,
   "college": String,
   "draft": String,
-  "watchlist": Array
+  "watchlist": Array,
+  "tradeblock": Boolean
 });
 
 const Player = module.exports = mongoose.model('Player', PlayerSchema);
